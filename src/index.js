@@ -51,7 +51,7 @@ function preload() {
     let position = [{x: grpSpaceW/2-nodeW/2, y: nodeH/2}, {x: grpSpaceW/2-nodeW/2 - nodeW/1.5, y: nodeH*1.75}, {x: grpSpaceW/2-nodeW/2 + nodeW/1.5, y: nodeH*1.75}]
 
     for(let i = 0; i < 3; i++) {
-        initialNode = new NodeObject(nodeData[i].name, nodeData[i].description, nodeData[i].symbol, nodeData[i].nodeArray, nodeW, nodeH, position[i].x, position[i].y, colors[i], 'true', 'false');
+        initialNode = new NodeObject(nodeData[i].name, nodeData[i].description, nodeData[i].symbol, nodeData[i].networkArray, nodeW, nodeH, position[i].x, position[i].y, colors[i], 'true', 'false');
         nodes.push(initialNode)
         stage = 'init';
     }
@@ -114,30 +114,31 @@ function setup() {
     
                     }
 
-                    for (let l = 0; l < nodeData.length; l++) {
-       
-                        for(let j = 0; j < nodeData[l].networkArray.length; j++) {
+                    console.log(nodes[0].nodeArray)
+
+                    for(let j = 0; j < nodes[0].nodeArray.length; j++) {
                 
-                            for(let k = 0; k < nodeData[l].networkArray[j].length; k++) {
-                                                                        
-                                    let newLink = document.getElementById(nodeData[l].networkArray[j][k])
-                                    console.log(newLink)
+                        for(let k = 0; k < nodes[0].nodeArray[j].length; k++) {
                                                                     
-                                    newLink.addEventListener("click", function ()
-                                {
-                                    console.log('clicked')
-                                    //create new ellipse with a data
-                                    //add data to nodes
-                                    //hide the div with text (and clear data ? )
-                                })     
-                                
-                            }
-                           
-                        }  
+                                let newLink = document.getElementById(nodes[0].nodeArray[j][k])
+                                console.log(newLink)
+                                                                
+                                newLink.addEventListener("click", function ()
+                                    {
+                                console.log('clicked')
+                                //create new ellipse with a data
+                                //add data to nodes
+                                //hide the div with text (and clear data ? )
+                            })     
+                            
+                        }
+                       
+                    }  
+                        
                         
                     }
 
-                }
+                
                 
             }
         }
