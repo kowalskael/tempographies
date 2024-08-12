@@ -33,19 +33,16 @@ function preload() {
         for(let j = 0; j < nodeData[i].networkArray.length; j++) {
 
             for(let k = 0; k < nodeData[i].networkArray[j].length; k++) {
-                console.log(nodeData[i].networkArray[j][k])
-                console.log(nodeData[i].description.indexOf(nodeData[i].networkArray[j][k]))
     
                 if(nodeData[i].description.indexOf(nodeData[i].networkArray[j][k]) > -1) {
                     
-                    let newString = nodeData[i].description.replace(nodeData[i].networkArray[j][k], '<a href="#' + nodeData[i].networkArray[j][k] + '">' + nodeData[i].networkArray[j][k] + '</a>')
+                    let newString = nodeData[i].description.replace(nodeData[i].networkArray[j][k], '<a style="color:blue; margin: 0px; padding: 0px; " id="' + nodeData[i].networkArray[j][k] + '">' + nodeData[i].networkArray[j][k] + '</a>')
                     nodeData[i].description = newString;
-                    console.log(nodeData[i].description)
+          
                 }
             }
-
-            
-        }
+           
+        }  
         
     }
 
@@ -71,9 +68,9 @@ function setup() {
                 for(let i = 0; i < nodes.length; i++) {
                 
                 if ((mouseX > nodes[i].x) && (mouseX < nodes[i].x + nodes[i].width) &&
-      (mouseY > nodes[i].y) && (mouseY < nodes[i].y + nodes[i].height)) {
+                (mouseY > nodes[i].y) && (mouseY < nodes[i].y + nodes[i].height)) {
 
-        if(flag === 'true') {
+                if(flag === 'true') {
            
                 nodes[i].click();
                 flag = 'false';
@@ -86,9 +83,11 @@ function setup() {
                     descDiv = document.createElement('div');
                     descDiv.setAttribute("id", "descDiv");
                     document.getElementById('graph').appendChild(descDiv);
-                    descText = document.createElement("p");
+                    descText = document.createElement("id");
                     descText.innerHTML = nodes[0].description;
                     document.getElementById('descDiv').appendChild(descText);
+
+                
                                         
 
                     if(nodes[0].x < grpSpaceW/3 && nodes[0].y < grpSpaceH/2) {
@@ -115,6 +114,28 @@ function setup() {
     
                     }
 
+                    for (let l = 0; l < nodeData.length; l++) {
+       
+                        for(let j = 0; j < nodeData[l].networkArray.length; j++) {
+                
+                            for(let k = 0; k < nodeData[l].networkArray[j].length; k++) {
+                                                                        
+                                    let newLink = document.getElementById(nodeData[l].networkArray[j][k])
+                                    console.log(newLink)
+                                                                    
+                                    newLink.addEventListener("click", function ()
+                                {
+                                    console.log('clicked')
+                                    //create new ellipse with a data
+                                    //add data to nodes
+                                    //hide the div with text (and clear data ? )
+                                })     
+                                
+                            }
+                           
+                        }  
+                        
+                    }
 
                 }
                 
@@ -131,6 +152,7 @@ function setup() {
         }
 
         if(stage != 'init') {
+        
 
         }
     }
