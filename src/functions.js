@@ -1,3 +1,4 @@
+
 function animatePopup() {
 
 }
@@ -40,17 +41,41 @@ function transformNodeStringToArray(data) {
     }
 }
 
+
 class NodeObject {
-    constructor(name, description, symbol, nodeArray, x, y, width, height, clickable, clicked) {
+    constructor(name, description, symbol, nodeArray, width, height, x, y, color, clickable, clicked) {
         this.name = name; // name of the node
         this.description = description; // text which appears in the box
         this.symbol = symbol; // every node has specific symbol shape and color
         this.nodeArray = nodeArray; // what are hyperlinks of the node from .csv file?
-        this.x = x; // random position, center and left/right (only applicable to nodeObject number > 3)
-        this.y = y;
         this.width = width;
         this.height = height;
+        this.x = x; // random position, center and left/right (only applicable to nodeObject number > 3)
+        this.y = y;
+        this.color = color;
         this.clickable = clickable;
         this.clicked = clicked;
+    }
+
+    click() {
+      if ((mouseX > this.x) && (mouseX < this.x + this.width) &&
+      (mouseY > this.y) && (mouseY < this.y + this.height)) {
+        console.log('clicked')
+        this.clicked = 'true';
+        this.clickable = 'false';
+
+        
+      }
+    }
+
+    collide() {
+
+    }
+
+    render() {
+        ellipseMode(CORNER);
+        fill(this.color);
+        noStroke();
+        ellipse(this.x, this.y, this.width, this.height)
     }
 }
