@@ -13,6 +13,11 @@ let grpSpace = document.getElementById('game');
 let grpSpaceW = grpSpace.offsetWidth;
 let grpSpaceH = grpSpace.offsetHeight;
 
+let nodeW = 220;
+    let nodeH = 135;
+    let position = [{x: grpSpaceW/2-nodeW/2, y: nodeH/2}, {x: grpSpaceW/2-nodeW/2 - nodeW/1.5, y: nodeH*1.75}, {x: grpSpaceW/2-nodeW/2 + nodeW/1.5, y: nodeH*1.75}, {x: grpSpaceW/2-nodeW/2 + nodeW/1.5, y: nodeH*3}]
+
+
 fetch('diagram.json').then(
     (value) => {
         return value.json()
@@ -22,7 +27,6 @@ fetch('diagram.json').then(
         nodeData = value;
     }
 )
-
 
 function preload() {
     transformNodeStringToArray(nodeData);
@@ -38,10 +42,6 @@ function preload() {
             }
         }  
     }
-
-    let nodeW = 220;
-    let nodeH = 135;
-    let position = [{x: grpSpaceW/2-nodeW/2, y: nodeH/2}, {x: grpSpaceW/2-nodeW/2 - nodeW/1.5, y: nodeH*1.75}, {x: grpSpaceW/2-nodeW/2 + nodeW/1.5, y: nodeH*1.75}]
 
     for(let i = 0; i < 3; i++) {
         initialNode = new NodeObject(nodeData[i].name, nodeData[i].description, nodeData[i].symbol, nodeData[i].networkArray, nodeW, nodeH, position[i].x, position[i].y, colors[i], 'true', 'false');
@@ -112,9 +112,21 @@ function setup() {
                                                                         
                                         newLink.addEventListener("click", function () {
                                             console.log('clicked')
-                                        //create new ellipse with a data
-                                        //add data to nodes
-                                        //hide the div with text (and clear data ? )
+                                            //create new ellipse with a data z newLink jako name, wyszukaj to name i dane z nodeData
+                                            //add data to nodes
+                                            //hide the div with text (and clear data ? )
+                                            // newLink równa się któremu nodeData[i].name ? 
+                                            // wybierz ten [i] i dodaj obiekt do nodes
+                                            console.log(nodes[0].nodeArray[j][k])
+                                            for(let l = 0; l < nodeData.length; l++) {
+                                                if(nodes[0].nodeArray[j][k] === nodeData[l].name) {
+                                                    newNode = new NodeObject(nodeData[l].name, nodeData[l].description, nodeData[l].symbol, nodeData[l].networkArray, nodeW, nodeH, position[l].x, position[l].y, colors[l], 'true', 'false');
+                                                    nodes.push(newNode);
+                                                    descDiv.style.display = 'none';   
+                                                }
+                                            }
+                                            
+                                            //nodes.push();
                                         })     
                                 
                                     } 
