@@ -1,38 +1,116 @@
 [
- {
-  "name": "Biochar ",
-  "description": "Biochar is the solid material obtained from the thermochemical conversion of biomass (for ex. olive tree branches) in an oxygen-limited environment and is a form of charcoal, made of carbon and ashes, remaining after the pyrolysis of biomass. It is a stable solid and can endure in soil for thousands of years. Biochar is treated in the UHA\/CNRS laboratory using cold plasma to enrich it with nitrogen molecules and transform it into soil amendment. The important question in research is: what biochar is?",
-  "symbol": "thesis",
-  "networkString": " 'olive tree', 'laboratory', 'cold plasma', 'what biochar is?'"
- },
- {
-  "name": "What is biochar?",
-  "description": "In the ePICNutrients project it is important to have some questions in mind: what is biochar from different perspectives? What is biochar as a material? How is it produced? and what attributes are important (as porosity, granulometry, extreme surface)? What is biochar in plant cultivation? Is biochar a solution to recycle biowaste in a sustainable way? What is it as a social concept?",
-  "symbol": "thesis",
-  "networkString": "extreme surface', 'granulometry', 'porosity', 'sustainability'"
- },
- {
-  "name": "Granulometry",
-  "description": "Biochar granulometry is a measurement of the size distribution of biochar particles. Different methods of biochar production and treatment result in different sizes of biochar particles. Granulation level is not connected with quality of biochar for the project: using smaller particles improves resolution of extreme surface measurements done in the UHA\/CNRS laboratory but when using bigger particles the resolution of extreme surface measurements rapidly falls. Moreover, mixing biochar with sufficiently large grains with the soil means that the physical properties of such a mixture (e.g. greater aeration) must be taken into account in the plant growth process.",
-  "symbol": "thesis",
-  "networkString": "laboratory', 'extreme surface', 'soil'"
- },
- {
-  "name": "extreme surface",
-  "description": "For the project the extreme surface is considered as what XPS can access (around 10 nanometers) of the surface. ",
-  "symbol": "thesis",
-  "networkString": "laboratory'"
- },
- {
-  "name": "nitrogen",
-  "description": "Nitrogen is essential for plant growth, as it is required to make both amino acids (for proteins) and nucleic acids (for DNA), and is used in the correct development and functioning of chlorophyll, thus being vital for photosynthesis. All this means that if nitrogen is lacking, plants will grow more slowly, have lower product yields, and be more susceptible to attack, disease and death. ",
-  "symbol": "thesis",
-  "networkString": "plasma reactor', 'enhancing the biochar', 'nutrients', 'cold plasma'"
- },
- {
-  "name": "Cold plasma",
-  "description": "Cold plasma is generated when electrical energy is applied to a gas, causing the ionization of the gas to generate very reactive molecules and ions. It can be used to enhance the biochar. In that process biochar is “washed” with a mixture of nitrogen and hydrogen cold plasma.",
-  "symbol": "thesis",
-  "networkString": "enhancing the biochar', 'plasma treatment', 'nitrogen'"
- }
+    {
+        "name": "Biochar",
+        "description": "Biochar is the solid material obtained from the thermochemical conversion of biomass (for ex. olive tree branches) in an oxygen-limited environment and is a form of charcoal, made of carbon and ashes, remaining after the pyrolysis of biomass. It is a stable solid and can endure in soil for thousands of years. Biochar is treated in the UHA\/CNRS laboratory using cold plasma to enrich it with nitrogen molecules and transform it into soil amendment. The important question in research is: what biochar is?",
+        "symbol": "thesis",
+        "networkString": " 'olive tree', 'laboratory', 'cold plasma', 'what biochar is?'"
+    },
+    {
+        "name": "what is biochar?",
+        "description": "In the ePICNutrients project it is important to have some questions in mind: what is biochar from different perspectives? What is biochar as a material? How is it produced? and what attributes are important (as porosity, granulometry, extreme surface)? What is biochar in plant cultivation? Is biochar a solution to recycle biowaste in a sustainable way? What is it as a social concept?",
+        "symbol": "thesis",
+        "networkString": "extreme surface', 'granulometry', 'porosity', 'sustainability'"
+    },
+    {
+        "name": "granulometry",
+        "description": "Biochar granulometry is a measurement of the size distribution of biochar particles. Different methods of biochar production and treatment result in different sizes of biochar particles. Granulation level is not connected with quality of biochar for the project: using smaller particles improves resolution of extreme surface measurements done in the UHA\/CNRS laboratory but when using bigger particles the resolution of extreme surface measurements rapidly falls. Moreover, mixing biochar with sufficiently large grains with the soil means that the physical properties of such a mixture (e.g. greater aeration) must be taken into account in the plant growth process.",
+        "symbol": "thesis",
+        "networkString": "laboratory', 'extreme surface', 'soil'"
+    },
+    {
+        "name": "extreme surface",
+        "description": "For the project the extreme surface, laboratory is considered as what XPS can access (around 10 nanometers) of the surface. what is biochar",
+        "symbol": "thesis",
+        "networkString": "laboratory', 'what is biochar'"
+    },
+    {
+        "name": "nitrogen",
+        "description": "Nitrogen is essential for plant growth, as it is required to make both amino acids (for proteins) and nucleic acids (for DNA), and is used in the correct development and functioning of chlorophyll, thus being vital for photosynthesis. All this means that if nitrogen is lacking, plants will grow more slowly, have lower product yields, and be more susceptible to attack, disease and death. ",
+        "symbol": "thesis",
+        "networkString": "plasma reactor', 'enhancing the biochar', 'nutrients', 'cold plasma'"
+    },
+    {
+        "name": "cold plasma",
+        "description": "Cold plasma is generated when electrical energy is applied to a gas, causing the ionization of the gas to generate very reactive molecules and ions. It can be used to enhance the biochar. In that process biochar is “washed” with a mixture of nitrogen and hydrogen cold plasma.",
+        "symbol": "thesis",
+        "networkString": "enhancing the biochar', 'plasma treatment', 'nitrogen'"
+    },
+    {
+        "name": "laboratory",
+        "description": "What is the laboratory in ePICNutrients project? In some cases, the answer is obvious - a laboratory understood as research infrastructure can be indicated at the University Haut-Alsace, Aristotle University of Thessaloniki or Adam Mickiewicz University. This, however, does not exhaust the concept of a laboratory. Thanks to one of the key concepts for the project - mobility - our research space remains in constant motion - spatially, culturally and socially.",
+        "symbol": "thesis",
+        "networkString": "'FTIR', 'plasma reactor'"
+    },
+    {
+        "name": "Plasma reactor",
+        "description": "Some text with a word plasma.",
+        "symbol": "thesis",
+        "networkString": "'plasma'"
+    },
+    {
+        "name": "Enhancing the biochar",
+        "description": "Some text with a word growing plants.",
+        "symbol": "thesis",
+        "networkString": "'growing plants'"
+    },
+    {
+        "name": "Small pot experiment",
+        "description": "Some text with a word rye grass and soil bacteria.",
+        "symbol": "thesis",
+        "networkString": "'rye grass', 'soil bacteria'"
+    },
+    {
+        "name": "Ryegrass",
+        "description": "Some",
+        "symbol": "thesis",
+        "networkString": "'none'"
+    },
+    {
+        "name": "Soil bacteria",
+        "description": "Some",
+        "symbol": "thesis",
+        "networkString": "'none'"
+    },
+    {
+        "name": "Production of biochar",
+        "description": "Some text with a word commercial waste.",
+        "symbol": "thesis",
+        "networkString": "'commercial waste'"
+    },
+    {
+        "name": "olive tree",
+        "description": "Some text with a word production of biochar and Crete.",
+        "symbol": "thesis",
+        "networkString": "'production of biochar', 'Crete'"
+    },
+    {
+        "name": "Crete",
+        "description": "Some",
+        "symbol": "thesis",
+        "networkString": "'none'"
+    },
+    {
+        "name": "Commercial waste",
+        "description": "Some",
+        "symbol": "thesis",
+        "networkString": "'none'"
+    },
+    {
+        "name": "soil",
+        "description": "Soil is a material composed of five components: minerals, living organisms, soil organic matter, gas and water. The development of plants growing in it depends on its physical properties (pulpness, aeration), chemical properties (presence of certain chemical elements) and biological properties (presence of bacteria and other microorganisms). Mixing improved biochar with the soil improves the physical properties of the soil (as possibly evidenced by the results of the small pot experiment on the ryegrass) and provides the necessary nutrients.",
+        "symbol": "thesis",
+        "networkString": "'biochar', 'small pot experiment'"
+    },
+    {
+        "name": "Growing plants",
+        "description": "Some",
+        "symbol": "thesis",
+        "networkString": "'small pot experiment'"
+    },
+    {
+        "name": "FTIR",
+        "description": "Some",
+        "symbol": "thesis",
+        "networkString": "'none'"
+    }
 ]

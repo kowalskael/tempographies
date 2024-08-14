@@ -30,6 +30,7 @@ closePopup();
 
 // function to remake strings in networkString to array, and return it as networkData array property
 function transformNodeStringToArray(data) {
+
     for (let i = 0; i < data.length; i++) {
         let stringToArray = data[i].networkString;
         let output = stringToArray.match(/\w+\s?\w+\s?\w+/g);
@@ -54,8 +55,6 @@ function transformWordsToLinks(data) {
         }
     }
 }
-
-
 
 
 class NodeObject {
