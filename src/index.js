@@ -10,8 +10,13 @@ let stage = 0;
 let flag = 'true';
 
 let grpSpace = document.getElementById('game');
+let graph = document.getElementById('graph');
 let grpSpaceW = grpSpace.offsetWidth;
 let grpSpaceH = grpSpace.offsetHeight;
+
+let mousedown = false;
+let x = 0;
+let y = 0;
 
 let nodeW = 220;
 let nodeH = 135;
@@ -44,13 +49,14 @@ function preload() {
         initialNode = new NodeObject(nodeData[i].name, nodeData[i].description, nodeData[i].symbol, nodeData[i].networkArray, nodeW, nodeH, position[i].x, position[i].y, colors[i], 'true', 'false');
         nodes.push(initialNode);
     }
+      
 }
 
 function setup() {
     let canvas = createCanvas(grpSpaceW, innerHeight - 40);
     canvas.parent('#graph');
 
-    grpSpace.addEventListener("click", function () {
+    grpSpace.addEventListener("dblclick", function () {
         if (stage === 0) {
             init();
             stage = 1;
@@ -60,6 +66,38 @@ function setup() {
         addNode();
         // można zrobić tak, że ten jeden aktywny el. jest wpychany w inną zmienną niż nodes, i potem tylko to się renderuje
     })
+}
+
+graph.onmousedown = function(e) {
+
+    let shiftX = e.clientX - graph.getBoundingClientRect().left;
+    let shiftY = e.clientY - graph.getBoundingClientRect().top;
+
+    moveAt(e.pageX, e.pageY);
+
+    function moveAt(pageX, pageY) {
+        graph.style.left = pageX - shiftX + 'px';
+        graph.style.top = pageY - shiftY + 'px';
+    }
+
+    function onMouseMove(e) {
+        moveAt(e.pageX, e.pageY);
+        console.log('dragging')
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+
+    graph.onmouseup = function() {
+        document.removeEventListener('mousemove', onMouseMove);
+        graph.onmouseup = null;
+        console.log('not dragging')
+
+        // jeśli mouse zostanie up poza przestrzenią game, dodać jakiś reset lub puszczenie draga
+    }
+}
+
+graph.ondragstart = function() {
+    return false;
 }
 
 function init() {
@@ -102,7 +140,7 @@ function addNode() {
 
                 let newLink = document.getElementById(nodes[i].nodeArray[j][k])
                 console.log(newLink)
-                newLink.addEventListener("click", function () {
+                newLink.addEventListener("dblclick", function () {
                     console.log('clicked')
 
                     console.log(nodes[i].nodeArray[j][k])
