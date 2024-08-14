@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Playwrite+PL:wght@100..400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&display=swap');
 
-html, body {
+html,
+body {
     background-color: #d8d6d2;
     display: flex;
     flex-direction: row;
@@ -10,20 +11,20 @@ html, body {
     margin: 0;
     width: 100%;
 
-  }
+}
 
-  canvas {
+canvas {
     z-index: 0;
-  }
+}
 
-  #descDiv {
-    position: absolute; /* Stay in place */
+#descDiv {
+    position: absolute;
+    /* Stay in place */
     display: flex;
     z-index: 1;
     width: 300px;
-    height: 300px;
     padding: 35px;
-    background-color:  rgba(239, 239, 239, 0.9);
+    background-color: rgba(239, 239, 239, 0.9);
     -moz-box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.9);
     -webkit-box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.9);
     box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.9);
@@ -31,24 +32,26 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  #popup {
-    position: absolute; /* Stay in place */
-    z-index: 1; /* Sit on top */
+}
+
+#popup {
+    position: absolute;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     width: 100%;
     height: 100%;
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  #popupBox {
+}
+
+#popupBox {
     display: flex;
     width: 60%;
     padding: 35px;
-    background-color:  rgba(239, 239, 239, 0.8);
+    background-color: rgba(239, 239, 239, 0.8);
     -moz-box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.8);
     -webkit-box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.8);
     box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.8);
@@ -56,9 +59,9 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  #popupTitle {
+}
+
+#popupTitle {
     font-family: "Scheherazade New", serif;
     font-optical-sizing: auto;
     font-weight: 500;
@@ -66,9 +69,9 @@ html, body {
     line-height: 3.1rem;
     padding-bottom: 30px;
     text-align: center;
-  }
-  
-  #popupText {
+}
+
+#popupText {
     line-height: 1.7rem;
     font-size: 1.5rem;
     font-family: "Playfair", serif;
@@ -76,9 +79,9 @@ html, body {
     font-style: normal;
     text-align: center;
     padding-bottom: 15px;
-  }
+}
 
-  .alert {
+.alert {
     font-size: 1rem;
     font-weight: 400;
     text-align: center;
@@ -90,7 +93,7 @@ html, body {
     letter-spacing: 1px;
     margin-bottom: 5px;
 }
-  
+
 #main {
     width: 80%;
     height: 100%;
@@ -118,7 +121,7 @@ html, body {
     margin-left: 20px;
 }
 
-.title > a {
+.title>a {
     text-decoration: none;
     color: black;
 }
@@ -130,7 +133,7 @@ html, body {
     margin-right: 55px;
 }
 
-.links > a {
+.links>a {
     text-decoration: none;
     color: black;
 }
@@ -171,7 +174,7 @@ html, body {
     align-items: center;
 }
 
-.index-menu > p {
+.index-menu>p {
     margin-left: 20px;
     font-size: 16px;
     font-family: "Lato", sans-serif;
@@ -192,10 +195,10 @@ html, body {
     background-color: #6e6eff;
     background-image: url('img/sidebar-img_2.png');
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
 }
 
-#sidebar > img {
+#sidebar>img {
     border-left: solid 1px #000000;
 }
 
@@ -240,7 +243,7 @@ html, body {
 }
 
 #about-txt {
-    background-color:  #EFEFEF;
+    background-color: #EFEFEF;
     -moz-box-shadow: 0 0 5px 5px #EFEFEF;
     -webkit-box-shadow: 0 0 5px 5px #EFEFEF;
     box-shadow: 0 0 5px 5px #EFEFEF;
@@ -284,7 +287,7 @@ html, body {
 
 .ppl {
     display: flex;
-    background-color:  #EFEFEF;
+    background-color: #EFEFEF;
     -moz-box-shadow: 0 0 5px 5px #EFEFEF;
     -webkit-box-shadow: 0 0 5px 5px #EFEFEF;
     box-shadow: 0 0 5px 5px #EFEFEF;
@@ -300,7 +303,7 @@ html, body {
     font-size: 1.1rem;
 }
 
-.ppl-txt > a {
+.ppl-txt>a {
     font-family: "Lato", sans-serif;
     font-size: 1rem;
     color: #000;
@@ -308,6 +311,6 @@ html, body {
 
 }
 
-.ppl-txt > a:hover {
+.ppl-txt>a:hover {
     font-style: italic;
 }

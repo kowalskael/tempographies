@@ -6,20 +6,20 @@
         "networkString": " 'olive tree', 'laboratory', 'cold plasma', 'what biochar is?'"
     },
     {
-        "name": "what is biochar?",
+        "name": "what is biochar",
         "description": "In the ePICNutrients project it is important to have some questions in mind: what is biochar from different perspectives? What is biochar as a material? How is it produced? and what attributes are important (as porosity, granulometry, extreme surface)? What is biochar in plant cultivation? Is biochar a solution to recycle biowaste in a sustainable way? What is it as a social concept?",
         "symbol": "thesis",
         "networkString": "extreme surface', 'granulometry', 'porosity', 'sustainability'"
     },
     {
-        "name": "granulometry",
+        "name": "Granulometry",
         "description": "Biochar granulometry is a measurement of the size distribution of biochar particles. Different methods of biochar production and treatment result in different sizes of biochar particles. Granulation level is not connected with quality of biochar for the project: using smaller particles improves resolution of extreme surface measurements done in the UHA\/CNRS laboratory but when using bigger particles the resolution of extreme surface measurements rapidly falls. Moreover, mixing biochar with sufficiently large grains with the soil means that the physical properties of such a mixture (e.g. greater aeration) must be taken into account in the plant growth process.",
         "symbol": "thesis",
         "networkString": "laboratory', 'extreme surface', 'soil'"
     },
     {
         "name": "extreme surface",
-        "description": "For the project the extreme surface, laboratory is considered as what XPS can access (around 10 nanometers) of the surface. what is biochar",
+        "description": "For the project the extreme surface is considered as what XPS can access (around 10 nanometers) of the surface. laboratory, what is biochar",
         "symbol": "thesis",
         "networkString": "laboratory', 'what is biochar'"
     },
@@ -96,7 +96,7 @@
         "networkString": "'none'"
     },
     {
-        "name": "soil",
+        "name": "Soil",
         "description": "Soil is a material composed of five components: minerals, living organisms, soil organic matter, gas and water. The development of plants growing in it depends on its physical properties (pulpness, aeration), chemical properties (presence of certain chemical elements) and biological properties (presence of bacteria and other microorganisms). Mixing improved biochar with the soil improves the physical properties of the soil (as possibly evidenced by the results of the small pot experiment on the ryegrass) and provides the necessary nutrients.",
         "symbol": "thesis",
         "networkString": "'biochar', 'small pot experiment'"

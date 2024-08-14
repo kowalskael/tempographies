@@ -1,9 +1,9 @@
 let nodes = []; // array to contain created and visible node obj
-let links = []; // array to contain all created lines between obj
 let descDiv, descText;
 
 // dane z kolorami, 8 pozycji
 const colors = ['#ffa21a', '#ff6e83', '#ff6315', '#ffd2d4', '#ffd2d4', '#8ab662', '#7daa90', '#009245'];
+let randomColor;
 
 let nodeData;
 let stage = 0;
@@ -14,14 +14,14 @@ let graph = document.getElementById('graph');
 let grpSpaceW = grpSpace.offsetWidth;
 let grpSpaceH = grpSpace.offsetHeight;
 
-let mousedown = false;
-let x = 0;
-let y = 0;
-
 let nodeW = 220;
 let nodeH = 135;
-// powiększyć/zmienić bazę pozycji
-let position = [{ x: grpSpaceW / 2 - nodeW / 2, y: nodeH / 2 }, { x: grpSpaceW / 2 - nodeW / 2 - nodeW / 1.5, y: nodeH * 1.75 }, { x: grpSpaceW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 1.75 }, { x: grpSpaceW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 3 }, { x: grpSpaceW / 2 - nodeW / 2 - nodeW / 1.5, y: nodeH * 1.75 }, { x: grpSpaceW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 1.75 }]
+
+let positionNodeX = 0;
+let positionNodeY = 0;
+let distanceNode;
+
+let position = [{ x: grpSpaceW / 2 - nodeW / 2, y: nodeH / 2 }, { x: grpSpaceW / 2 - nodeW / 2 - nodeW / 1.5, y: nodeH * 1.75 }, { x: grpSpaceW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 1.75 }]
 
 fetch('diagram.json').then(
     (value) => {
@@ -32,6 +32,38 @@ fetch('diagram.json').then(
         nodeData = value;
     }
 )
+
+function distance(x1, x2, y1, y2) {
+    let dx = x2 - x1;
+    dy = y2 - y1;
+    return Math.sqrt(dx * dx + dy * dy)
+}
+
+let lastX = 0, lastY = 0;
+let currentX = 0, currentY = 0;
+
+function moveAt(x, y) {
+    currentX = x;
+    currentY = y; // aktualna pozycja graphu
+    graph.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function onMouseDown(e) {
+    lastX = e.clientX - currentX;
+    lastY = e.clientY - currentY; // zmienne pomocnicze do zmierzenia offsetu
+    document.addEventListener('mousemove', onMouseMove);
+}
+
+function onMouseMove(e) {
+    moveAt(e.clientX - lastX, e.clientY - lastY);
+}
+
+function onMouseUp() {
+    document.removeEventListener('mousemove', onMouseMove);
+}
+
+document.addEventListener('mousedown', onMouseDown);
+window.addEventListener('mouseup', onMouseUp);
 
 descDiv = document.createElement('div');
 descDiv.setAttribute("id", "descDiv");
@@ -49,11 +81,10 @@ function preload() {
         initialNode = new NodeObject(nodeData[i].name, nodeData[i].description, nodeData[i].symbol, nodeData[i].networkArray, nodeW, nodeH, position[i].x, position[i].y, colors[i], 'true', 'false');
         nodes.push(initialNode);
     }
-      
 }
 
 function setup() {
-    let canvas = createCanvas(grpSpaceW, innerHeight - 40);
+    let canvas = createCanvas(grpSpaceW, innerHeight);
     canvas.parent('#graph');
 
     grpSpace.addEventListener("dblclick", function () {
@@ -64,40 +95,9 @@ function setup() {
 
         addDesc();
         addNode();
+
         // można zrobić tak, że ten jeden aktywny el. jest wpychany w inną zmienną niż nodes, i potem tylko to się renderuje
     })
-}
-
-graph.onmousedown = function(e) {
-
-    let shiftX = e.clientX - graph.getBoundingClientRect().left;
-    let shiftY = e.clientY - graph.getBoundingClientRect().top;
-
-    moveAt(e.pageX, e.pageY);
-
-    function moveAt(pageX, pageY) {
-        graph.style.left = pageX - shiftX + 'px';
-        graph.style.top = pageY - shiftY + 'px';
-    }
-
-    function onMouseMove(e) {
-        moveAt(e.pageX, e.pageY);
-        console.log('dragging')
-    }
-
-    document.addEventListener('mousemove', onMouseMove);
-
-    graph.onmouseup = function() {
-        document.removeEventListener('mousemove', onMouseMove);
-        graph.onmouseup = null;
-        console.log('not dragging')
-
-        // jeśli mouse zostanie up poza przestrzenią game, dodać jakiś reset lub puszczenie draga
-    }
-}
-
-graph.ondragstart = function() {
-    return false;
 }
 
 function init() {
@@ -109,9 +109,14 @@ function init() {
                 nodes[i].click(); // flagowanie - był kliknięty, nie jest już klikalny
                 nodes = nodes.filter(function (el) { return el.clicked === "true"; })
 
+                // przesuń element w konkretne miejsce
+                nodes[0].x = 70;
+                nodes[0].y = 70;
+
                 descDiv.style.display = 'block';
                 descText.innerHTML = nodes[0].description;
-                descDiv.style.left = 200 + "px";
+                descDiv.style.left = 350 + "px";
+                descDiv.style.top = 50 + "px";
                 console.log('clicked initial ' + nodes[0].name)
             }
         }
@@ -134,32 +139,40 @@ function addDesc() {
 
 // funkcja dodająca kolejne el. w drugim etapie (po init)
 function addNode() {
+
     for (let i = 0; i < nodes.length; i++) {
         for (let j = 0; j < nodes[i].nodeArray.length; j++) {
             for (let k = 0; k < nodes[i].nodeArray[j].length; k++) {
 
-                let newLink = document.getElementById(nodes[i].nodeArray[j][k])
-                console.log(newLink)
-                newLink.addEventListener("dblclick", function () {
-                    console.log('clicked')
+                let newLink = document.getElementById(nodes[i].nodeArray[j][k]);
+                console.log(newLink);
 
-                    console.log(nodes[i].nodeArray[j][k])
+                newLink.addEventListener("click", function () {
                     for (let l = 0; l < nodeData.length; l++) {
                         if (nodes[i].nodeArray[j][k] === nodeData[l].name) {
-                            newNode = new NodeObject(nodeData[l].name, nodeData[l].description, nodeData[l].symbol, nodeData[l].networkArray, nodeW, nodeH, 100 + 2 * l, 100 + 2 * l, colors[l], 'true', 'false');
+                            console.log(nodes[i].nodeArray[j][k])
+
+                            distanceNode = distance(nodes[nodes.length - 1].x, nodes[nodes.length - 1].x + nodeW, nodes[nodes.length - 1].y, nodes[nodes.length - 1].y + nodeH);
+                            console.log(distanceNode)
+                            positionNodeX = Math.cos(2 * Math.PI) * distanceNode;
+                            positionNodeY = Math.sin(Math.PI / 4) * distanceNode;
+
+                            randomColor = Math.floor(Math.random() * colors.length);
+
+
+                            newNode = new NodeObject(nodeData[l].name, nodeData[l].description, nodeData[l].symbol, nodeData[l].networkArray, nodeW, nodeH, positionNodeX, positionNodeY, colors[randomColor], 'true', 'false');
                             nodes.push(newNode);
                             descDiv.style.display = 'none';
-
-                            console.log(stage)
                             console.log(nodes)
                         }
                     }
                 })
-
             }
         }
     }
+
 }
+
 
 
 function draw() {
