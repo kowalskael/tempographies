@@ -27,34 +27,18 @@ function closePopup() {
 
 closePopup();
 
-
-// function to remake strings in networkString to array, and return it as networkData array property
-function transformNodeStringToArray(data) {
-
-    for (let i = 0; i < data.length; i++) {
-        let stringToArray = data[i].networkString;
-        let output = stringToArray.match(/\w+\s?\w+\s?\w+/g);
-        data[i].networkString = Array.from('stringToArray');
-        data[i].networkArray = data[i].networkString;
-        delete data[i].networkString;
-        data[i].networkArray.length = 0;
-        data[i].networkArray.push(output);
-    }
-}
-
 // funkcja, która transformuje słowa z nodeArray w description na linki
 function transformWordsToLinks(data) {
     for (let i = 0; i < data.length; i++) {
         for (let j = 0; j < data[i].networkArray.length; j++) {
-            for (let k = 0; k < data[i].networkArray[j].length; k++) {
-                if (data[i].description.indexOf(data[i].networkArray[j][k]) > -1) {
-                    let newString = data[i].description.replace(data[i].networkArray[j][k], '<a style="color:blue; margin: 0px; padding: 0px; " id="' + data[i].networkArray[j][k] + '">' + data[i].networkArray[j][k] + '</a>')
-                    data[i].description = newString;
-                }
+            if (data[i].description.indexOf(data[i].networkArray[j]) > -1) {
+                let newString = data[i].description.replace(data[i].networkArray[j], `<a class="link" id="${data[i].networkArray[j]}">${data[i].networkArray[j]}</a>`);
+                data[i].description = newString;
             }
         }
     }
 }
+
 
 
 class NodeObject {
@@ -75,8 +59,8 @@ class NodeObject {
     click() {
         if ((mouseX > this.x) && (mouseX < this.x + this.width) &&
             (mouseY > this.y) && (mouseY < this.y + this.height)) {
-            this.clicked = 'true';
-            this.clickable = 'false';
+            this.clicked = true;
+            this.clickable = false;
         }
     }
 
