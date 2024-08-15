@@ -6,7 +6,6 @@ function animatePopup() {
 animatePopup();
 
 function closePopup() {
-    const body = document.body;
     const popup = document.getElementById("popup")
     const popupBox = document.getElementById("popupBox")
     let popupClicked = sessionStorage.getItem('popup')
@@ -38,8 +37,6 @@ function transformWordsToLinks(data) {
         }
     }
 }
-
-
 
 class NodeObject {
     constructor(name, description, symbol, nodeArray, width, height, x, y, color, clickable, clicked) {

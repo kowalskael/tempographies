@@ -6,8 +6,8 @@ const colors = ['#ffa21a', '#ff6e83', '#ff6315', '#ffd2d4', '#ffd2d4', '#8ab662'
 let randomColor;
 
 let nodeData;
-let stage = 0;
-let flag = true;
+let stageInit = true, flag = true;
+let newLink;
 
 const grpSpace = document.getElementById('game');
 const graph = document.getElementById('graph');
@@ -17,7 +17,7 @@ let grpSpaceH = grpSpace.offsetHeight;
 const nodeW = 220;
 const nodeH = 135;
 
-let nxtNodeX = 0, ntxNodeY = 0, nxtNodeDist = 0;
+let nxtNodeX = 0, nxtNodeY = 0, nxtNodeDist = 0; updatedX = 0; updatedY = 0;
 
 const position = [{ x: grpSpaceW / 2 - nodeW / 2, y: nodeH / 2 }, { x: grpSpaceW / 2 - nodeW / 2 - nodeW / 1.5, y: nodeH * 1.75 }, { x: grpSpaceW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 1.75 }]
 
@@ -82,25 +82,24 @@ function setup() {
     let canvas = createCanvas(grpSpaceW, innerHeight);
     canvas.parent('#graph');
 
-    grpSpace.addEventListener("dblclick", function () {
-        if (stage === 0) {
-            init();
-            stage = 1;
-        }
+    for (let i = 0; i < nodes.length; i++) {
 
-        addDesc();
-        addNode();
-        // można zrobić tak, że ten jeden aktywny el. jest wpychany w inną zmienną niż nodes, i potem tylko to się renderuje
-    })
+        grpSpace.addEventListener("dblclick", function () { init(nodes[i]) });
+
+        grpSpace.addEventListener("dblclick", function () { addNxtNodes(nodes[i]) })
+
+    }
+    // można zrobić tak, że ten jeden aktywny el. jest wpychany w inną zmienną niż nodes, i potem tylko to się renderuje
 }
 
-function init() {
-    for (let i = 0; i < nodes.length; i++) {
-        if ((mouseX > nodes[i].x) && (mouseX < nodes[i].x + nodes[i].width) &&
-            (mouseY > nodes[i].y) && (mouseY < nodes[i].y + nodes[i].height)) {
+
+function init(node) {
+    if (stageInit) {
+        if ((mouseX > node.x) && (mouseX < node.x + node.width) &&
+            (mouseY > node.y) && (mouseY < node.y + node.height)) {
             // jeśli el. jest klikalny, wykonaj usunięcie nieklikniętych el. i pokaż div z tekstem el.
-            if (nodes[i].clickable) {
-                nodes[i].click(); // flagowanie - był kliknięty, nie jest już klikalny
+            if (node.clickable) {
+                node.click(); // flagowanie - był kliknięty, nie jest już klikalny
                 nodes = nodes.filter(function (el) { return el.clicked === true; })
 
                 // przesuń element w konkretne miejsce
@@ -112,61 +111,97 @@ function init() {
                 descDiv.style.left = 350 + "px";
                 descDiv.style.top = 50 + "px";
                 console.log('clicked initial ' + nodes[0].name)
+
+                for (let j = 0; j < node.nodeArray.length; j++) {
+                    newLink = document.getElementById(node.nodeArray[j]);
+                    console.log(node.nodeArray[j]);
+
+                    newLink.addEventListener("dblclick", function () {
+                        for (let l = 0; l < nodeData.length; l++) {
+                            if (node.nodeArray[j] === nodeData[l].name) {
+                                console.log(node.nodeArray[j])
+
+                                nxtNodeDist = distance(nodes[nodes.length - 1].x, nodes[nodes.length - 1].x + nodeW, nodes[nodes.length - 1].y, nodes[nodes.length - 1].y + nodeH);
+                                nxtNodeX = Math.cos(2 * Math.PI) * nxtNodeDist;
+                                nxtNodeY = Math.sin(Math.PI / 4) * nxtNodeDist;
+
+                                console.log(nxtNodeX)
+                                console.log(nxtNodeY)
+
+                                randomColor = Math.floor(Math.random() * colors.length);
+
+                                newNode = new NodeObject(nodeData[l].name, nodeData[l].description, nodeData[l].symbol, nodeData[l].networkArray, nodeW, nodeH, nxtNodeX, nxtNodeY, colors[randomColor], true, false);
+                                nodes.push(newNode);
+                                descDiv.style.display = 'none';
+                                console.log(node.x)
+
+                                updatedX = nxtNodeX;
+                                updatedY = nxtNodeY;
+                            }
+                        }
+                    })
+
+                    stageInit = false;
+
+                }
             }
         }
     }
 }
+
 
 // funkcja dodająca/chowająca opis el. z drugiego etapu (po init)
-function addDesc() {
-    for (let i = 0; i < nodes.length; i++) {
-        if ((mouseX > nodes[i].x) && (mouseX < nodes[i].x + nodes[i].width) &&
-            (mouseY > nodes[i].y) && (mouseY < nodes[i].y + nodes[i].height)) {
-            if (nodes[i].clickable) {
+function addNxtNodes(node) {
+    if (!stageInit) {
+        console.log(node.x)
+        if ((mouseX > node.x) && (mouseX < node.x + node.width) &&
+            (mouseY > node.y) && (mouseY < node.y + node.height)) {
+            if (node.clickable) {
                 descDiv.style.display = 'block';
-                descText.innerHTML = nodes[i].description;
+                descText.innerHTML = node.description;
                 descDiv.style.left = 200 + "px"; // pozycjonowanie do zmiany
+
+                node.click();
+                console.log(nodes.length)
+
+                for (let j = 0; j < node.nodeArray.length; j++) {
+
+                    newLink = document.getElementById(node.nodeArray[j]);
+                    console.log(node.nodeArray[j]);
+
+                    newLink.addEventListener("dblclick", function () {
+                        for (let l = 0; l < nodeData.length; l++) {
+                            if (node.nodeArray[j] === nodeData[l].name) {
+                                console.log(node.nodeArray[j])
+
+                                nxtNodeDist = distance(updatedX, updatedX + nodeW, updatedY, updatedY + nodeH);
+                                console.log(nxtNodeDist)
+                                nxtNodeX = Math.cos(2 * Math.PI) * nxtNodeDist;
+                                nxtNodeY = Math.sin(Math.PI / 4) * nxtNodeDist;
+                
+                                
+                                console.log(nodes.length - 1)
+                                
+                                console.log(nxtNodeX)
+                                console.log(nxtNodeY)
+
+                                randomColor = Math.floor(Math.random() * colors.length);
+
+                                newNode = new NodeObject(nodeData[l].name, nodeData[l].description, nodeData[l].symbol, nodeData[l].networkArray, nodeW, nodeH, nxtNodeX, nxtNodeY, colors[randomColor], true, false);
+                                nodes.push(newNode);
+                                descDiv.style.display = 'none';
+                                console.log(nodes)
+
+                                updatedX = nxtNodeX;
+                                updatedY = nxtNodeY;
+                            }
+                        }
+                    })
+                }
             }
         }
     }
 }
-
-// funkcja dodająca kolejne el. w drugim etapie (po init)
-function addNode() {
-
-    for (let i = 0; i < nodes.length; i++) {
-        console.log(nodes[i])
-        for (let j = 0; j < nodes[i].nodeArray.length; j++) {
-          
-                let newLink = document.getElementById(nodes[i].nodeArray[j]);
-                console.log(nodes[i].nodeArray[j]);
-
-                newLink.addEventListener("click", function () {
-                    for (let l = 0; l < nodeData.length; l++) {
-                        if (nodes[i].nodeArray[j] === nodeData[l].name) {
-                            console.log(nodes[i].nodeArray[j])
-
-                            nxtNodeDist = distance(nodes[nodes.length - 1].x, nodes[nodes.length - 1].x + nodeW, nodes[nodes.length - 1].y, nodes[nodes.length - 1].y + nodeH);
-                            console.log(nxtNodeDist)
-                            nxtNodeX = Math.cos(2 * Math.PI) * nxtNodeDist;
-                            ntxNodeY = Math.sin(Math.PI / 4) * nxtNodeDist;
-
-                            randomColor = Math.floor(Math.random() * colors.length);
-
-                            newNode = new NodeObject(nodeData[l].name, nodeData[l].description, nodeData[l].symbol, nodeData[l].networkArray, nodeW, nodeH, nxtNodeX, ntxNodeY, colors[randomColor], 'true', 'false');
-                            nodes.push(newNode);
-                            descDiv.style.display = 'none';
-                            console.log(nodes)
-                        }
-                    }
-                })
-            }
-        
-    }
-
-}
-
-
 
 function draw() {
     background('#d8d6d2');
