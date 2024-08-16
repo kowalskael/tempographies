@@ -77,7 +77,7 @@ function preload() {
 
     let initialNode;
     for (let i = 0; i < 3; i++) {
-        initialNode = new NodeObject(nodeData[i].name, nodeData[i].description, nodeData[i].symbol, nodeData[i].networkArray, nodeW, nodeH, position[i].x, position[i].y, colors[i], 'true', 'false');
+        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, colors[i]);
         nodes.push(initialNode);
         console.log(nodes)
     }
@@ -148,8 +148,8 @@ function addNode(node) {
     descDiv.style.top = 50 + "px";
     console.log('clicked initial ' + node.name)
 
-    for (let j = 0; j < node.nodeArray.length; j++) {
-        createNewNode(node.nodeArray[j]);
+    for (let j = 0; j < node.networkArray.length; j++) {
+        createNewNode(node.networkArray[j]);
     }
     node.click();
 }
@@ -172,7 +172,7 @@ function createNewNode(node) {
 
                 randomColor = Math.floor(Math.random() * colors.length);
 
-                newNode = new NodeObject(nodeData[l].name, nodeData[l].description, nodeData[l].symbol, nodeData[l].networkArray, nodeW, nodeH, nxtNodeX, nxtNodeY, colors[randomColor], true, false);
+                newNode = new NodeObject(nodeData[l], nxtNodeX, nxtNodeY, colors[randomColor]);
                 nodes.push(newNode);
                 descDiv.style.display = 'none';
 
