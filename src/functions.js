@@ -31,8 +31,7 @@ function transformWordsToLinks(data) {
     for (let i = 0; i < data.length; i++) {
         for (let j = 0; j < data[i].networkArray.length; j++) {
             if (data[i].description.indexOf(data[i].networkArray[j]) > -1) {
-                let newString = data[i].description.replace(data[i].networkArray[j], `<a class="link" id="${data[i].networkArray[j]}">${data[i].networkArray[j]}</a>`);
-                data[i].description = newString;
+                data[i].description = data[i].description.replace(data[i].networkArray[j], `<a class="link" id="${data[i].networkArray[j]}">${data[i].networkArray[j]}</a>`);
             }
         }
     }
