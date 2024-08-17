@@ -45,6 +45,9 @@ function distance(x1, x2, y1, y2) {
     return Math.hypot(x2 - x1, y2 - y1);
 }
 
+const colors = ['#ffa21a', '#ff6e83', '#ff6315', '#ffd2d4', '#ffd2d4', '#8ab662', '#7daa90', '#009245'];
+let randomColor;
+
 class NodeObject {
     constructor(node, x, y, color) {
         this.name = node.name; // name of the node
@@ -55,10 +58,12 @@ class NodeObject {
         this.height = 135;
         this.x = x; // random position, center and left/right (only applicable to nodeObject number > 3)
         this.y = y;
-        this.color = color;
+        randomColor = Math.floor(Math.random() * colors.length);
+        this.color = colors[randomColor];
         this.clickable = true;
         this.clicked = false;
     }
+
 
     click() {
         if (mouseX >= this.x ||

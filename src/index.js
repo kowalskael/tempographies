@@ -1,10 +1,6 @@
 let nodes = []; // array to contain created and visible node obj
 let descDiv, descText;
 
-// dane z kolorami, 8 pozycji
-const colors = ['#ffa21a', '#ff6e83', '#ff6315', '#ffd2d4', '#ffd2d4', '#8ab662', '#7daa90', '#009245'];
-let randomColor;
-
 let nodeData;
 let stageInit = true;
 let newLink;
@@ -78,20 +74,12 @@ function setup() {
 
     let initialNode;
     for (let i = 0; i < 3; i++) {
-        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, colors[i]);
+        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y);
         nodes.push(initialNode);
         console.log(nodes);
-    }
-
-    for (let i = 0; i < nodes.length; i++) {
-
         grpSpace.addEventListener("dblclick", function () {
-            init(nodes[i])
+            init(nodes[i]);
         });
-
-        grpSpace.addEventListener("dblclick", function () {
-            addNxtNodes(nodes[i])
-        })
     }
 }
 
@@ -171,7 +159,7 @@ function createNewNode(node) {
 
             randomColor = Math.floor(Math.random() * colors.length);
 
-            newNode = new NodeObject(nodeData[l], nxtNodeX, nxtNodeY, colors[randomColor]);
+            newNode = new NodeObject(nodeData[l], nxtNodeX, nxtNodeY);
             nodes.push(newNode);
             descDiv.style.display = 'none';
 
@@ -190,6 +178,13 @@ function draw() {
         nodes[i].render();
     }
 
+    if (!stageInit) {
+        for (let i = 0; i < nodes.length; i++) {
+            grpSpace.addEventListener("dblclick", function () {
+                addNxtNodes(nodes[i])
+            })
+        }
+    }
 }
 
 
