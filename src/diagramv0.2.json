@@ -96,7 +96,7 @@
   "networkArray": ["soil"]
  },
  {
-  "name": "ePICNutirents",
+  "name": "ePICNutrients",
   "description": "The project aims to create a collaborative framework for scientists from various fields to develop an innovative soil amendment (biochar) using raw waste materials. It will also examine social aspects of scientific practice, including interactions between humans and non-human elements. A digital media environment will be created to visually represent the temporal, spatial, ecological, and cultural changes involved in trans-European scientific collaboration.",
   "symbol": "thesis",
   "networkArray": ["biochar"]
@@ -105,7 +105,7 @@
   "name": "EPICUR Alliance",
   "description": "EPICUR, the European University Alliance, is among the first generation of European alliances piloting a new way to intensify cooperation between higher education institutions through the creation of the European University. The EPICUR alliance aims to foster and develop increasingly close cooperation between academics, students and administrative staff, with the goal of becoming a full-fledged federation of universities (by 2026), offering a truly European experience in learning, training and research. To this end, EPICUR aims to achieve a sustainable federal structure that supports long-term structural transformation and strategic integration. (ePICNutrients)",
   "symbol": "thesis",
-  "networkArray": ["ePICNutirents"]
+  "networkArray": ["ePICNutrients"]
  },
  {
   "name": "UHA\/CNRS",

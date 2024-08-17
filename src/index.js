@@ -34,10 +34,6 @@ fetch('diagramv0.2.json').then(
     }
 )
 
-function distance(x1, x2, y1, y2) {
-    return Math.hypot(x2 - x1, y2 - y1);
-}
-
 let lastX = 0, lastY = 0;
 let currentX = 0, currentY = 0;
 
@@ -74,18 +70,18 @@ descDiv.style.display = 'none';
 
 function preload() {
     transformWordsToLinks(nodeData);
-
-    let initialNode;
-    for (let i = 0; i < 3; i++) {
-        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, colors[i]);
-        nodes.push(initialNode);
-        console.log(nodes)
-    }
 }
 
 function setup() {
     let canvas = createCanvas(grpSpaceW, innerHeight);
     canvas.parent('#graph');
+
+    let initialNode;
+    for (let i = 0; i < 3; i++) {
+        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, colors[i]);
+        nodes.push(initialNode);
+        console.log(nodes);
+    }
 
     for (let i = 0; i < nodes.length; i++) {
 
@@ -114,9 +110,10 @@ function init(node) {
     nodes = nodes.filter(function (el) {
         return el.clicked === true;
     })
+
     console.log(nodes)
-    nodes[0].x = 70;
-    nodes[0].y = 70;
+    node.x = 70;
+    node.y = 70;
 
     node.clicked = false;
     node.clickable = true;
@@ -160,25 +157,27 @@ function createNewNode(node) {
         let newNode;
 
         for (let l = 0; l < nodeData.length; l++) {
-            if (node === nodeData[l].name) {
-                console.log(node)
-
-                nxtNodeDist = distance(nodes[nodes.length - 1].x, nodes[nodes.length - 1].x + nodeW, nodes[nodes.length - 1].y, nodes[nodes.length - 1].y + nodeH);
-                nxtNodeX = Math.cos(2 * Math.PI) * nxtNodeDist;
-                nxtNodeY = Math.sin(Math.PI / 4) * nxtNodeDist;
-
-                console.log(nxtNodeX)
-                console.log(nxtNodeY)
-
-                randomColor = Math.floor(Math.random() * colors.length);
-
-                newNode = new NodeObject(nodeData[l], nxtNodeX, nxtNodeY, colors[randomColor]);
-                nodes.push(newNode);
-                descDiv.style.display = 'none';
-
-                updatedX = nxtNodeX;
-                updatedY = nxtNodeY;
+            if (node !== nodeData[l].name) {
+                continue;
             }
+            console.log(node)
+
+            nxtNodeDist = Math.hypot(nodeW, nodeH);
+            nxtNodeX = Math.cos(toRadians(360)) * nxtNodeDist;
+            nxtNodeY = Math.sin(toRadians(45)) * nxtNodeDist;
+
+            console.log(nxtNodeX);
+            console.log(nxtNodeY);
+
+            randomColor = Math.floor(Math.random() * colors.length);
+
+            newNode = new NodeObject(nodeData[l], nxtNodeX, nxtNodeY, colors[randomColor]);
+            nodes.push(newNode);
+            descDiv.style.display = 'none';
+
+            updatedX = nxtNodeX;
+            updatedY = nxtNodeY;
+            console.log(nodes)
         }
     })
 }
