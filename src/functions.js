@@ -49,7 +49,7 @@ const colors = ['#ffa21a', '#ff6e83', '#ff6315', '#ffd2d4', '#ffd2d4', '#8ab662'
 let randomColor;
 
 class NodeObject {
-    constructor(node, x, y, color) {
+    constructor(node, x, y) {
         this.name = node.name; // name of the node
         this.description = node.description; // text which appears in the box
         this.symbol = node.symbol; // every node has specific symbol shape and color
