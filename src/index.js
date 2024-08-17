@@ -111,8 +111,8 @@ function init(node) {
 
 
 // funkcja dodająca/chowająca opis el. z drugiego etapu (po init)
-function addNxtNodes(node) {
-    console.log(node)
+function game(node) {
+
     if (stageInit ||
         mouseX <= node.x ||
         mouseX >= node.x + node.width ||
@@ -148,24 +148,23 @@ function createNewNode(node) {
             if (node !== nodeData[l].name) {
                 continue;
             }
-            console.log(node)
+
+            nxtNodeX = nodes[nodes.length - 1].x;
+            nxtNodeY = nodes[nodes.length - 1].y;
 
             nxtNodeDist = Math.hypot(nodeW, nodeH);
-            nxtNodeX = Math.cos(toRadians(360)) * nxtNodeDist;
-            nxtNodeY = Math.sin(toRadians(45)) * nxtNodeDist;
 
-            console.log(nxtNodeX);
-            console.log(nxtNodeY);
+            updatedX = Math.cos(toRadians(360)) * nxtNodeDist + nxtNodeX;
+            updatedY = Math.sin(toRadians(45)) * nxtNodeDist + nxtNodeY;
 
-            randomColor = Math.floor(Math.random() * colors.length);
-
-            newNode = new NodeObject(nodeData[l], nxtNodeX, nxtNodeY);
+            newNode = new NodeObject(nodeData[l], updatedX, updatedY);
             nodes.push(newNode);
             descDiv.style.display = 'none';
 
-            updatedX = nxtNodeX;
-            updatedY = nxtNodeY;
-            console.log(nodes)
+            nxtNodeX = updatedX;
+            nxtNodeY = updatedY;
+
+            console.log(nodes);
         }
     })
 }
@@ -181,7 +180,7 @@ function draw() {
     if (!stageInit) {
         for (let i = 0; i < nodes.length; i++) {
             grpSpace.addEventListener("dblclick", function () {
-                addNxtNodes(nodes[i])
+                game(nodes[i]);
             })
         }
     }
