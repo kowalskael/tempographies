@@ -1,66 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<head>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>tempographies</title>
-
     <link rel="stylesheet" type="text/css" href="index.css">
-   
-    
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <div id="p5_loading" class="loadingclass">
-        
-    </div>
+<div id="p5_loading" class="loadingclass"></div>
 
-      <div id="popup">
-        <div id="popupBox">
-            <div id="popupTitle">Tempographies of Epicnutrients</div>
-            <div id="popupText">The Epicnutrients tempographies aims to give access to
-            and share knowledge about the interdisciplinary process of our project. 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+<div id="popup">
+    <div id="popupBox">
+        <div id="popupTitle">Tempographies of Epicnutrients</div>
+        <div id="popupText">The Epicnutrients tempographies aims to give access to
+            and share knowledge about the interdisciplinary process of our project.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             <br><br></div>
         <div class="alert">Close this window by tapping the box</div>
+    </div>
+</div>
+
+
+<div id="main">
+    <div id="menu">
+        <div class="title"><a href="index.html">epicnutrients</a></div>
+        <div class="links">
+            <a href="about.html">about</a>
+            <a href="team.html">team</a>
+            <a href="contact.html">contact</a>
         </div>
     </div>
+    <div id="game">
+        <div id="graph"></div>
+    </div>
+</div>
+<div id="index">
+    <div id="index-menu">
+        <p>index</p>
+    </div>
+    <div id="index-input"></div>
+</div>
 
+<script src="functions.js"></script>
+<script src="index.js"></script>
+<script src="libraries/p5.min.js"></script>
+<script src="libraries/p5.sound.min.js"></script>
 
-    <div id="main">
-      <div id="menu">
-          <div class="title"><a href="index.html">epicnutrients</a></div>
-          <div class="links">
-              <a href="about.html">about</a>
-              <a href="team.html">team</a>
-              <a href="contact.html">contact</a>
-          </div>
-      </div>
-      <div id="game">
-          <div id="graph"></div>
-      </div>
-  </div>
-  <div id="index">
-      <div class="index-menu">
-          <p>index</p>
-      </div>
-      <div class="index-input"></div>
-  </div>
-  
- 
-  <script src="functions.js"></script>
-  <script src="index.js"></script>
-  <script src="libraries/p5.min.js"></script>
-  <script src="libraries/p5.sound.min.js"></script>
-
-  <script> 
+<script>
     let body = document.querySelector("html");
     body.style.height = '100%';
-  </script>
-   
-  </body>
+</script>
+
+</body>
 </html>

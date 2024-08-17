@@ -54,6 +54,7 @@ class NodeObject {
         this.description = node.description; // text which appears in the box
         this.symbol = node.symbol; // every node has specific symbol shape and color
         this.networkArray = node.networkArray; // what are hyperlinks of the node from .csv file?
+        this.indexInput = node.indexInput;
         this.width = 220;
         this.height = 135;
         this.x = x; // random position, center and left/right (only applicable to nodeObject number > 3)

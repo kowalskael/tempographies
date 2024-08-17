@@ -35,9 +35,9 @@ canvas {
 }
 
 .link {
-    color:blue; 
-    margin: 0px; 
-    padding: 0px; 
+    color: blue;
+    margin: 0px;
+    padding: 0px;
 }
 
 #popup {
@@ -127,7 +127,7 @@ canvas {
     margin-left: 20px;
 }
 
-.title>a {
+.title > a {
     text-decoration: none;
     color: black;
 }
@@ -139,7 +139,7 @@ canvas {
     margin-right: 55px;
 }
 
-.links>a {
+.links > a {
     text-decoration: none;
     color: black;
 }
@@ -170,7 +170,7 @@ canvas {
     border-left: solid 1px #000000;
 }
 
-.index-menu {
+#index-menu {
     width: 100%;
     height: 40px;
     background: #454551;
@@ -180,7 +180,7 @@ canvas {
     align-items: center;
 }
 
-.index-menu>p {
+#index-menu > p {
     margin-left: 20px;
     font-size: 16px;
     font-family: "Lato", sans-serif;
@@ -188,9 +188,18 @@ canvas {
     font-style: normal;
 }
 
-.index-input {
+#index-input {
     width: 100%;
     background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: "Lato", sans-serif;
+}
+
+#index-input > p {
+    margin: 20px 20px 0 20px;
+    font-size: 14px;
 }
 
 #sidebar {
@@ -204,7 +213,7 @@ canvas {
     background-size: cover;
 }
 
-#sidebar>img {
+#sidebar > img {
     border-left: solid 1px #000000;
 }
 
@@ -309,7 +318,7 @@ canvas {
     font-size: 1.1rem;
 }
 
-.ppl-txt>a {
+.ppl-txt > a {
     font-family: "Lato", sans-serif;
     font-size: 1rem;
     color: #000;
@@ -317,6 +326,6 @@ canvas {
 
 }
 
-.ppl-txt>a:hover {
+.ppl-txt > a:hover {
     font-style: italic;
 }
