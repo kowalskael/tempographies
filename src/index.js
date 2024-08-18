@@ -3,19 +3,15 @@ let descDiv, descText;
 
 let nodeData;
 let stageInit = true;
-let newLink;
 
 const grpSpace = document.getElementById('game');
 const graph = document.getElementById('graph');
-let grpSpaceW = grpSpace.offsetWidth;
+const grpSpaceW = grpSpace.offsetWidth;
 
 const nodeW = 220;
 const nodeH = 135;
 
-let prevNodeX = 0, prevNodeY = 0, nodeDist = 0;
-let updateNodeX = 0, updateNodeY = 0;
-
-let indexPrnt = document.getElementById('index-input');
+const indexPrnt = document.getElementById('index-input');
 
 const position = [{x: grpSpaceW / 2 - nodeW / 2, y: nodeH / 2}, {
     x: grpSpaceW / 2 - nodeW / 2 - nodeW / 1.5,
@@ -34,6 +30,7 @@ fetch('diagramv0.2.json').then(
 
 let lastX = 0, lastY = 0;
 let currentX = 0, currentY = 0;
+let dragged = false;
 
 function moveAt(x, y) {
     currentX = x;
@@ -42,6 +39,7 @@ function moveAt(x, y) {
 }
 
 function onMouseDown(e) {
+    dragged = false;
     lastX = e.clientX - currentX;
     lastY = e.clientY - currentY; // zmienne pomocnicze do zmierzenia offsetu
     document.addEventListener('mousemove', onMouseMove);
@@ -79,7 +77,10 @@ function setup() {
         initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y);
         nodes.push(initialNode);
         console.log(nodes);
-        grpSpace.addEventListener("dblclick", function () {
+        grpSpace.addEventListener("click", function () {
+            if(dragged) {
+                return;
+            }
             init(nodes[i]);
         });
     }
@@ -145,9 +146,11 @@ function addNode(node) {
 }
 
 function createNewNode(node) {
-    newLink = document.getElementById(node);
-    newLink.addEventListener("dblclick", function () {
-        let newNode;
+    const newLink = document.getElementById(node);
+    newLink.addEventListener("click", function () {
+        if(dragged) {
+            return;
+        }
 
         for (let l = 0; l < nodeData.length; l++) {
             if (node !== nodeData[l].name) {
@@ -155,23 +158,23 @@ function createNewNode(node) {
             }
 
             //pozycja poprzedniego node'a
-            prevNodeX = nodes[nodes.length - 1].x;
-            prevNodeY = nodes[nodes.length - 1].y;
+            const prevNodeX = nodes[nodes.length - 1].x;
+            const prevNodeY = nodes[nodes.length - 1].y;
 
             console.log(prevNodeX, prevNodeY);
 
             // dystans na podstawie poprzedniej pozycji
-            nodeDist = Math.hypot(nodeW, nodeH);
+            const nodeDist = Math.hypot(nodeW, nodeH);
 
             console.log(nodeDist);
 
             // update X i Y o dystans
-            updateNodeX = Math.cos(toRadians(360)) * nodeDist + prevNodeX;
-            updateNodeY = Math.sin(toRadians(45)) * nodeDist + prevNodeY;
+            const updateNodeX = Math.cos(toRadians(0)) * nodeDist + prevNodeX;
+            const updateNodeY = Math.sin(toRadians(45)) * nodeDist + prevNodeY;
 
             console.log(updateNodeX, updateNodeY)
 
-            newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY);
+            const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY);
             nodes.push(newNode);
             descDiv.style.display = 'none';
             // add description to index-input
@@ -202,6 +205,9 @@ function draw() {
     if (!stageInit) {
         for (let i = 0; i < nodes.length; i++) {
             grpSpace.addEventListener("dblclick", function () {
+                if(dragged) {
+                    return;
+                }
                 game(nodes[i]);
             })
         }

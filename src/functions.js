@@ -5,12 +5,13 @@ function animatePopup() {
 animatePopup();
 
 function closePopup() {
-    const popup = document.getElementById("popup")
-    const popupBox = document.getElementById("popupBox")
-    let popupClicked = sessionStorage.getItem('popup')
-    if (popupClicked) {
+
+    if (sessionStorage.getItem('popup')) {
         return;
     }
+
+    const popup = document.getElementById("popup")
+    const popupBox = document.getElementById("popupBox")
 
     popupBox.style.display = "flex";
     popup.style.display = "flex";
@@ -18,7 +19,6 @@ function closePopup() {
     popupBox.addEventListener("click", (event) => {
         popupBox.style.display = "none";
         popup.style.display = "none";
-        popupClicked = 'clicked';
         sessionStorage.setItem('popup', 'clicked')
         console.log(sessionStorage)
     })
@@ -46,7 +46,6 @@ function distance(x1, x2, y1, y2) {
 }
 
 const colors = ['#ffa21a', '#ff6e83', '#ff6315', '#ffd2d4', '#ffd2d4', '#8ab662', '#7daa90', '#009245'];
-let randomColor;
 
 class NodeObject {
     constructor(node, x, y) {
@@ -59,7 +58,7 @@ class NodeObject {
         this.height = 135;
         this.x = x; // random position, center and left/right (only applicable to nodeObject number > 3)
         this.y = y;
-        randomColor = Math.floor(Math.random() * colors.length);
+        const randomColor = Math.floor(Math.random() * colors.length);
         this.color = colors[randomColor];
         this.clickable = true;
         this.clicked = false;
