@@ -7,8 +7,6 @@ let nodeData;
 let imageData = [];
 let stageInit = true;
 
-const imageArray = ['01', '02', '03', '04', '07', '08', '09', '10'];
-
 const grpSpace = document.getElementById('game');
 const graph = document.getElementById('graph');
 const grpSpaceW = grpSpace.offsetWidth;
@@ -73,8 +71,8 @@ descDiv.style.display = 'none';
 function preload() {
     transformWordsToLinks(nodeData);
 
-    for (let i = 0; i < imageArray.length; i++) {
-        imageData[i] = loadImage('img/shapes/' + imageArray[i] + '.png');
+    for (let i = 0; i < 11; i++) {
+        imageData[i] = loadImage('img/shapes/' + [i] + '.png');
     }
 }
 
@@ -84,7 +82,7 @@ function setup() {
 
     let initialNode;
     for (let i = 0; i < 3; i++) {
-        const randomImg = Math.floor(Math.random() * imageArray.length);
+        const randomImg = Math.floor(Math.random() * imageData.length);
         initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, imageData[randomImg]);
         nodes.push(initialNode);
         console.log(nodes);
@@ -185,7 +183,7 @@ function createNewNode(node) {
 
             console.log(updateNodeX, updateNodeY)
 
-            const randomImg = Math.floor(Math.random() * imageArray.length);
+            const randomImg = Math.floor(Math.random() * imageData.length);
             const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, imageData[randomImg]);
             nodes.push(newNode);
 

@@ -24,17 +24,20 @@ canvas {
     width: 300px;
     padding: 35px;
     background-color: rgba(239, 239, 239, 0.9);
-    -moz-box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.9);
-    -webkit-box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.9);
-    box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.9);
-    border-radius: 5px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #ff6315;
+    border-width: 3px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .link {
-    color: blue;
+    font-weight: 600;
+    font-family: "Lato", sans-serif;
+    color: #000;
+    font-size: 14px;
     margin: 0px;
     padding: 0px;
 }
@@ -111,7 +114,7 @@ canvas {
     width: 100%;
     padding: 10px;
     background: #ffdc4a;
-    border-bottom: solid 1px #000000;
+    border-bottom: solid 1.5px #000000;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -166,14 +169,14 @@ canvas {
     background: #ffffff;
     display: flex;
     flex-direction: column;
-    border-left: solid 1px #000000;
+    border-left: solid 1.5px #000000;
 }
 
 #index-menu {
     width: 100%;
     height: 40px;
     background: #454551;
-    border-bottom: solid 1px #000000;
+    border-bottom: solid 1.5px #000000;
     color: #ffffff;
     display: flex;
     align-items: center;
