@@ -66,23 +66,25 @@ class NodeObject {
 
 
     click() {
-        if (mouseX >= this.x ||
-            mouseX <= this.x + this.width ||
-            mouseY >= this.y ||
-            mouseY <= this.y + this.height) {
-            this.clicked = true;
-            this.clickable = false;
-        }
+        this.clicked = true;
+        this.clickable = false;
     }
 
-    collide() {
-
+    cursor() {
+        if (mouseX <= this.x ||
+            mouseX >= this.x + this.width ||
+            mouseY <= this.y ||
+            mouseY >= this.y + this.height) {
+            return;
+        }
+        cursor(HAND);
     }
 
     render() {
+        this.cursor();
         ellipseMode(CORNER);
         fill(this.color);
         noStroke();
-        ellipse(this.x, this.y, this.width, this.height)
+        ellipse(this.x, this.y, this.width, this.height);
     }
 }

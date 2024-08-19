@@ -48,6 +48,7 @@ function onMouseDown(e) {
 function onMouseMove(e) {
     dragged = true;
     moveAt(e.clientX - lastX, e.clientY - lastY);
+
 }
 
 function onMouseUp() {
@@ -67,6 +68,7 @@ descDiv.style.display = 'none';
 
 function preload() {
     transformWordsToLinks(nodeData);
+
 }
 
 function setup() {
@@ -189,9 +191,14 @@ function createNewNode(node) {
     })
 }
 
+function cursorChange(node) {
+
+}
+
 
 function draw() {
     background('#d8d6d2');
+    cursor(MOVE);
 
     for (let i = 0; i < nodes.length; i++) {
         nodes[i].render();
