@@ -205,7 +205,7 @@ function draw() {
 
     if (!stageInit) {
         for (let i = 0; i < nodes.length; i++) {
-            grpSpace.addEventListener("dblclick", function () {
+            grpSpace.addEventListener("click", function () {
                 if (dragged) {
                     return;
                 }
