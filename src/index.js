@@ -46,6 +46,7 @@ function onMouseDown(e) {
 }
 
 function onMouseMove(e) {
+    dragged = true;
     moveAt(e.clientX - lastX, e.clientY - lastY);
 }
 
@@ -78,7 +79,7 @@ function setup() {
         nodes.push(initialNode);
         console.log(nodes);
         grpSpace.addEventListener("click", function () {
-            if(dragged) {
+            if (dragged) {
                 return;
             }
             init(nodes[i]);
@@ -148,7 +149,7 @@ function addNode(node) {
 function createNewNode(node) {
     const newLink = document.getElementById(node);
     newLink.addEventListener("click", function () {
-        if(dragged) {
+        if (dragged) {
             return;
         }
 
@@ -205,7 +206,7 @@ function draw() {
     if (!stageInit) {
         for (let i = 0; i < nodes.length; i++) {
             grpSpace.addEventListener("dblclick", function () {
-                if(dragged) {
+                if (dragged) {
                     return;
                 }
                 game(nodes[i]);
