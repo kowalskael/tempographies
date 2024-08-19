@@ -64,7 +64,6 @@ class NodeObject {
         this.clicked = false;
     }
 
-
     click() {
         this.clicked = true;
         this.clickable = false;
@@ -86,5 +85,26 @@ class NodeObject {
         fill(this.color);
         noStroke();
         ellipse(this.x, this.y, this.width, this.height);
+    }
+}
+
+class LineObject {
+    constructor(x1, y1, x2, y2, width, height) {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+        this.width = width;
+        this.height = height;
+        this.centerx1 = this.x1 + this.width / 2;
+        this.centery1 = this.y1 + this.height / 2;
+        this.centerx2 = this.x2 + this.width / 2;
+        this.centery2 = this.y2 + this.height / 2;
+    }
+
+    render() {
+        stroke(26);
+        strokeWeight(2);
+        line(this.centerx1, this.centery1, this.centerx2, this.centery2);
     }
 }

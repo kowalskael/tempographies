@@ -1,4 +1,6 @@
 let nodes = []; // array to contain created and visible node obj
+const links = [];
+
 let descDiv, descText;
 
 let nodeData;
@@ -61,14 +63,14 @@ window.addEventListener('mouseup', onMouseUp);
 descDiv = document.createElement('div');
 descDiv.setAttribute("id", "descDiv");
 document.getElementById('graph').appendChild(descDiv);
-descText = document.createElement("id");
+descText = document.createElement('div');
+descText.setAttribute("id", "descText");
 descText.innerHTML = 'no description';
 document.getElementById('descDiv').appendChild(descText);
 descDiv.style.display = 'none';
 
 function preload() {
     transformWordsToLinks(nodeData);
-
 }
 
 function setup() {
@@ -179,6 +181,11 @@ function createNewNode(node) {
 
             const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY);
             nodes.push(newNode);
+
+            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, nodeW, nodeH);
+            links.push(newLine);
+
+            console.log(links)
             descDiv.style.display = 'none';
             // add description to index-input
             indexPrnt.innerHTML += `<p>${nodeData[l].indexInput}</p>`;
@@ -191,24 +198,21 @@ function createNewNode(node) {
     })
 }
 
-function cursorChange(node) {
-
-}
-
 
 function draw() {
     background('#d8d6d2');
     cursor(MOVE);
+    descDiv.addEventListener("mouseover", (e) => {
+        cursor(HAND)
+    });
+
+    for (let i = 0; i < links.length; i++) {
+        links[i].render();
+    }
 
     for (let i = 0; i < nodes.length; i++) {
         nodes[i].render();
     }
-
-    //stroke(126);
-    //line(100, 300, 400, 500);
-    //draw a line between objects center, x1, y1 = pozycja jednego okręgu, x2, y2 = pozycja drugiego okręgu
-    //można zapisać jako tablę z obiektami, która jest uzupełniana podczas tworzenia kolejnego obiektu
-    //render będzie się odbywać po przesłaniu danych do tabeli
 
     if (!stageInit) {
         for (let i = 0; i < nodes.length; i++) {

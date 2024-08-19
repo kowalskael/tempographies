@@ -10,7 +10,6 @@ body {
     font-size: 16px;
     margin: 0;
     width: 100%;
-
 }
 
 canvas {
@@ -118,7 +117,7 @@ canvas {
     justify-content: space-between;
     align-items: center;
     font-family: "Lato", sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     font-style: normal;
 }
 
