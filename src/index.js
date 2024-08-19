@@ -143,7 +143,7 @@ function game(node) {
 function addNode(node) {
 
     descDiv.style.display = 'block';
-    descText.innerHTML = node.description;
+    descText.innerHTML = `<p class="descTextNode">from ${node.name}</p>${node.description}`;
     descDiv.style.left = node.x + "px";
     descDiv.style.top = node.y + "px";
     console.log('clicked initial ' + node.name);
@@ -178,8 +178,8 @@ function createNewNode(node) {
             console.log(nodeDist);
 
             // update X i Y o dystans
-            const updateNodeX = Math.cos(toRadians(0)) * nodeDist + prevNodeX;
-            const updateNodeY = Math.sin(toRadians(45)) * nodeDist + prevNodeY;
+            const updateNodeX = Math.cos(toRadians(10)) * nodeDist + prevNodeX;
+            const updateNodeY = Math.sin(toRadians(25)) * nodeDist + prevNodeY;
 
             console.log(updateNodeX, updateNodeY)
 
