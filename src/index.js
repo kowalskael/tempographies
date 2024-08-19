@@ -4,7 +4,10 @@ const links = [];
 let descDiv, descText;
 
 let nodeData;
+let imageData = [];
 let stageInit = true;
+
+const imageArray = ['01', '02', '03', '04', '07', '08', '09', '10'];
 
 const grpSpace = document.getElementById('game');
 const graph = document.getElementById('graph');
@@ -15,10 +18,9 @@ const nodeH = 135;
 
 const indexPrnt = document.getElementById('index-input');
 
-const position = [{x: grpSpaceW / 2 - nodeW / 2, y: nodeH / 2}, {
-    x: grpSpaceW / 2 - nodeW / 2 - nodeW / 1.5,
-    y: nodeH * 1.75
-}, {x: grpSpaceW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 1.75}]
+const position = [{x: grpSpaceW / 2 - nodeW / 2, y: nodeH / 2},
+    {x: grpSpaceW / 2 - nodeW / 2 - nodeW / 1.5, y: nodeH * 1.75},
+    {x: grpSpaceW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 1.75}]
 
 fetch('diagramv0.2.json').then(
     (value) => {
@@ -50,7 +52,6 @@ function onMouseDown(e) {
 function onMouseMove(e) {
     dragged = true;
     moveAt(e.clientX - lastX, e.clientY - lastY);
-
 }
 
 function onMouseUp() {
@@ -71,6 +72,10 @@ descDiv.style.display = 'none';
 
 function preload() {
     transformWordsToLinks(nodeData);
+
+    for (let i = 0; i < imageArray.length; i++) {
+        imageData[i] = loadImage('img/shapes/' + imageArray[i] + '.png');
+    }
 }
 
 function setup() {
@@ -79,7 +84,8 @@ function setup() {
 
     let initialNode;
     for (let i = 0; i < 3; i++) {
-        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y);
+        const randomImg = Math.floor(Math.random() * imageArray.length);
+        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, imageData[randomImg]);
         nodes.push(initialNode);
         console.log(nodes);
         grpSpace.addEventListener("click", function () {
@@ -179,7 +185,8 @@ function createNewNode(node) {
 
             console.log(updateNodeX, updateNodeY)
 
-            const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY);
+            const randomImg = Math.floor(Math.random() * imageArray.length);
+            const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, imageData[randomImg]);
             nodes.push(newNode);
 
             const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, nodeW, nodeH);
@@ -202,6 +209,7 @@ function createNewNode(node) {
 function draw() {
     background('#d8d6d2');
     cursor(MOVE);
+
     descDiv.addEventListener("mouseover", (e) => {
         cursor(HAND)
     });

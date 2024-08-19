@@ -45,10 +45,8 @@ function distance(x1, x2, y1, y2) {
     return Math.hypot(x2 - x1, y2 - y1);
 }
 
-const colors = ['#ffa21a', '#ff6e83', '#ff6315', '#ffd2d4', '#ffd2d4', '#8ab662', '#7daa90', '#009245'];
-
 class NodeObject {
-    constructor(node, x, y) {
+    constructor(node, x, y, imageName) {
         this.name = node.name; // name of the node
         this.description = node.description; // text which appears in the box
         this.symbol = node.symbol; // every node has specific symbol shape and color
@@ -58,8 +56,7 @@ class NodeObject {
         this.height = 135;
         this.x = x; // random position, center and left/right (only applicable to nodeObject number > 3)
         this.y = y;
-        const randomColor = Math.floor(Math.random() * colors.length);
-        this.color = colors[randomColor];
+        this.imageName = imageName;
         this.clickable = true;
         this.clicked = false;
     }
@@ -81,10 +78,7 @@ class NodeObject {
 
     render() {
         this.cursor();
-        ellipseMode(CORNER);
-        fill(this.color);
-        noStroke();
-        ellipse(this.x, this.y, this.width, this.height);
+        image(this.imageName, this.x, this.y, this.width, this.height);
     }
 }
 
