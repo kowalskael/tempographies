@@ -1,3 +1,5 @@
+//import * as PIXI from 'pixi.js';
+
 let nodes = []; // array to contain created and visible node obj
 const links = [];
 
@@ -16,11 +18,13 @@ const nodeH = 135;
 
 const indexPrnt = document.getElementById('index-input');
 
+let nodeFont;
+
 const position = [{x: grpSpaceW / 2 - nodeW / 2, y: nodeH / 2},
     {x: grpSpaceW / 2 - nodeW / 2 - nodeW / 1.5, y: nodeH * 1.75},
     {x: grpSpaceW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 1.75}]
 
-fetch('diagramv0.2.json').then(
+fetch('data/diagramv0.2.json').then(
     (value) => {
         return value.json();
     }
@@ -70,6 +74,7 @@ descDiv.style.display = 'none';
 
 function preload() {
     transformWordsToLinks(nodeData);
+    nodeFont = loadFont('font/Lato-Regular.ttf')
 
     for (let i = 0; i < 11; i++) {
         imageData[i] = loadImage('img/shapes/' + [i] + '.png');
@@ -83,7 +88,7 @@ function setup() {
     let initialNode;
     for (let i = 0; i < 3; i++) {
         const randomImg = Math.floor(Math.random() * imageData.length);
-        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, imageData[randomImg]);
+        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, imageData[randomImg], nodeFont);
         nodes.push(initialNode);
         console.log(nodes);
         grpSpace.addEventListener("click", function () {
@@ -93,6 +98,11 @@ function setup() {
             init(nodes[i]);
         });
     }
+
+        textFont(nodeFont);
+        textSize(16);
+        textAlign(CENTER);
+
 }
 
 function init(node) {
@@ -184,7 +194,7 @@ function createNewNode(node) {
             console.log(updateNodeX, updateNodeY)
 
             const randomImg = Math.floor(Math.random() * imageData.length);
-            const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, imageData[randomImg]);
+            const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, imageData[randomImg], nodeFont);
             nodes.push(newNode);
 
             const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, nodeW, nodeH);
@@ -218,6 +228,7 @@ function draw() {
 
     for (let i = 0; i < nodes.length; i++) {
         nodes[i].render();
+        text(nodes[i].name, nodes[i].x + nodes[i].width/2, nodes[i].y + nodes[i].height/2+5);
     }
 
     if (!stageInit) {

@@ -46,7 +46,7 @@ function distance(x1, x2, y1, y2) {
 }
 
 class NodeObject {
-    constructor(node, x, y, imageName) {
+    constructor(node, x, y, imageName, font) {
         this.name = node.name; // name of the node
         this.description = node.description; // text which appears in the box
         this.symbol = node.symbol; // every node has specific symbol shape and color
@@ -59,6 +59,7 @@ class NodeObject {
         this.imageName = imageName;
         this.clickable = true;
         this.clicked = false;
+        this.font = font;
     }
 
     click() {
