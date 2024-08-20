@@ -13,9 +13,7 @@ const grpSpaceW = grpSpace.offsetWidth;
 
 const nodeW = 220;
 const nodeH = 135;
-let angleX = Math.cos(toRadians(10));
-let angleY = Math.sin(toRadians(25));
-let totalWidth = 70;
+let angle = 25;
 
 const indexPrnt = document.getElementById('index-input');
 
@@ -83,7 +81,7 @@ function preload() {
 }
 
 function setup() {
-    let canvas = createCanvas(grpSpaceW + 100, innerHeight*3);
+    let canvas = createCanvas(grpSpaceW + 100, innerHeight * 3);
     canvas.parent('#graph');
 
     let initialNode;
@@ -150,9 +148,16 @@ function addNode(node) {
 
     descDiv.style.display = 'block';
     descText.innerHTML = `<p class="descTextNode">from ${node.name}</p>${node.description}`;
-    descDiv.style.left = node.x + "px";
-    descDiv.style.top = node.y + "px";
-    console.log('clicked initial ' + node.name);
+
+    if (node.x + nodeW + 300 >= grpSpaceW) {
+        descDiv.style.left = node.x - 200 + "px";
+        descDiv.style.top = node.y - 200 + "px";
+    }
+
+    if (node.x + nodeW + 300 <= grpSpaceW) {
+        descDiv.style.left = node.x + 200 + "px";
+        descDiv.style.top = node.y - 100 + "px";
+    }
 
     for (let j = 0; j < node.networkArray.length; j++) {
         createNewNode(node.networkArray[j]);
@@ -178,31 +183,25 @@ function createNewNode(node) {
 
             // dystans na podstawie poprzedniej pozycji
             const nodeDist = Math.hypot(nodeW, nodeH);
-            totalWidth += prevNodeX + nodeW;
-            console.log(totalWidth);
-            console.log(grpSpaceW - nodeW)
 
-            let updateNodeX = angleX * nodeDist + prevNodeX;
-            let updateNodeY = angleY * nodeDist + prevNodeY;
+            let updateNodeX = Math.cos(toRadians(angle)) * nodeDist + prevNodeX;
+            let updateNodeY = Math.sin(toRadians(angle)) * nodeDist + prevNodeY;
 
-            if(prevNodeX + updateNodeX >= grpSpaceW) {
-                angleX = Math.cos(toRadians(180));
-                angleY = Math.sin(toRadians(25));
+            if (prevNodeX + updateNodeX >= grpSpaceW) {
+                angle = 155;
             }
 
-            if(prevNodeX <= nodeW * 2) {
-                angleX = Math.cos(toRadians(10));
-                angleY = Math.sin(toRadians(25));
+            if (prevNodeX <= nodeW * 2) {
+                angle = 25;
             }
 
             const randomImg = Math.floor(Math.random() * imageData.length);
             const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, imageData[randomImg], nodeFont);
             nodes.push(newNode);
 
-            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, nodeW, nodeH);
+            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW, prevNodeY + nodeH, nodeW, nodeH);
             links.push(newLine);
 
-            console.log(links)
             descDiv.style.display = 'none';
             // add description to index-input
             indexPrnt.innerHTML += `<p>${nodeData[l].indexInput}</p>`;

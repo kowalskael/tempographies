@@ -88,11 +88,15 @@ class NodeObject {
 }
 
 class LineObject {
-    constructor(x1, y1, x2, y2, width, height) {
+    constructor(x1, y1, x2, y2, x3, y3, width, height, x4, y4) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+        this.x3 = x3;
+        this.y3 = y3;
+        this.x4 = x4;
+        this.y4 = y4;
         this.width = width;
         this.height = height;
         this.centerx1 = this.x1 + this.width / 2;
@@ -104,6 +108,7 @@ class LineObject {
     render() {
         stroke(26);
         strokeWeight(2);
-        line(this.centerx1, this.centery1, this.centerx2, this.centery2);
+        noFill();
+        bezier(this.centerx1, this.centery1, this.x3, this.y3, this.x1, this.y2, this.centerx2, this.centery2);
     }
 }
