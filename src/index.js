@@ -1,5 +1,3 @@
-//import * as PIXI from 'pixi.js';
-
 let nodes = []; // array to contain created and visible node obj
 const links = [];
 
@@ -15,6 +13,9 @@ const grpSpaceW = grpSpace.offsetWidth;
 
 const nodeW = 220;
 const nodeH = 135;
+let angleX = Math.cos(toRadians(10));
+let angleY = Math.sin(toRadians(25));
+let totalWidth = 70;
 
 const indexPrnt = document.getElementById('index-input');
 
@@ -82,7 +83,7 @@ function preload() {
 }
 
 function setup() {
-    let canvas = createCanvas(grpSpaceW, innerHeight);
+    let canvas = createCanvas(grpSpaceW + 100, innerHeight*3);
     canvas.parent('#graph');
 
     let initialNode;
@@ -98,11 +99,6 @@ function setup() {
             init(nodes[i]);
         });
     }
-
-        textFont(nodeFont);
-        textSize(16);
-        textAlign(CENTER);
-
 }
 
 function init(node) {
@@ -180,18 +176,24 @@ function createNewNode(node) {
             const prevNodeX = nodes[nodes.length - 1].x;
             const prevNodeY = nodes[nodes.length - 1].y;
 
-            console.log(prevNodeX, prevNodeY);
-
             // dystans na podstawie poprzedniej pozycji
             const nodeDist = Math.hypot(nodeW, nodeH);
+            totalWidth += prevNodeX + nodeW;
+            console.log(totalWidth);
+            console.log(grpSpaceW - nodeW)
 
-            console.log(nodeDist);
+            let updateNodeX = angleX * nodeDist + prevNodeX;
+            let updateNodeY = angleY * nodeDist + prevNodeY;
 
-            // update X i Y o dystans
-            const updateNodeX = Math.cos(toRadians(10)) * nodeDist + prevNodeX;
-            const updateNodeY = Math.sin(toRadians(25)) * nodeDist + prevNodeY;
+            if(prevNodeX + updateNodeX >= grpSpaceW) {
+                angleX = Math.cos(toRadians(180));
+                angleY = Math.sin(toRadians(25));
+            }
 
-            console.log(updateNodeX, updateNodeY)
+            if(prevNodeX <= nodeW * 2) {
+                angleX = Math.cos(toRadians(10));
+                angleY = Math.sin(toRadians(25));
+            }
 
             const randomImg = Math.floor(Math.random() * imageData.length);
             const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, imageData[randomImg], nodeFont);
@@ -206,13 +208,10 @@ function createNewNode(node) {
             indexPrnt.innerHTML += `<p>${nodeData[l].indexInput}</p>`;
 
             // po dodaniu obiektu przesuń #graph do góry i w lewo
-            // graph.style.transform = `translate(${ }px, ${ }px)`;
-
-            console.log(nodes);
+            // graph.style.transform = `translate(${ }px, ${ }px)`
         }
     })
 }
-
 
 function draw() {
     background('#d8d6d2');
@@ -228,7 +227,7 @@ function draw() {
 
     for (let i = 0; i < nodes.length; i++) {
         nodes[i].render();
-        text(nodes[i].name, nodes[i].x + nodes[i].width/2, nodes[i].y + nodes[i].height/2+5);
+
     }
 
     if (!stageInit) {

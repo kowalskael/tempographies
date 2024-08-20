@@ -80,6 +80,10 @@ class NodeObject {
     render() {
         this.cursor();
         image(this.imageName, this.x, this.y, this.width, this.height);
+        text(this.name, this.x + this.width/2, this.y + this.height/2+5);
+        textFont(this.font);
+        textSize(16);
+        textAlign(CENTER);
     }
 }
 

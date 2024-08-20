@@ -11,9 +11,11 @@
   "author": "kowalskael <kowalska.el@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "parcel": "^2.12.0"
   },
   "dependencies": {
+    "eslint": "^9.9.0",
     "pixi.js": "^8.3.3"
   }
 }
