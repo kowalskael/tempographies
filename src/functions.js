@@ -15,7 +15,6 @@ function closePopup() {
 
     popupBox.style.display = "flex";
     popup.style.display = "flex";
-    popup.style.backgroundColor = "rgba(255, 99, 21, 0.95)"
     popupBox.addEventListener("click", (event) => {
         popupBox.style.display = "none";
         popup.style.display = "none";

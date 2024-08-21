@@ -73,11 +73,10 @@ canvas {
     display: flex;
     width: 60%;
     padding: 35px;
-    background-color: rgba(239, 239, 239, 0.8);
-    -moz-box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.8);
-    -webkit-box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.8);
-    box-shadow: 0 0 5px 5px rgba(239, 239, 239, 0.8);
-    border-radius: 5px;
+    background-color: rgba(239, 239, 239, 0.9);
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #ff6315;
     flex-direction: column;
     align-items: center;
     justify-content: center;
