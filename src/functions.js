@@ -83,17 +83,16 @@ class NodeObject {
 }
 
 class LineObject {
-    constructor(x1, y1, x2, y2, x3, y3, width, height, x4, y4) {
+    constructor(x1, y1, x2, y2, x3, y3, width, height, angle) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
         this.x3 = x3;
         this.y3 = y3;
-        this.x4 = x4;
-        this.y4 = y4;
         this.width = width;
         this.height = height;
+        this.angle = angle;
         this.centerx1 = this.x1 + this.width / 2;
         this.centery1 = this.y1 + this.height / 2;
         this.centerx2 = this.x2 + this.width / 2;
@@ -101,10 +100,40 @@ class LineObject {
     }
 
     render() {
+        fill('#ff6315');
+        if (this.angle === 25) {
+            triangle(this.centerx2 - 13, this.y2 - 9, this.centerx2, this.y2 - 5, this.centerx2 - 2, this.y2 - 18)
+        }
+        if (this.angle === 155) {
+            fill('#ff6315');
+            triangle(this.centerx2 + 2, this.y2 - 19, this.centerx2 + 14, this.y2 - 10, this.centerx2, this.y2 - 5)
+
+        }
+
         stroke('#ff6315');
         strokeWeight(2.8);
         noFill();
-        bezier(this.centerx1, this.centery1, this.x3, this.y3, this.x4, this.y4, this.centerx2, this.centery2);
+        beginShape();
+        for (let t = 0; t <= 1; t += 0.02) {
+            let px1, px2, py1, py2;
+            if (this.angle === 25) {
+                px1 = lerp(this.x1 + this.width + 10, this.x2 + this.width / 8, t);
+                py1 = lerp(this.centery1, this.centery1 - 70, t);
+                px2 = lerp(this.centerx2, this.centerx2, t);
+                py2 = lerp(this.y2, this.y2 - 5, t);
+            }
+
+            if (this.angle === 155) {
+                px1 = lerp(this.x1 - 10, this.x2 + this.width - 30, t);
+                py1 = lerp(this.centery1, this.centery1 - 70, t);
+                px2 = lerp(this.centerx2, this.centerx2, t);
+                py2 = lerp(this.y2, this.y2 - 5, t);
+            }
+            let px = lerp(px1, px2, t);
+            let py = lerp(py1, py2, t);
+            vertex(px, py);
+        }
+        endShape();
     }
 }
 

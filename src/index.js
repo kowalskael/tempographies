@@ -193,6 +193,9 @@ function createNewNode(node) {
             let updateNodeX = Math.cos(toRadians(angle)) * nodeDist + prevNodeX;
             let updateNodeY = Math.sin(toRadians(angle)) * nodeDist + prevNodeY;
 
+            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW * 2, prevNodeY + nodeH, nodeW, nodeH, angle);
+            links.push(newLine);
+
             if (prevNodeX + updateNodeX >= grpSpaceW) {
                 angle = 155;
             }
@@ -204,10 +207,7 @@ function createNewNode(node) {
             const randomImg = Math.floor(Math.random() * imageData.length);
             const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, imageData[randomImg], nodeFont);
             nodes.push(newNode);
-
-            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW, prevNodeY + nodeH, nodeW, nodeH, prevNodeX + nodeW, prevNodeY + nodeH);
-            links.push(newLine);
-
+            
             if (newNode.name === 'biochar') {
                 const newBgImg = new additionalImg(bgImg, 0, 0);
                 addImages.push(newBgImg);
