@@ -38,14 +38,14 @@
   "name": "nitrogen",
   "description": "Nitrogen is essential for plant growth, as it is required to make both amino acids (for proteins) and nucleic acids (for DNA), and is used in the correct development and functioning of chlorophyll, thus being vital for photosynthesis. All this means that if nitrogen is lacking, plants will grow more slowly, have lower product yields, and be more susceptible to attack, disease and death. (plasma reactor, nutrients, cold plasma)",
   "symbol": "thesis",
-  "networkArray": ["plasma reactor", "enhancing the biochar", "nutrients", "cold plasma"],
+  "networkArray": ["plasma reactor", "nutrients", "cold plasma"],
   "indexInput": "Nitrogen is essential for plant growth."
  },
  {
   "name": "cold plasma",
   "description": "Cold plasma is generated when electrical energy is applied to a gas, causing the ionization of the gas to generate very reactive molecules and ions. It can be used to enhance the biochar. In that process biochar is “washed” (plasma treatment) with a mixture of nitrogen and hydrogen cold plasma.",
   "symbol": "thesis",
-  "networkArray": ["plasma treatment", "nitrogen"],
+  "networkArray": ["nitrogen"],
   "indexInput": "Cold plasma is generated when electrical energy is applied to a gas."
  },
  {
@@ -71,16 +71,16 @@
  },
  {
   "name": "soil",
-  "description": "Soil is a material composed of five components: minerals, living organisms, soil organic matter, gas and water. The development of plants growing in it depends on its physical properties (pulpness, aeration), chemical properties (presence of certain chemical elements) and biological properties (presence of bacteria and other microorganisms). Mixing improved biochar with the soil improves the physical properties of the soil (as possibly evidenced by the results of the small pot experiment on the ryegrass) and provides the necessary nutrients.",
+  "description": "Soil is a material composed of five components: minerals, living organisms, soil organic matter, gas and water. The development of plants growing in it depends on its physical properties (pulpness, aeration), chemical properties (presence of certain chemical elements) and biological properties (presence of bacteria and other microorganisms). Mixing improved biochar with the soil improves the physical properties of the soil (as possibly evidenced by the results of the small pot experiment on the ryegrass ) and provides the necessary nutrients.",
   "symbol": "thesis",
-  "networkArray": ["biochar", "small pot experiment on the ryegrass", "ryegrass"],
+  "networkArray": ["biochar", "small pot experiment on the ryegrass"],
   "indexInput": "Soil is a material composed of five components: minerals, living organisms, soil organic matter, gas and water."
  },
  {
   "name": "plasma reactor",
   "description": "Plasma reactors generate and sustain the cold plasma. The plasma is suspended above the biochar sample surface with the help of an electromagnetic field within the chamber. It can be used to produce plasma treated biochar.",
   "symbol": "thesis",
-  "networkArray": ["cold plasma", "plasma treated biochar"],
+  "networkArray": ["cold plasma"],
   "indexInput": "Plasma reactors generate and sustain the cold plasma."
  },
  {
@@ -89,13 +89,6 @@
   "symbol": "thesis",
   "networkArray": ["small pot experiment on the ryegrass"],
   "indexInput": "Soil is a major source of nutrients needed by plants for growth."
- },
- {
-  "name": "nitrogen",
-  "description": "Nitrogen is essential for plant growth, as it is required to make both amino acids (for proteins) and nucleic acids (for DNA), and is used in the correct development and functioning of chlorophyll, thus being vital for photosynthesis. All this means that if nitrogen is lacking, plants will grow more slowly, have lower product yields, and be more susceptible to attack, disease and death. ",
-  "symbol": "thesis",
-  "networkArray": ["plasma reactor", "enhancing the biochar", "nutrients", "cold plasma"],
-  "indexInput": "Nitrogen is essential for plant growth."
  },
  {
   "name": "small pot experiment on the ryegrass",

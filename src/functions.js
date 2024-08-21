@@ -79,11 +79,7 @@ class NodeObject {
 
     render() {
         this.cursor();
-        image(this.imageName, this.x, this.y, this.width, this.height);
-        text(this.name, this.x + this.width/2, this.y + this.height/2+5);
-        textFont(this.font);
-        textSize(16);
-        textAlign(CENTER);
+        image(this.symbol, this.x, this.y, this.width, this.height);
     }
 }
 
@@ -106,9 +102,9 @@ class LineObject {
     }
 
     render() {
-        stroke(26);
-        strokeWeight(2);
+        stroke('#ff6315');
+        strokeWeight(2.8);
         noFill();
-        bezier(this.centerx1, this.centery1, this.x3, this.y3, this.x1, this.y2, this.centerx2, this.centery2);
+        bezier(this.centerx1, this.centery1, this.x3, this.y3, this.x4, this.y4, this.centerx2, this.centery2);
     }
 }

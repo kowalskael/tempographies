@@ -75,9 +75,12 @@ function preload() {
     transformWordsToLinks(nodeData);
     nodeFont = loadFont('font/Lato-Regular.ttf')
 
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 21; i++) {
         imageData[i] = loadImage('img/shapes/' + [i] + '.png');
+        nodeData[i].symbol = imageData[i];
     }
+
+    console.log(nodeData)
 }
 
 function setup() {
@@ -199,7 +202,7 @@ function createNewNode(node) {
             const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, imageData[randomImg], nodeFont);
             nodes.push(newNode);
 
-            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW, prevNodeY + nodeH, nodeW, nodeH);
+            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW, prevNodeY + nodeH, nodeW, nodeH, prevNodeX + nodeW, prevNodeY + nodeH);
             links.push(newLine);
 
             descDiv.style.display = 'none';
