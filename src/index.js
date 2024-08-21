@@ -1,10 +1,13 @@
 let nodes = []; // array to contain created and visible node obj
 const links = [];
+const addImages = [];
 
 let descDiv, descText;
 
 let nodeData;
 let imageData = [];
+let bgImg;
+
 let stageInit = true;
 
 const grpSpace = document.getElementById('game');
@@ -80,7 +83,7 @@ function preload() {
         nodeData[i].symbol = imageData[i];
     }
 
-    console.log(nodeData)
+    bgImg = loadImage('img/bg01.png');
 }
 
 function setup() {
@@ -205,6 +208,11 @@ function createNewNode(node) {
             const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW, prevNodeY + nodeH, nodeW, nodeH, prevNodeX + nodeW, prevNodeY + nodeH);
             links.push(newLine);
 
+            if (newNode.name === 'biochar') {
+                const newBgImg = new additionalImg(bgImg, 0, 0);
+                addImages.push(newBgImg);
+            }
+
             descDiv.style.display = 'none';
             // add description to index-input
             indexPrnt.innerHTML += `<p>${nodeData[l].indexInput}</p>`;
@@ -223,6 +231,10 @@ function draw() {
         cursor(HAND)
     });
 
+    for (let i = 0; i < addImages.length; i++) {
+        addImages[i].render();
+    }
+
     for (let i = 0; i < links.length; i++) {
         links[i].render();
     }
@@ -239,7 +251,7 @@ function draw() {
                     return;
                 }
                 game(nodes[i]);
-            })
+            });
         }
     }
 }

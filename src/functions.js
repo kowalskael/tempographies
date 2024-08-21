@@ -107,3 +107,17 @@ class LineObject {
         bezier(this.centerx1, this.centery1, this.x3, this.y3, this.x4, this.y4, this.centerx2, this.centery2);
     }
 }
+
+class additionalImg {
+    constructor(fileName, x, y) {
+        this.fileName = fileName;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    render() {
+        image(this.fileName, this.x, this.y, width, height, 0, 0, this.fileName.width, this.fileName.height, CONTAIN);
+    }
+}
