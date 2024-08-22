@@ -9,6 +9,7 @@ let imageData = [];
 let bgImg;
 
 let stageInit = true;
+let firstAfterChange = true;
 
 const grpSpace = document.getElementById('game');
 const graph = document.getElementById('graph');
@@ -187,15 +188,25 @@ function createNewNode(node) {
             const nodeDist = Math.hypot(nodeW, nodeH);
 
             if (prevNodeX + nodeW + nodeDist >= graphW) {
-                angle = 155;
+                if (firstAfterChange) {
+                    angle = 85;
+                }
+                if (!firstAfterChange) {
+                    angle = 155;
+                }
             }
 
             if (prevNodeX <= nodeW) {
                 angle = 25;
+                firstAfterChange = true;
             }
 
             let updateNodeX = Math.cos(toRadians(angle)) * nodeDist + prevNodeX;
             let updateNodeY = Math.sin(toRadians(angle)) * nodeDist + prevNodeY;
+
+            if (angle === 85) {
+                firstAfterChange = false;
+            }
 
             const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW * 2, prevNodeY + nodeH, nodeW, nodeH, angle);
             links.push(newLine);
@@ -212,6 +223,7 @@ function createNewNode(node) {
             descDiv.style.display = 'none';
             // add description to index-input
             indexPrnt.innerHTML += `<p>${nodeData[l].indexInput}</p>`;
+
 
             // po dodaniu obiektu przesuń #graph do góry i w lewo
             // graph.style.transform = `translate(${ }px, ${ }px)`

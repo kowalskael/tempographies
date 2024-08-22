@@ -105,10 +105,11 @@ class LineObject {
         if (this.angle === 25) {
             triangle(this.centerx2 - 13, this.y2 - 9, this.centerx2, this.y2 - 5, this.centerx2 - 2, this.y2 - 18)
         }
+        if (this.angle === 85) {
+            triangle(this.centerx2 - 3, this.y2 - 17, this.centerx2 + 9, this.y2 - 13, this.centerx2, this.y2 - 5)
+        }
         if (this.angle === 155) {
-            fill('#ff6315');
             triangle(this.centerx2 + 2, this.y2 - 19, this.centerx2 + 14, this.y2 - 10, this.centerx2, this.y2 - 5)
-
         }
 
         stroke('#ff6315');
@@ -120,6 +121,13 @@ class LineObject {
             if (this.angle === 25) {
                 px1 = lerp(this.x1 + this.width + 10, this.x2 + this.width / 8, t);
                 py1 = lerp(this.centery1, this.centery1 - 70, t);
+                px2 = lerp(this.centerx2, this.centerx2, t);
+                py2 = lerp(this.y2, this.y2 - 5, t);
+            }
+
+            if (this.angle === 85) {
+                px1 = lerp(this.centerx1 + 20, this.centerx2 + 40, t);
+                py1 = lerp(this.y1 + this.height + 10, this.centery1 + 60, t);
                 px2 = lerp(this.centerx2, this.centerx2, t);
                 py2 = lerp(this.y2, this.y2 - 5, t);
             }
