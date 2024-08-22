@@ -215,9 +215,8 @@ function createNewNode(node) {
             nodes.push(newNode);
 
             if (newNode.name === 'biochar') {
-                const newBgImg = new additionalImg(bgImg, 0, -prevNodeY);
+                const newBgImg = new additionalImg(bgImg, 0, -innerHeight + updateNodeY + nodeW / 2 - width / 2);
                 addImages.push(newBgImg);
-                console.log(newBgImg.y, innerHeight)
             }
 
             descDiv.style.display = 'none';
@@ -249,7 +248,6 @@ function draw() {
 
     for (let i = 0; i < nodes.length; i++) {
         nodes[i].render();
-
     }
 
     if (!stageInit) {
