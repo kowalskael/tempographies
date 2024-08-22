@@ -12,19 +12,17 @@ let stageInit = true;
 
 const grpSpace = document.getElementById('game');
 const graph = document.getElementById('graph');
-const grpSpaceW = grpSpace.offsetWidth;
+const graphW = graph.offsetWidth;
 
 const nodeW = 220;
 const nodeH = 135;
-let angle = 25;
+let angle;
 
 const indexPrnt = document.getElementById('index-input');
 
-let nodeFont;
-
-const position = [{x: grpSpaceW / 2 - nodeW / 2, y: nodeH / 2},
-    {x: grpSpaceW / 2 - nodeW / 2 - nodeW / 1.5, y: nodeH * 1.75},
-    {x: grpSpaceW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 1.75}]
+const position = [{x: graphW / 2 - nodeW / 2, y: nodeH / 2},
+    {x: graphW / 2 - nodeW / 2 - nodeW / 1.5, y: nodeH * 1.75},
+    {x: graphW / 2 - nodeW / 2 + nodeW / 1.5, y: nodeH * 1.75}]
 
 fetch('data/diagramv0.2.json').then(
     (value) => {
@@ -87,15 +85,14 @@ function preload() {
 }
 
 function setup() {
-    let canvas = createCanvas(grpSpaceW + 100, innerHeight * 3);
+    let canvas = createCanvas(graphW, innerHeight * 3);
     canvas.parent('#graph');
 
     let initialNode;
     for (let i = 0; i < 3; i++) {
-        const randomImg = Math.floor(Math.random() * imageData.length);
-        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, imageData[randomImg], nodeFont);
+        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y);
         nodes.push(initialNode);
-        console.log(nodes);
+
         grpSpace.addEventListener("click", function () {
             if (dragged) {
                 return;
@@ -155,12 +152,12 @@ function addNode(node) {
     descDiv.style.display = 'block';
     descText.innerHTML = `<p class="descTextNode">from ${node.name}</p>${node.description}`;
 
-    if (node.x + nodeW + 300 >= grpSpaceW) {
+    if (node.x + nodeW + 300 >= graphW) {
         descDiv.style.left = node.x - 200 + "px";
         descDiv.style.top = node.y - 200 + "px";
     }
 
-    if (node.x + nodeW + 300 <= grpSpaceW) {
+    if (node.x + nodeW + 300 <= graphW) {
         descDiv.style.left = node.x + 200 + "px";
         descDiv.style.top = node.y - 100 + "px";
     }
@@ -186,9 +183,16 @@ function createNewNode(node) {
             //pozycja poprzedniego node'a
             const prevNodeX = nodes[nodes.length - 1].x;
             const prevNodeY = nodes[nodes.length - 1].y;
-
             // dystans na podstawie poprzedniej pozycji
             const nodeDist = Math.hypot(nodeW, nodeH);
+
+            if (prevNodeX + nodeW + nodeDist >= graphW) {
+                angle = 155;
+            }
+
+            if (prevNodeX <= nodeW) {
+                angle = 25;
+            }
 
             let updateNodeX = Math.cos(toRadians(angle)) * nodeDist + prevNodeX;
             let updateNodeY = Math.sin(toRadians(angle)) * nodeDist + prevNodeY;
@@ -196,21 +200,13 @@ function createNewNode(node) {
             const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW * 2, prevNodeY + nodeH, nodeW, nodeH, angle);
             links.push(newLine);
 
-            if (prevNodeX + updateNodeX >= grpSpaceW) {
-                angle = 155;
-            }
-
-            if (prevNodeX <= nodeW * 2) {
-                angle = 25;
-            }
-
-            const randomImg = Math.floor(Math.random() * imageData.length);
-            const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, imageData[randomImg], nodeFont);
+            const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY);
             nodes.push(newNode);
-            
+
             if (newNode.name === 'biochar') {
-                const newBgImg = new additionalImg(bgImg, 0, 0);
+                const newBgImg = new additionalImg(bgImg, 0, -prevNodeY);
                 addImages.push(newBgImg);
+                console.log(newBgImg.y, innerHeight)
             }
 
             descDiv.style.display = 'none';

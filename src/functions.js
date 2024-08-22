@@ -12,7 +12,9 @@ function closePopup() {
 
     const popup = document.getElementById("popup")
     const popupBox = document.getElementById("popupBox")
+    const loadingImg = document.getElementById("p5_loading")
 
+    loadingImg.style.display = "none";
     popupBox.style.display = "flex";
     popup.style.display = "flex";
     popupBox.addEventListener("click", (event) => {
@@ -20,6 +22,7 @@ function closePopup() {
         popup.style.display = "none";
         sessionStorage.setItem('popup', 'clicked')
         console.log(sessionStorage)
+        loadingImg.style.display = 'flex';
     })
 }
 
@@ -45,7 +48,7 @@ function distance(x1, x2, y1, y2) {
 }
 
 class NodeObject {
-    constructor(node, x, y, imageName, font) {
+    constructor(node, x, y) {
         this.name = node.name; // name of the node
         this.description = node.description; // text which appears in the box
         this.symbol = node.symbol; // every node has specific symbol shape and color
@@ -55,10 +58,8 @@ class NodeObject {
         this.height = 135;
         this.x = x; // random position, center and left/right (only applicable to nodeObject number > 3)
         this.y = y;
-        this.imageName = imageName;
         this.clickable = true;
         this.clicked = false;
-        this.font = font;
     }
 
     click() {
