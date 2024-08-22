@@ -31,23 +31,31 @@ canvas {
     justify-content: center;
 }
 
+#descText {
+    font-weight: 400;
+    font-family: "Scheherazade New", serif;
+    color: black;
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+}
+
 .descTextNode {
     font-weight: 600;
     font-family: "Lato", sans-serif;
     color: #6666ff;
-    margin: 0px;
+    margin: 0;
     padding-bottom: 8px;
     text-decoration: underline;
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .link {
     font-weight: 600;
     font-family: "Lato", sans-serif;
     color: #000;
-    font-size: 14px;
-    margin: 0px;
-    padding: 0px;
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0;
 }
 
 #popup {
@@ -118,7 +126,7 @@ canvas {
     height: 100%;
     left: 45%;
     top: 45%;
-    font-size: 18px;
+    font-size: 1.2rem;
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -152,7 +160,7 @@ canvas {
 
 #index-menu {
     width: 100%;
-    height: 39px;
+    height: 41px;
     background: #454551;
     border-bottom: solid 1.5px #000000;
     color: #ffffff;
@@ -162,7 +170,7 @@ canvas {
 
 #index-menu > p {
     margin-left: 20px;
-    font-size: 16px;
+    font-size: 1.1rem;
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -181,5 +189,5 @@ canvas {
 
 #index-input > p {
     margin: 20px 20px 0 20px;
-    font-size: 14px;
+    font-size: 1rem;
 }
