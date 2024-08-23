@@ -1,3 +1,24 @@
+function mobileNav() {
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const indexSpace = document.getElementById("index");
+
+    hamburger.addEventListener("click", () => {
+        if (mobileMenu.style.display === 'none') {
+            grpSpace.style.display = 'none';
+            indexSpace.style.display = 'none';
+            mobileMenu.style.display = 'flex';
+        } else {
+            grpSpace.style.display = 'flex';
+            indexSpace.style.display = 'flex';
+            mobileMenu.style.display = 'none';
+        }
+    })
+}
+
+mobileNav();
+
 function animatePopup() {
 
 }

@@ -14,6 +14,15 @@ canvas {
     z-index: 0;
 }
 
+#main {
+    width: 80%;
+    height: 100%;
+}
+
+#menu {
+    min-height: 44px;
+}
+
 #descDiv {
     position: absolute;
     /* Stay in place */
@@ -193,6 +202,21 @@ canvas {
 }
 
 @media only screen and (max-width: 768px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    #main {
+        width: 100%;
+        height: 70%;
+        overflow-x: hidden;
+    }
+
+    #mobile-menu {
+        top: 45.5px;
+    }
+
     #index {
         width: 100%;
         height: 30%;

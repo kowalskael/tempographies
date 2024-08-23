@@ -7,6 +7,15 @@ body {
     overflow: auto;
 }
 
+#main {
+    width: 80%;
+    height: 100%;
+}
+
+#menu {
+    padding: 10px;
+}
+
 #sidebar {
     height: 100%;
     width: 20%;
@@ -135,4 +144,49 @@ body {
 
 .ppl-txt > a:hover {
     font-style: italic;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    #body {
+        overflow-x: hidden;
+    }
+
+    #main {
+        height: 100%;
+        width: 100%;
+
+        overflow-x: hidden;
+    }
+
+    #mobile-menu {
+        top: 42.5px;
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+    #subpage-title {
+        width: 85%;
+    }
+
+    #about-txt {
+        width: 85%;
+    }
+
+    #team {
+        flex-direction: column;
+        width: 85%;
+    }
+
+    .ppl {
+        width: 95%;
+        align-self: center;
+    }
+
+    .column-2 {
+        margin-top: 0;
+    }
 }

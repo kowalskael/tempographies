@@ -21,9 +21,9 @@ let angle;
 
 const indexPrnt = document.getElementById('index-input');
 
-const position = [{x: graphW / 2 - nodeW / 2, y: innerHeight / 2 - nodeH * 1.25 },
-    {x: graphW / 2 - nodeW / 2 - nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1 },
-    {x: graphW / 2 - nodeW / 2 + nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1 }]
+const position = [{x: graphW / 2 - nodeW / 2, y: innerHeight / 2 - nodeH * 1.25},
+    {x: graphW / 2 - nodeW / 2 - nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1},
+    {x: graphW / 2 - nodeW / 2 + nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1}]
 
 fetch('data/diagramv0.2.json').then(
     (value) => {
