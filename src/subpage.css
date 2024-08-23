@@ -13,7 +13,7 @@ body {
 }
 
 #menu {
-    position: fixed;
+    height: 7%;
 }
 
 #sidebar {
@@ -35,7 +35,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 80px 0 60px 0;
+    height: 90%;
 }
 
 #subpage-title {
@@ -54,6 +54,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
 }
 
 .text {
@@ -96,6 +97,7 @@ body {
     width: 90%;
     max-width: 1000px;
     gap: 40px;
+    margin-bottom: 40px;
 }
 
 .column-1 {
@@ -160,8 +162,12 @@ body {
         overflow-x: hidden;
     }
 
+    #menu {
+        position: fixed;
+    }
+
     #mobile-menu {
-        top: 46.5px;
+        top: 7.1%;
     }
 
     #sidebar {
@@ -192,5 +198,9 @@ body {
 
     .column-2 {
         margin-top: 0;
+    }
+
+    #subpage-title {
+        margin-top: 80px;
     }
 }
