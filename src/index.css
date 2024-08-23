@@ -19,9 +19,6 @@ canvas {
     height: 100%;
 }
 
-#menu {
-    min-height: 44px;
-}
 
 #descDiv {
     position: absolute;
@@ -214,7 +211,7 @@ canvas {
     }
 
     #mobile-menu {
-        top: 45.5px;
+        top: 46.5px;
     }
 
     #index {
@@ -222,7 +219,13 @@ canvas {
         height: 30%;
     }
 
+    #game {
+        height: 90%;
+    }
+
     #graph {
         width: 100%;
     }
+
+
 }

@@ -13,7 +13,7 @@ body {
 }
 
 #menu {
-    padding: 10px;
+    position: fixed;
 }
 
 #sidebar {
@@ -35,7 +35,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px 0 60px 0;
+    margin: 80px 0 60px 0;
 }
 
 #subpage-title {
@@ -161,7 +161,7 @@ body {
     }
 
     #mobile-menu {
-        top: 42.5px;
+        top: 46.5px;
     }
 
     #sidebar {
@@ -178,12 +178,16 @@ body {
 
     #team {
         flex-direction: column;
-        width: 85%;
+        width: 87%;
     }
 
     .ppl {
         width: 95%;
         align-self: center;
+    }
+
+    .ppl-txt {
+        padding: 25px;
     }
 
     .column-2 {

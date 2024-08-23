@@ -6,9 +6,12 @@ function mobileNav() {
     hamburger.addEventListener("click", () => {
         if (mobileMenu.style.display === 'none') {
             mobileMenu.style.display = 'flex';
+            hamburger.classList.add('open');
         } else {
+            hamburger.classList.remove('open');
             mobileMenu.style.display = 'none';
         }
     })
 }
-mobileNav()
+
+mobileNav();
