@@ -125,7 +125,7 @@ function init(node) {
     node.clickable = true;
 
     // add description to index-input
-    indexPrnt.innerHTML += `<p>${node.indexInput}</p>`;
+    indexPrnt.innerHTML += `<p class="animateIndex indexprnt">${node.indexInput}</p>`;
 
     stageInit = false;
 }
@@ -144,6 +144,11 @@ function game(node) {
     }
 
     addNode(node);
+    let indexP = document.getElementsByClassName("indexprnt")
+    for (let j = 0; indexP.length; j++) {
+        indexP[j].classList.remove("animateIndex")
+    }
+
 }
 
 
@@ -220,7 +225,7 @@ function createNewNode(node) {
 
             descDiv.style.display = 'none';
             // add description to index-input
-            indexPrnt.innerHTML += `<p>${nodeData[l].indexInput}</p>`;
+            indexPrnt.innerHTML += `<p class="animateIndex indexprnt">${nodeData[l].indexInput}</p>`;
 
             // po dodaniu obiektu przesuń #graph do góry i w lewo
             // graph.style.transform = `translate(${ }px, ${ }px)`
@@ -274,6 +279,7 @@ function draw() {
                 if (dragged) {
                     return;
                 }
+
                 game(nodes[i]);
                 end(nodes[i])
             });

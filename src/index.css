@@ -50,6 +50,12 @@ canvas {
     font-size: 1.1rem;
     line-height: 1.2rem;
     cursor: default;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .descTextNode {
@@ -206,6 +212,14 @@ canvas {
 #index-input > p {
     margin: 20px 20px 0 20px;
     font-size: 1rem;
+}
+
+.animateIndex {
+    animation: blinker 1s linear;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
 }
 
 @media only screen and (max-width: 768px) {
