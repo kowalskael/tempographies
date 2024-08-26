@@ -209,7 +209,7 @@ canvas {
     padding-bottom: 40px;
 }
 
-#index-input > p {
+#index-input > div > p {
     margin: 20px 20px 0 20px;
     font-size: 1rem;
 }

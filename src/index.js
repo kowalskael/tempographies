@@ -126,7 +126,9 @@ function init(node) {
     node.clickable = true;
 
     // add description to index-input
-    indexPrnt.innerHTML += `<p class="animateIndex indexprnt">${node.indexInput}</p>`;
+    let addIndexPrnt = document.createElement('div');
+    indexPrnt.appendChild(addIndexPrnt);
+    addIndexPrnt.innerHTML += `<p class="animateIndex indexprnt">${node.indexInput}</p>`;
 
     stageInit = false;
 }
@@ -239,7 +241,11 @@ function createNewNode(node) {
 
             descDiv.style.display = 'none';
             // add description to index-input
-            indexPrnt.innerHTML += `<p class="animateIndex indexprnt">${nodeData[l].indexInput}</p>`;
+
+            let addIndexPrnt = document.createElement('div');
+            indexPrnt.appendChild(addIndexPrnt);
+            addIndexPrnt.innerHTML += `<p class="animateIndex indexprnt">${nodeData[l].indexInput}</p>`;
+            indexPrnt.insertBefore(addIndexPrnt, indexPrnt.children[0])
 
             if (nodes.length > 2) {
                 animateY = -updateNodeY + nodeH + 100;
