@@ -38,6 +38,7 @@ fetch('data/diagramv0.2.json').then(
 let lastX = 0, lastY = 0;
 let currentX = 0, currentY = 0;
 let dragged = false;
+let animateX = 0, animateY = 0;
 
 function moveAt(x, y) {
     currentX = x;
@@ -172,13 +173,16 @@ function addNode(node) {
 
     node.click();
 
-    if (nodes.length > 7) {
+    if (nodes.length > 10) {
         descDiv.style.display = 'block';
         descText.innerHTML = `this is the end`;
         descDiv.style.top = 100 + "px";
+        let button = document.createElement("button");
+        button.innerHTML = 'play again'
+        document.getElementById('descDiv').appendChild(button);
 
-        descDiv.addEventListener("click", function () {
-
+        button.addEventListener("click", function () {
+            window.open('index.html', "_self")
         }, false)
     }
 }
@@ -236,7 +240,11 @@ function createNewNode(node) {
             descDiv.style.display = 'none';
             // add description to index-input
             indexPrnt.innerHTML += `<p class="animateIndex indexprnt">${nodeData[l].indexInput}</p>`;
-            graph.style.transform = `translate(${0}px, ${-updateNodeY+nodeH}px)`;
+
+            if (nodes.length > 2) {
+                animateY = -updateNodeY + nodeH + 100;
+                graph.style.transform = `translate(${0}px, ${animateY}px)`;
+            }
         }
     })
 }

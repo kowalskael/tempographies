@@ -206,7 +206,7 @@ canvas {
     align-items: flex-start;
     font-family: "Lato", sans-serif;
     overflow-y: auto;
-
+    padding-bottom: 40px;
 }
 
 #index-input > p {
