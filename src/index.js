@@ -66,7 +66,7 @@ window.addEventListener('mouseup', onMouseUp);
 
 descDiv = document.createElement('div');
 descDiv.setAttribute("id", "descDiv");
-document.getElementById('graph').appendChild(descDiv);
+document.body.appendChild(descDiv);
 descText = document.createElement('div');
 descText.setAttribute("id", "descText");
 descText.innerHTML = 'no description';
@@ -152,15 +152,14 @@ function addNode(node) {
 
     descDiv.style.display = 'block';
     descText.innerHTML = `<p class="descTextNode">from ${node.name}</p>${node.description}`;
+    descDiv.style.top = 100 + "px";
 
     if (node.x + nodeW + 300 >= graphW) {
-        descDiv.style.left = node.x - 200 + "px";
-        descDiv.style.top = node.y - 200 + "px";
+        descDiv.style.left = node.x - 300 + "px";
     }
 
     if (node.x + nodeW + 300 <= graphW) {
-        descDiv.style.left = node.x + 200 + "px";
-        descDiv.style.top = node.y - 100 + "px";
+        descDiv.style.left = node.x + nodeW + 110 + "px";
     }
 
     for (let j = 0; j < node.networkArray.length; j++) {
@@ -223,20 +222,19 @@ function createNewNode(node) {
             // add description to index-input
             indexPrnt.innerHTML += `<p>${nodeData[l].indexInput}</p>`;
 
-
             // po dodaniu obiektu przesuń #graph do góry i w lewo
             // graph.style.transform = `translate(${ }px, ${ }px)`
         }
     })
 }
 
+function changeCursor() {
+    cursor(HAND);
+}
+
 function draw() {
     background('#d8d6d2');
     cursor(MOVE);
-
-    descDiv.addEventListener("mouseover", (e) => {
-        cursor(HAND)
-    });
 
     for (let i = 0; i < addImages.length; i++) {
         addImages[i].render();
