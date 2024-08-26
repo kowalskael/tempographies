@@ -1,5 +1,5 @@
 let nodes = []; // array to contain created and visible node obj
-const links = [];
+let links = [];
 const addImages = [];
 
 let descDiv, descText;
@@ -75,7 +75,6 @@ descDiv.style.display = 'none';
 
 function preload() {
     transformWordsToLinks(nodeData);
-    nodeFont = loadFont('font/Lato-Regular.ttf')
 
     for (let i = 0; i < 21; i++) {
         imageData[i] = loadImage('img/shapes/' + [i] + '.png');
@@ -165,6 +164,7 @@ function addNode(node) {
     for (let j = 0; j < node.networkArray.length; j++) {
         createNewNode(node.networkArray[j]);
     }
+
     node.click();
 }
 
@@ -228,8 +228,28 @@ function createNewNode(node) {
     })
 }
 
-function changeCursor() {
-    cursor(HAND);
+function end(node) {
+    node.clicked = false;
+    node.clickable = true;
+
+    if (stageInit ||
+        mouseX <= node.x ||
+        mouseX >= node.x + node.width ||
+        mouseY <= node.y ||
+        mouseY >= node.y + node.height ||
+        !node.clickable) {
+        return;
+    }
+
+    if (nodes.length > 8) {
+        descDiv.style.display = 'block';
+        descText.innerHTML = `this is the end`;
+        descDiv.style.top = 100 + "px";
+
+        descDiv.addEventListener("click", function () {
+            window.location = 'index.html';
+        }, false)
+    }
 }
 
 function draw() {
@@ -255,6 +275,7 @@ function draw() {
                     return;
                 }
                 game(nodes[i]);
+                end(nodes[i])
             });
         }
     }
