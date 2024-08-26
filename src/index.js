@@ -171,6 +171,16 @@ function addNode(node) {
     }
 
     node.click();
+
+    if (nodes.length > 7) {
+        descDiv.style.display = 'block';
+        descText.innerHTML = `this is the end`;
+        descDiv.style.top = 100 + "px";
+
+        descDiv.addEventListener("click", function () {
+
+        }, false)
+    }
 }
 
 function createNewNode(node) {
@@ -226,36 +236,11 @@ function createNewNode(node) {
             descDiv.style.display = 'none';
             // add description to index-input
             indexPrnt.innerHTML += `<p class="animateIndex indexprnt">${nodeData[l].indexInput}</p>`;
-
-            // po dodaniu obiektu przesuń #graph do góry i w lewo
-            // graph.style.transform = `translate(${ }px, ${ }px)`
+            graph.style.transform = `translate(${0}px, ${-updateNodeY+nodeH}px)`;
         }
     })
 }
 
-function end(node) {
-    node.clicked = false;
-    node.clickable = true;
-
-    if (stageInit ||
-        mouseX <= node.x ||
-        mouseX >= node.x + node.width ||
-        mouseY <= node.y ||
-        mouseY >= node.y + node.height ||
-        !node.clickable) {
-        return;
-    }
-
-    if (nodes.length > 8) {
-        descDiv.style.display = 'block';
-        descText.innerHTML = `this is the end`;
-        descDiv.style.top = 100 + "px";
-
-        descDiv.addEventListener("click", function () {
-            window.location = 'index.html';
-        }, false)
-    }
-}
 
 function draw() {
     background('#d8d6d2');
@@ -281,7 +266,6 @@ function draw() {
                 }
 
                 game(nodes[i]);
-                end(nodes[i])
             });
         }
     }
