@@ -82,7 +82,7 @@ function preload() {
         nodeData[i].symbol = imageData[i];
     }
 
-    bgImg = loadImage('img/bg01.png');
+    bgImg = loadImage('img/add/1.png');
 }
 
 function setup() {
@@ -235,7 +235,7 @@ function createNewNode(node) {
             nodes.push(newNode);
 
             if (newNode.name === 'biochar') {
-                const newBgImg = new additionalImg(bgImg, 0, -innerHeight + updateNodeY + nodeW / 2 - width / 2);
+                const newBgImg = new additionalImg(bgImg, 0, updateNodeY + nodeH/2 - 140, 459, 283);
                 addImages.push(newBgImg);
             }
 

@@ -131,7 +131,6 @@ canvas {
     font-family: "Lato", sans-serif;
     color: #000;
     text-transform: uppercase;
-    border-bottom: 2px solid #000;
     padding-bottom: 3px;
     letter-spacing: 1px;
     margin-bottom: 5px;
@@ -214,6 +213,20 @@ canvas {
     font-size: 1rem;
 }
 
+button {
+    width: 120px;
+    height: 35px;
+    border: solid #fff;
+    border-radius: 35px;
+    background-color: #6666ff;
+    color: white;
+    font-size: 1rem;
+    font-family: "Lato", sans-serif;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
 .animateIndex {
     animation: blinker 1s linear;
 }
@@ -226,6 +239,22 @@ canvas {
 
     body {
         overflow: hidden;
+    }
+
+    #popupBox {
+        width: 75%;
+        height: 70%;
+        padding: 25px;
+    }
+
+    #popupTitle {
+        line-height: 2rem;
+        font-size: 2rem;
+    }
+
+    #popupText {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
     }
 
     #main {

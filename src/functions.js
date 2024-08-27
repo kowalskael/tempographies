@@ -173,7 +173,7 @@ class LineObject {
 }
 
 class additionalImg {
-    constructor(fileName, x, y) {
+    constructor(fileName, x, y, width, height) {
         this.fileName = fileName;
         this.x = x;
         this.y = y;
@@ -182,6 +182,6 @@ class additionalImg {
     }
 
     render() {
-        image(this.fileName, this.x, this.y, width, height, 0, 0, this.fileName.width, this.fileName.height, CONTAIN);
+        image(this.fileName, this.x, this.y, this.width, this.height);
     }
 }
