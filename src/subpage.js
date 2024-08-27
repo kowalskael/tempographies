@@ -7,9 +7,11 @@ function mobileNav() {
         if (mobileMenu.style.display === 'none') {
             mobileMenu.style.display = 'flex';
             hamburger.classList.add('open');
+            document.body.style.overflowY = 'hidden';
         } else {
             hamburger.classList.remove('open');
             mobileMenu.style.display = 'none';
+
         }
     })
 }

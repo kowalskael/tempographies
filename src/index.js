@@ -14,10 +14,21 @@ let firstAfterChange = true;
 const grpSpace = document.getElementById('game');
 const graph = document.getElementById('graph');
 const graphW = graph.offsetWidth;
+const graphH = graph.offsetHeight;
 
 const nodeW = 220;
 const nodeH = 135;
 let angle;
+
+let scale;
+
+if(innerWidth > 440) {
+    scale = 1;
+}
+
+if(innerWidth < 440) {
+    scale = 0.5;
+}
 
 const indexPrnt = document.getElementById('index-input');
 
@@ -94,7 +105,8 @@ function setup() {
 
     let initialNode;
     for (let i = 0; i < 3; i++) {
-        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y);
+
+        initialNode = new NodeObject(nodeData[i], position[i].x, position[i].y, scale);
         nodes.push(initialNode);
 
         grpSpace.addEventListener("click", function () {
@@ -234,7 +246,7 @@ function createNewNode(node) {
             const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW * 2, prevNodeY + nodeH, nodeW, nodeH, angle);
             links.push(newLine);
 
-            const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY);
+            const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, scale);
             nodes.push(newNode);
 
             let addImgPositionX = 0;

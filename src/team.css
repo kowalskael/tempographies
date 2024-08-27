@@ -7,4 +7,8 @@
     #menu {
         min-height: 7%;
     }
+
+    #mobile-menu {
+        top: 5.6%;
+    }
 }

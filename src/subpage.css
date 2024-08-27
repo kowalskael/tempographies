@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Playwrite+PL:wght@100..400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&display=swap');
 
-html,
 body {
     overflow: auto;
 }
@@ -164,12 +163,10 @@ body {
     }
 
     #menu {
-        position: fixed;
+        position: relative;
     }
 
-    #mobile-menu {
-        top: 7.1%;
-    }
+
 
     #sidebar {
         display: none;
@@ -177,6 +174,8 @@ body {
 
     #subpage-title {
         width: 85%;
+        margin-top: 40px;
+
     }
 
     #about-txt {
@@ -201,7 +200,5 @@ body {
         margin-top: 0;
     }
 
-    #subpage-title {
-        margin-top: 80px;
-    }
+
 }

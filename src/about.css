@@ -1,4 +1,8 @@
-html,
-body {
+
+html {
     height: 100%;
+}
+
+#mobile-menu {
+    top: 5.8%;
 }
