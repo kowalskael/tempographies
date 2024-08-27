@@ -54,8 +54,12 @@ canvas {
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .descTextNode {
@@ -229,10 +233,15 @@ button {
 
 .animateIndex {
     animation: blinker 1s linear;
+    text-shadow: 3px 3px 10px #6666ff;
+    color: #6666ff;
+    font-weight: 400;
 }
 
 @keyframes blinker {
-    50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
 
 @media only screen and (max-width: 768px) {

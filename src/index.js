@@ -1,12 +1,12 @@
 let nodes = []; // array to contain created and visible node obj
 let links = [];
-const addImages = [];
+let addImages = [];
 
 let descDiv, descText;
 
 let nodeData;
 let imageData = [];
-let bgImg;
+let addImageData = [];
 
 let stageInit = true;
 let firstAfterChange = true;
@@ -82,7 +82,10 @@ function preload() {
         nodeData[i].symbol = imageData[i];
     }
 
-    bgImg = loadImage('img/add/1.png');
+    for (let i = 0; i < 4; i++) {
+        addImageData[i] = loadImage('img/add/' + [i] + '.png');
+    }
+
 }
 
 function setup() {
@@ -149,7 +152,7 @@ function game(node) {
     addNode(node);
     let indexP = document.getElementsByClassName("indexprnt")
     for (let j = 0; indexP.length; j++) {
-        indexP[j].classList.remove("animateIndex")
+        indexP[j].classList.remove("animateIndex");
     }
 
 }
@@ -234,10 +237,36 @@ function createNewNode(node) {
             const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY);
             nodes.push(newNode);
 
-            if (newNode.name === 'biochar') {
-                const newBgImg = new additionalImg(bgImg, 0, updateNodeY + nodeH/2 - 140, 459, 283);
-                addImages.push(newBgImg);
+            let addImgPositionX = 0;
+
+            if (updateNodeX < graphW / 2) {
+                addImgPositionX = graphW - 459;
             }
+
+            if (updateNodeX > graphW / 2) {
+                addImgPositionX = 0;
+            }
+
+            if (newNode.name === 'biochar') {
+                const newAddImg = new additionalImg(addImageData[1], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
+                addImages.push(newAddImg);
+            }
+
+            if (newNode.name === 'laboratory') {
+                const newAddImg = new additionalImg(addImageData[2], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
+                addImages.push(newAddImg);
+            }
+
+            if (newNode.name === 'cold plasma') {
+                const newAddImg = new additionalImg(addImageData[0], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
+                addImages.push(newAddImg);
+            }
+
+            if (newNode.name === 'ryegrass') {
+                const newAddImg = new additionalImg(addImageData[3], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
+                addImages.push(newAddImg);
+            }
+
 
             descDiv.style.display = 'none';
             // add description to index-input
@@ -250,6 +279,7 @@ function createNewNode(node) {
             if (nodes.length > 2) {
                 animateY = -updateNodeY + nodeH + 100;
                 graph.style.transform = `translate(${0}px, ${animateY}px)`;
+                graph.style.transition = `transform 330ms ease-in-out`;
             }
         }
     })
