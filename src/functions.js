@@ -86,13 +86,13 @@ class NodeObject {
         this.symbol = node.symbol; // every node has specific symbol shape and color
         this.networkArray = node.networkArray; // what are hyperlinks of the node from .csv file?
         this.indexInput = node.indexInput;
-        this.width = 220;
-        this.height = 135;
+        this.scale = scale;
+        this.width = 220 * this.scale;
+        this.height = 135 * this.scale;
         this.x = x; // random position, center and left/right (only applicable to nodeObject number > 3)
         this.y = y;
         this.clickable = true;
         this.clicked = false;
-        this.scale = scale;
     }
 
     click() {
@@ -112,12 +112,12 @@ class NodeObject {
 
     render() {
         this.cursor();
-        image(this.symbol, this.x * scale, this.y * scale, this.width * this.scale, this.height * scale);
+        image(this.symbol, this.x, this.y, this.width, this.height);
     }
 }
 
 class LineObject {
-    constructor(x1, y1, x2, y2, x3, y3, width, height, angle, scale) {
+    constructor(x1, y1, x2, y2, x3, y3, width, height, angle) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -131,7 +131,6 @@ class LineObject {
         this.centery1 = this.y1 + this.height / 2;
         this.centerx2 = this.x2 + this.width / 2;
         this.centery2 = this.y2 + this.height / 2;
-        this.scale = scale;
     }
 
     render() {

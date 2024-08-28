@@ -22,17 +22,21 @@ let angle;
 
 let scale;
 
-if(innerWidth > 440) {
+if (innerWidth > 440) {
     scale = 1;
 }
 
-if(innerWidth < 440) {
+if (innerWidth < 440) {
     scale = 0.5;
 }
 
 const indexPrnt = document.getElementById('index-input');
 
 const position = [{x: graphW / 2 - nodeW / 2, y: innerHeight / 2 - nodeH * 1.25},
+    {x: graphW / 2 - nodeW / 2 - nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1},
+    {x: graphW / 2 - nodeW / 2 + nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1}]
+
+const positionMobile = [{x: graphW / 2 - nodeW / 2, y: innerHeight / 2 - nodeH * 1.25},
     {x: graphW / 2 - nodeW / 2 - nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1},
     {x: graphW / 2 - nodeW / 2 + nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1}]
 
@@ -166,21 +170,20 @@ function game(node) {
     for (let j = 0; indexP.length; j++) {
         indexP[j].classList.remove("animateIndex");
     }
-
 }
-
 
 function addNode(node) {
 
     descDiv.style.display = 'flex';
     descText.innerHTML = `<p class="descTextNode">from ${node.name}</p>${node.description}`;
-    descDiv.style.top = 100 + "px";
 
-    if (node.x + nodeW + 300 >= graphW) {
+    if (node.x + nodeW + 300 >= graphW && innerWidth > 480) {
+        descDiv.style.top = 100 + "px";
         descDiv.style.left = node.x - 300 + "px";
     }
 
-    if (node.x + nodeW + 300 <= graphW) {
+    if (node.x + nodeW + 300 <= graphW && innerWidth > 480) {
+        descDiv.style.top = 100 + "px";
         descDiv.style.left = node.x + nodeW + 110 + "px";
     }
 
@@ -190,7 +193,7 @@ function addNode(node) {
 
     node.click();
 
-    if (nodes.length > 3) {
+    if (nodes.length > 10) {
         descDiv.style.display = 'flex';
         descText.innerHTML = `Thank you for taking time to explore some of the temporal and spatial aspects of the Epicnutrients project. If you want to find out more about the research, we encourage you to take another round. Click the button below to restart the website.`;
         descDiv.style.top = 100 + "px";
@@ -222,7 +225,7 @@ function createNewNode(node) {
             // dystans na podstawie poprzedniej pozycji
             const nodeDist = Math.hypot(nodeW, nodeH);
 
-            if (prevNodeX + nodeW + nodeDist >= graphW) {
+            if (prevNodeX + nodeW * scale + nodeDist * scale >= graphW) {
                 if (firstAfterChange) {
                     angle = 85;
                 }
@@ -231,19 +234,19 @@ function createNewNode(node) {
                 }
             }
 
-            if (prevNodeX <= nodeW) {
+            if (prevNodeX <= nodeW * scale) {
                 angle = 25;
                 firstAfterChange = true;
             }
 
-            let updateNodeX = Math.cos(toRadians(angle)) * nodeDist + prevNodeX;
-            let updateNodeY = Math.sin(toRadians(angle)) * nodeDist + prevNodeY;
+            let updateNodeX = Math.cos(toRadians(angle)) * nodeDist * scale + prevNodeX;
+            let updateNodeY = Math.sin(toRadians(angle)) * nodeDist * scale + prevNodeY;
 
             if (angle === 85) {
                 firstAfterChange = false;
             }
 
-            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW * 2, prevNodeY + nodeH, nodeW, nodeH, angle);
+            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW * scale * 2, prevNodeY + nodeH * scale, nodeW * scale, nodeH * scale, angle);
             links.push(newLine);
 
             const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, scale);

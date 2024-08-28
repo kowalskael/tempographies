@@ -250,6 +250,9 @@ button {
 
     body {
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     #popupBox {
@@ -298,5 +301,10 @@ button {
     #index-menu {
         min-height: 7%;
         height: 30%;
+    }
+
+    #descDiv {
+        width: 70%;
+        display: flex;
     }
 }
