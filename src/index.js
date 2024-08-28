@@ -172,7 +172,7 @@ function game(node) {
 
 function addNode(node) {
 
-    descDiv.style.display = 'block';
+    descDiv.style.display = 'flex';
     descText.innerHTML = `<p class="descTextNode">from ${node.name}</p>${node.description}`;
     descDiv.style.top = 100 + "px";
 
@@ -190,9 +190,9 @@ function addNode(node) {
 
     node.click();
 
-    if (nodes.length > 10) {
-        descDiv.style.display = 'block';
-        descText.innerHTML = `this is the end`;
+    if (nodes.length > 3) {
+        descDiv.style.display = 'flex';
+        descText.innerHTML = `Thank you for taking time to explore some of the temporal and spatial aspects of the Epicnutrients project. If you want to find out more about the research, we encourage you to take another round. Click the button below to restart the website.`;
         descDiv.style.top = 100 + "px";
         let button = document.createElement("button");
         button.innerHTML = 'play again'
@@ -278,7 +278,6 @@ function createNewNode(node) {
                 const newAddImg = new additionalImg(addImageData[3], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
                 addImages.push(newAddImg);
             }
-
 
             descDiv.style.display = 'none';
             // add description to index-input
