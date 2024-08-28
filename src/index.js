@@ -32,13 +32,9 @@ if (innerWidth < 440) {
 
 const indexPrnt = document.getElementById('index-input');
 
-const position = [{x: graphW / 2 - nodeW / 2, y: innerHeight / 2 - nodeH * 1.25},
-    {x: graphW / 2 - nodeW / 2 - nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1},
-    {x: graphW / 2 - nodeW / 2 + nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1}]
-
-const positionMobile = [{x: graphW / 2 - nodeW / 2, y: innerHeight / 2 - nodeH * 1.25},
-    {x: graphW / 2 - nodeW / 2 - nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1},
-    {x: graphW / 2 - nodeW / 2 + nodeW / 1.5, y: innerHeight / 2 - nodeH * 0.1}]
+const position = [{x: graphW / 2 - nodeW * scale / 2, y: graphH / 2 - nodeH * scale * 1.25},
+    {x: graphW / 2 - nodeW * scale / 2 - nodeW * scale/ 1.5, y: graphH / 2 - nodeH * scale * 0.1},
+    {x: graphW / 2 - nodeW * scale / 2 + nodeW * scale / 1.5, y: graphH / 2 - nodeH * scale * 0.1}]
 
 fetch('data/diagramv0.2.json').then(
     (value) => {
@@ -138,8 +134,15 @@ function init(node) {
         return el.clicked === true;
     })
 
-    node.x = 70;
-    node.y = 70;
+    if(innerWidth > 480) {
+        node.x = 70;
+        node.y = 70;
+    }
+    if(innerWidth <= 480) {
+        node.x = 40;
+        node.y = 40;
+    }
+
 
     node.clicked = false;
     node.clickable = true;

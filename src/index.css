@@ -281,6 +281,10 @@ button {
         height: 10%;
     }
 
+    #index-menu > p {
+        font-size: 1.3rem;
+    }
+
     #mobile-menu {
 
     }
@@ -299,8 +303,8 @@ button {
     }
 
     #index-menu {
-        min-height: 7%;
-        height: 30%;
+        height: 45px;
+        min-height: 45px;
     }
 
     #descDiv {
