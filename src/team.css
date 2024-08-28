@@ -3,12 +3,12 @@
 }
 
 @media only screen and (max-width: 768px) {
+    html {
+        height: 100%;
+    }
 
     #menu {
         min-height: 7%;
     }
 
-    #mobile-menu {
-        top: 5.6%;
-    }
 }

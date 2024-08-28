@@ -1,8 +1,10 @@
 function mobileNav() {
     let flag = true;
     const hamburger = document.getElementById('hamburger');
+    const mobileLinks = document.getElementById('mobile-links');
     const mobileMenu = document.getElementById('mobile-menu');
     const indexSpace = document.getElementById("index");
+    const mainSpace = document.getElementById("main")
 
     hamburger.addEventListener("click", (e) => {
         console.log('clicked')
@@ -10,13 +12,17 @@ function mobileNav() {
             hamburger.classList.add('open');
             grpSpace.style.display = 'none';
             indexSpace.style.display = 'none';
-            mobileMenu.style.display = 'flex';
+            mobileLinks.style.display = 'flex';
+            mainSpace.style.height = '100%';
+            mobileMenu.style.height = '100%';
             flag = false;
         } else {
             hamburger.classList.remove('open');
             grpSpace.style.display = 'flex';
             indexSpace.style.display = 'flex';
-            mobileMenu.style.display = 'none';
+            mobileLinks.style.display = 'none';
+            mobileMenu.style.height = '45px';
+            mainSpace.style.height = '70%';
             flag = true;
         }
     })
