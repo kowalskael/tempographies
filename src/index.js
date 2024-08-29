@@ -258,30 +258,30 @@ function createNewNode(node) {
             let addImgPositionX = 0;
 
             if (updateNodeX < graphW / 2) {
-                addImgPositionX = graphW - 459;
+                addImgPositionX = graphW - 459 * scale;
             }
 
             if (updateNodeX > graphW / 2) {
                 addImgPositionX = 0;
             }
 
-            if (newNode.name === 'biochar') {
-                const newAddImg = new additionalImg(addImageData[1], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
-                addImages.push(newAddImg);
-            }
-
             if (newNode.name === 'laboratory') {
-                const newAddImg = new additionalImg(addImageData[2], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
+                const newAddImg = new additionalImg(addImageData[2], addImgPositionX, updateNodeY + nodeH * scale / 2 - 140, 459 * scale, 283 * scale);
                 addImages.push(newAddImg);
             }
 
             if (newNode.name === 'cold plasma') {
-                const newAddImg = new additionalImg(addImageData[0], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
+                const newAddImg = new additionalImg(addImageData[0], addImgPositionX, updateNodeY + nodeH * scale / 2 - 140, 459 * scale, 283 * scale);
                 addImages.push(newAddImg);
             }
 
             if (newNode.name === 'ryegrass') {
                 const newAddImg = new additionalImg(addImageData[3], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
+                addImages.push(newAddImg);
+            }
+
+            if (nodeData[l].name === 'biochar') {
+                const newAddImg = new additionalImg(addImageData[1], updateNodeX - 100, updateNodeY + nodeH * scale / 2 - 140, 459 * scale, 283 * scale);
                 addImages.push(newAddImg);
             }
 
@@ -294,7 +294,7 @@ function createNewNode(node) {
             indexPrnt.insertBefore(addIndexPrnt, indexPrnt.children[0])
 
             if (nodes.length > 2) {
-                animateY = -updateNodeY + nodeH + 100;
+                animateY = -updateNodeY + nodeH * scale + 100;
                 graph.style.transform = `translate(${0}px, ${animateY}px)`;
                 graph.style.transition = `transform 330ms ease-in-out`;
             }
@@ -325,7 +325,6 @@ function draw() {
                 if (dragged) {
                     return;
                 }
-
                 game(nodes[i]);
             });
         }

@@ -181,12 +181,17 @@ class LineObject {
 }
 
 class additionalImg {
-    constructor(fileName, x, y, width, height) {
+    constructor(fileName, x, y, width, height, array) {
         this.fileName = fileName;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.array = array;
+    }
+
+    collide() {
+        
     }
 
     render() {
