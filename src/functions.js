@@ -117,7 +117,7 @@ class NodeObject {
 }
 
 class LineObject {
-    constructor(x1, y1, x2, y2, x3, y3, width, height, angle) {
+    constructor(x1, y1, x2, y2, x3, y3, width, height, angle, scale) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -127,22 +127,23 @@ class LineObject {
         this.width = width;
         this.height = height;
         this.angle = angle;
-        this.centerx1 = this.x1 + this.width / 2;
+        this.centerx1 = this.x1 + this.width / 2 ;
         this.centery1 = this.y1 + this.height / 2;
         this.centerx2 = this.x2 + this.width / 2;
         this.centery2 = this.y2 + this.height / 2;
+        this.scale = scale;
     }
 
     render() {
         fill('#ff6315');
         if (this.angle === 25) {
-            triangle(this.centerx2 - 13, this.y2 - 9, this.centerx2, this.y2 - 5, this.centerx2 - 2, this.y2 - 18)
+            triangle(this.centerx2 - 13 * this.scale, this.y2 - 9 * this.scale, this.centerx2, this.y2 - 5 * this.scale, this.centerx2 - 2 * this.scale, this.y2 - 18 * this.scale)
         }
         if (this.angle === 85) {
-            triangle(this.centerx2 - 3, this.y2 - 17, this.centerx2 + 9, this.y2 - 13, this.centerx2, this.y2 - 5)
+            triangle(this.centerx2 - 3 * this.scale, this.y2 - 17 * this.scale, this.centerx2 + 9 * this.scale, this.y2 - 13 * this.scale, this.centerx2, this.y2 - 5 * this.scale)
         }
         if (this.angle === 155) {
-            triangle(this.centerx2 + 2, this.y2 - 19, this.centerx2 + 14, this.y2 - 10, this.centerx2, this.y2 - 5)
+            triangle(this.centerx2 + 2 * this.scale, this.y2 - 19 * this.scale, this.centerx2 + 14 * this.scale, this.y2 - 10 * this.scale, this.centerx2, this.y2 - 5 * this.scale)
         }
 
         stroke('#ff6315');
@@ -152,24 +153,24 @@ class LineObject {
         for (let t = 0; t <= 1; t += 0.02) {
             let px1, px2, py1, py2;
             if (this.angle === 25) {
-                px1 = lerp(this.x1 + this.width + 10, this.x2 + this.width / 8, t);
-                py1 = lerp(this.centery1, this.centery1 - 70, t);
-                px2 = lerp(this.centerx2, this.centerx2, t);
-                py2 = lerp(this.y2, this.y2 - 5, t);
+                px1 = lerp(this.x1 + this.width + 10 * this.scale, this.x2 + this.width / 8  * this.scale, t);
+                py1 = lerp(this.centery1, this.centery1 - 70  * this.scale, t);
+                px2 = lerp(this.centerx2, this.centerx2 , t);
+                py2 = lerp(this.y2, this.y2 - 5  * this.scale, t);
             }
 
             if (this.angle === 85) {
-                px1 = lerp(this.centerx1 + 20, this.centerx2 + 40, t);
-                py1 = lerp(this.y1 + this.height + 10, this.centery1 + 60, t);
+                px1 = lerp(this.centerx1 + 20 * this.scale, this.centerx2 + 40  * this.scale, t);
+                py1 = lerp(this.y1 + this.height + 10 * this.scale, this.centery1 + 60  * this.scale, t);
                 px2 = lerp(this.centerx2, this.centerx2, t);
-                py2 = lerp(this.y2, this.y2 - 5, t);
+                py2 = lerp(this.y2, this.y2 - 5 * this.scale, t);
             }
 
             if (this.angle === 155) {
-                px1 = lerp(this.x1 - 10, this.x2 + this.width - 30, t);
-                py1 = lerp(this.centery1, this.centery1 - 70, t);
+                px1 = lerp(this.x1 - 10 * this.scale, this.x2 + this.width - 30 * this.scale, t);
+                py1 = lerp(this.centery1, this.centery1 - 70 * this.scale, t);
                 px2 = lerp(this.centerx2, this.centerx2, t);
-                py2 = lerp(this.y2, this.y2 - 5, t);
+                py2 = lerp(this.y2, this.y2 - 5 * this.scale, t);
             }
             let px = lerp(px1, px2, t);
             let py = lerp(py1, py2, t);

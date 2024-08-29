@@ -249,7 +249,7 @@ function createNewNode(node) {
                 firstAfterChange = false;
             }
 
-            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW * scale * 2, prevNodeY + nodeH * scale, nodeW * scale, nodeH * scale, angle);
+            const newLine = new LineObject(prevNodeX, prevNodeY, updateNodeX, updateNodeY, prevNodeX + nodeW * scale * 2, prevNodeY + nodeH * scale, nodeW * scale, nodeH * scale, angle, scale);
             links.push(newLine);
 
             const newNode = new NodeObject(nodeData[l], updateNodeX, updateNodeY, scale);
