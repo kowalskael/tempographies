@@ -38,15 +38,6 @@ const position = [{x: graphW / 2 - nodeW * scale / 2, y: graphH / 2 - nodeH * sc
     {x: graphW / 2 - nodeW * scale / 2 - nodeW * scale / 1.5, y: graphH / 2 - nodeH * scale * 0.1},
     {x: graphW / 2 - nodeW * scale / 2 + nodeW * scale / 1.5, y: graphH / 2 - nodeH * scale * 0.1}]
 
-fetch('data/diagramv0.2.json').then(
-    (value) => {
-        return value.json();
-    }
-).then(
-    (value) => {
-        nodeData = value;
-    }
-)
 
 let lastX = 0, lastY = 0;
 let currentX = 0, currentY = 0;
@@ -99,16 +90,19 @@ document.getElementById('descDiv').appendChild(descText);
 descDiv.style.display = 'none';
 
 function preload() {
-    transformWordsToLinks(nodeData);
+    nodeData = loadJSON('data/diagramv0.2.json', function (data) {
+        nodeData = data;
+        transformWordsToLinks(nodeData);
+        for (let i = 0; i < 21; i++) {
+            imageData[i] = loadImage('img/shapes/' + [i] + '.png');
+            nodeData[i].symbol = imageData[i];
+        }
 
-    for (let i = 0; i < 21; i++) {
-        imageData[i] = loadImage('img/shapes/' + [i] + '.png');
-        nodeData[i].symbol = imageData[i];
-    }
+        for (let i = 0; i < 4; i++) {
+            addImageData[i] = loadImage('img/add/' + [i] + '.png');
+        }
+    });
 
-    for (let i = 0; i < 4; i++) {
-        addImageData[i] = loadImage('img/add/' + [i] + '.png');
-    }
 
 }
 
