@@ -22,6 +22,8 @@ let angle;
 
 let scale;
 
+let timeoutId;
+
 if (innerWidth > 440) {
     scale = 1;
 }
@@ -33,7 +35,7 @@ if (innerWidth < 440) {
 const indexPrnt = document.getElementById('index-input');
 
 const position = [{x: graphW / 2 - nodeW * scale / 2, y: graphH / 2 - nodeH * scale * 1.25},
-    {x: graphW / 2 - nodeW * scale / 2 - nodeW * scale/ 1.5, y: graphH / 2 - nodeH * scale * 0.1},
+    {x: graphW / 2 - nodeW * scale / 2 - nodeW * scale / 1.5, y: graphH / 2 - nodeH * scale * 0.1},
     {x: graphW / 2 - nodeW * scale / 2 + nodeW * scale / 1.5, y: graphH / 2 - nodeH * scale * 0.1}]
 
 fetch('data/diagramv0.2.json').then(
@@ -81,10 +83,10 @@ function onMouseUp() {
 
 document.addEventListener('mousedown', onMouseDown);
 window.addEventListener('mouseup', onMouseUp);
-document.addEventListener('touchstart', function(e) {
+document.addEventListener('touchstart', function (e) {
     onMouseDown(e.touches[0]);
 });
-window.addEventListener('touchend', onMouseUp);
+window.addEventListener('touchend', onMouseUp);
 
 
 descDiv = document.createElement('div');
@@ -145,11 +147,11 @@ function init(node) {
         return el.clicked === true;
     })
 
-    if(innerWidth > 480) {
+    if (innerWidth > 480) {
         node.x = 70;
         node.y = 70;
     }
-    if(innerWidth <= 480) {
+    if (innerWidth <= 480) {
         node.x = 40;
         node.y = 40;
     }
@@ -307,11 +309,13 @@ function createNewNode(node) {
             if (nodes.length > 2) {
                 animateY = -updateNodeY + nodeH * scale + 100;
                 graph.style.transform = `translate(${0}px, ${animateY}px)`;
-                graph.style.transition = `transform 330ms ease-out`;
+                graph.classList.add('animate');
 
-                setTimeout(function() {
+                timeoutId = setTimeout(function () {
+                    clearTimeout(timeoutId);
                     currentX = 0;
                     currentY = animateY;
+                    graph.classList.remove('animate');
                 }, 350);
             }
         }

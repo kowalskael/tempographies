@@ -172,6 +172,10 @@ canvas {
     position: absolute;
 }
 
+.animate {
+    transition: transform 330ms ease-out;
+}
+
 #index {
     width: 20%;
     height: 100%;
