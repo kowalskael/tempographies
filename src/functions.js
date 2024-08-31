@@ -191,7 +191,7 @@ class additionalImg {
     }
 
     collide() {
-        
+
     }
 
     render() {

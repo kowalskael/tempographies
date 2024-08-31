@@ -49,7 +49,7 @@ fetch('data/diagramv0.2.json').then(
 let lastX = 0, lastY = 0;
 let currentX = 0, currentY = 0;
 let dragged = false;
-let animateX = 0, animateY = 0;
+let animateY = 0;
 
 function moveAt(x, y) {
     currentX = x;
@@ -62,6 +62,7 @@ function onMouseDown(e) {
     lastX = e.clientX - currentX;
     lastY = e.clientY - currentY; // zmienne pomocnicze do zmierzenia offsetu
     document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('touchmove', onTouchMove);
 }
 
 function onMouseMove(e) {
@@ -69,12 +70,22 @@ function onMouseMove(e) {
     moveAt(e.clientX - lastX, e.clientY - lastY);
 }
 
+function onTouchMove(e) {
+    onMouseMove(e.touches[0]);
+}
+
 function onMouseUp() {
     document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('touchmove', onTouchMove);
 }
 
 document.addEventListener('mousedown', onMouseDown);
 window.addEventListener('mouseup', onMouseUp);
+document.addEventListener('touchstart', function(e) {
+    onMouseDown(e.touches[0]);
+});
+window.addEventListener('touchend', onMouseUp);
+
 
 descDiv = document.createElement('div');
 descDiv.setAttribute("id", "descDiv");
@@ -296,7 +307,12 @@ function createNewNode(node) {
             if (nodes.length > 2) {
                 animateY = -updateNodeY + nodeH * scale + 100;
                 graph.style.transform = `translate(${0}px, ${animateY}px)`;
-                graph.style.transition = `transform 330ms ease-in-out`;
+                graph.style.transition = `transform 330ms ease-out`;
+
+                setTimeout(function() {
+                    currentX = 0;
+                    currentY = animateY;
+                }, 350);
             }
         }
     })
