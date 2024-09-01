@@ -29,7 +29,7 @@ if (innerWidth > 900) {
 }
 
 if (innerWidth <= 900) {
-    scale = 0.5;
+    scale = 0.6;
 }
 
 const indexPrnt = document.getElementById('index-input');
