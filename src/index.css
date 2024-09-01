@@ -250,7 +250,7 @@ button {
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
 
     body {
         overflow: hidden;
@@ -314,5 +314,9 @@ button {
     #descDiv {
         width: 70%;
         display: flex;
+    }
+
+    #p5_loading {
+        left: 40%;
     }
 }

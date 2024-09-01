@@ -24,11 +24,11 @@ let scale;
 
 let timeoutId;
 
-if (innerWidth > 440) {
+if (innerWidth > 900) {
     scale = 1;
 }
 
-if (innerWidth < 440) {
+if (innerWidth <= 900) {
     scale = 0.5;
 }
 
@@ -141,11 +141,11 @@ function init(node) {
         return el.clicked === true;
     })
 
-    if (innerWidth > 480) {
+    if (innerWidth > 900) {
         node.x = 70;
         node.y = 70;
     }
-    if (innerWidth <= 480) {
+    if (innerWidth <= 900) {
         node.x = 40;
         node.y = 40;
     }
@@ -187,12 +187,12 @@ function addNode(node) {
     descDiv.style.display = 'flex';
     descText.innerHTML = `<p class="descTextNode">from ${node.name}</p>${node.description}`;
 
-    if (node.x + nodeW + 300 >= graphW && innerWidth > 480) {
+    if (node.x + nodeW + 300 >= graphW && innerWidth > 900) {
         descDiv.style.top = 100 + "px";
         descDiv.style.left = node.x - 300 + "px";
     }
 
-    if (node.x + nodeW + 300 <= graphW && innerWidth > 480) {
+    if (node.x + nodeW + 300 <= graphW && innerWidth > 900) {
         descDiv.style.top = 100 + "px";
         descDiv.style.left = node.x + nodeW + 110 + "px";
     }
