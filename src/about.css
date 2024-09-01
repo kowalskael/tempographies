@@ -3,6 +3,28 @@ html {
 
 }
 
-#mobile-menu {
-    top: 5.8%;
+.img-desktop {
+    display: flex;
+}
+
+.img-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 900px) {
+
+    html {
+        height: 100%;
+    }
+    #mobile-menu {
+        top: 5.8%;
+    }
+
+    .img-mobile {
+        display: flex;
+    }
+
+    .img-desktop {
+        display: none;
+    }
 }
