@@ -235,6 +235,7 @@ button {
     vertical-align: middle;
     text-align: center;
     margin-top: 20px;
+    cursor: url('img/curHAND.svg'), default;
 }
 
 .animateIndex {
