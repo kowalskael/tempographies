@@ -208,7 +208,7 @@ function addNode(node) {
         descText.innerHTML = `Thank you for taking time to explore some of the temporal and spatial aspects of the Epicnutrients project. If you want to find out more about the research, we encourage you to take another round. Click the button below to restart the website.`;
         descDiv.style.top = 100 + "px";
         let button = document.createElement("button");
-        button.innerHTML = 'play again'
+        button.innerHTML = 'explore again'
         document.getElementById('descDiv').appendChild(button);
 
         button.addEventListener("click", function () {
@@ -284,11 +284,6 @@ function createNewNode(node) {
 
             if (newNode.name === 'ryegrass') {
                 const newAddImg = new additionalImg(addImageData[3], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
-                addImages.push(newAddImg);
-            }
-
-            if (nodeData[l].name === 'biochar') {
-                const newAddImg = new additionalImg(addImageData[1], updateNodeX - 100, updateNodeY + nodeH * scale / 2 - 140, 459 * scale, 283 * scale);
                 addImages.push(newAddImg);
             }
 
