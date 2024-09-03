@@ -59,6 +59,9 @@ function onMouseDown(e) {
 }
 
 function onMouseMove(e) {
+    if (e.clientX <= 0 || e.clientX >= graphW || e.clientY <= 0 || e.clientY >= graphH) {
+        return;
+    }
     dragged = true;
     moveAt(e.clientX - lastX, e.clientY - lastY);
 }
