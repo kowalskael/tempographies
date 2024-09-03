@@ -71,6 +71,16 @@ function transformWordsToLinks(data) {
     }
 }
 
+function transformWordsToHyperlinks(data) {
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data[i].hyperlinks.length; j++) {
+            if (data[i].description.indexOf(data[i].hyperlinks[j]) > -1) {
+                data[i].description = data[i].description.replace(data[i].hyperlinks[j], `<a class="link" id="${data[i].hyperlinks[j]}">${data[i].hyperlinks[j]}</a>`);
+            }
+        }
+    }
+}
+
 function toRadians(degrees) {
     return degrees * Math.PI / 180;
 };
@@ -86,6 +96,8 @@ class NodeObject {
         this.symbol = node.symbol; // every node has specific symbol shape and color
         this.networkArray = node.networkArray; // what are hyperlinks of the node from .csv file?
         this.indexInput = node.indexInput;
+        this.hyperlinks = node.hyperlinks;
+        this.hyperInput = node.hyperInput;
         this.scale = scale;
         this.width = 220 * this.scale;
         this.height = 135 * this.scale;
@@ -127,7 +139,7 @@ class LineObject {
         this.width = width;
         this.height = height;
         this.angle = angle;
-        this.centerx1 = this.x1 + this.width / 2 ;
+        this.centerx1 = this.x1 + this.width / 2;
         this.centery1 = this.y1 + this.height / 2;
         this.centerx2 = this.x2 + this.width / 2;
         this.centery2 = this.y2 + this.height / 2;
@@ -153,15 +165,15 @@ class LineObject {
         for (let t = 0; t <= 1; t += 0.02) {
             let px1, px2, py1, py2;
             if (this.angle === 25) {
-                px1 = lerp(this.x1 + this.width + 10 * this.scale, this.x2 + this.width / 8  * this.scale, t);
-                py1 = lerp(this.centery1, this.centery1 - 70  * this.scale, t);
-                px2 = lerp(this.centerx2, this.centerx2 , t);
-                py2 = lerp(this.y2, this.y2 - 5  * this.scale, t);
+                px1 = lerp(this.x1 + this.width + 10 * this.scale, this.x2 + this.width / 8 * this.scale, t);
+                py1 = lerp(this.centery1, this.centery1 - 70 * this.scale, t);
+                px2 = lerp(this.centerx2, this.centerx2, t);
+                py2 = lerp(this.y2, this.y2 - 5 * this.scale, t);
             }
 
             if (this.angle === 85) {
-                px1 = lerp(this.centerx1 + 20 * this.scale, this.centerx2 + 40  * this.scale, t);
-                py1 = lerp(this.y1 + this.height + 10 * this.scale, this.centery1 + 60  * this.scale, t);
+                px1 = lerp(this.centerx1 + 20 * this.scale, this.centerx2 + 40 * this.scale, t);
+                py1 = lerp(this.y1 + this.height + 10 * this.scale, this.centery1 + 60 * this.scale, t);
                 px2 = lerp(this.centerx2, this.centerx2, t);
                 py2 = lerp(this.y2, this.y2 - 5 * this.scale, t);
             }

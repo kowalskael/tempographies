@@ -82,6 +82,24 @@ canvas {
     cursor: url('img/curHAND.svg'), default;
 }
 
+#addDescDiv {
+    position: absolute;
+    /* Stay in place */
+    display: flex;
+    z-index: 2;
+    width: 300px;
+    top: 55px;
+    padding: 25px;
+    background-color: rgba(239, 239, 239, 0.9);
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #ff6315;
+    border-width: 3px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #popup {
     position: absolute;
     /* Stay in place */
@@ -315,9 +333,26 @@ button {
     #descDiv {
         width: 70%;
         display: flex;
+        padding: 25px;
     }
 
     #p5_loading {
         left: 40%;
     }
+
+    #addDescDiv {
+        position: absolute;
+        /* Stay in place */
+        display: flex;
+        z-index: 2;
+        width: 65%;
+        top: 155px;
+        padding: 20px;
+        left: 19%;
+    }
+
+    #addDescDiv > img {
+        width: 95%;
+    }
+
 }

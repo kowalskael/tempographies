@@ -1,12 +1,9 @@
 let nodes = []; // array to contain created and visible node obj
 let links = [];
-let addImages = [];
-
-let descDiv, descText;
+let hyperlinks = [];
 
 let nodeData;
 let imageData = [];
-let addImageData = [];
 
 let stageInit = true;
 let firstAfterChange = true;
@@ -37,7 +34,6 @@ const indexPrnt = document.getElementById('index-input');
 const position = [{x: graphW / 2 - nodeW * scale / 2, y: graphH / 2 - nodeH * scale * 1.25},
     {x: graphW / 2 - nodeW * scale / 2 - nodeW * scale / 1.5, y: graphH / 2 - nodeH * scale * 0.1},
     {x: graphW / 2 - nodeW * scale / 2 + nodeW * scale / 1.5, y: graphH / 2 - nodeH * scale * 0.1}]
-
 
 let lastX = 0, lastY = 0;
 let currentX = 0, currentY = 0;
@@ -82,31 +78,32 @@ document.addEventListener('touchstart', function (e) {
 });
 window.addEventListener('touchend', onMouseUp);
 
-
-descDiv = document.createElement('div');
+// div, który pojawia się po kliku na obiekt i jest wypełniany treścią
+let descDiv = document.createElement('div');
 descDiv.setAttribute("id", "descDiv");
 document.body.appendChild(descDiv);
-descText = document.createElement('div');
+let descText = document.createElement('div');
 descText.setAttribute("id", "descText");
 descText.innerHTML = 'no description';
 document.getElementById('descDiv').appendChild(descText);
 descDiv.style.display = 'none';
 
+// dodatkowy div, który pojawia się po kliku w specjalny link
+let addDescDiv = document.createElement('div');
+addDescDiv.setAttribute("id", "addDescDiv");
+document.body.appendChild(addDescDiv);
+addDescDiv.style.display = "none";
+
 function preload() {
     nodeData = loadJSON('data/diagramv0.2.json', function (data) {
         nodeData = data;
         transformWordsToLinks(nodeData);
+        transformWordsToHyperlinks(nodeData);
         for (let i = 0; i < 21; i++) {
             imageData[i] = loadImage('img/shapes/' + [i] + '.png');
             nodeData[i].symbol = imageData[i];
         }
-
-        for (let i = 0; i < 4; i++) {
-            addImageData[i] = loadImage('img/add/' + [i] + '.png');
-        }
     });
-
-
 }
 
 function setup() {
@@ -153,7 +150,6 @@ function init(node) {
         node.y = 40;
     }
 
-
     node.clicked = false;
     node.clickable = true;
 
@@ -179,7 +175,7 @@ function game(node) {
     }
 
     addNode(node);
-    let indexP = document.getElementsByClassName("indexprnt")
+    let indexP = document.getElementsByClassName("indexprnt");
     for (let j = 0; indexP.length; j++) {
         indexP[j].classList.remove("animateIndex");
     }
@@ -193,16 +189,38 @@ function addNode(node) {
     if (node.x + nodeW + 300 >= graphW && innerWidth > 900) {
         descDiv.style.top = 100 + "px";
         descDiv.style.left = node.x - 300 + "px";
+        addDescDiv.style.top = 70 + "px";
+        addDescDiv.style.left = node.x - 260 + "px";
     }
 
     if (node.x + nodeW + 300 <= graphW && innerWidth > 900) {
         descDiv.style.top = 100 + "px";
         descDiv.style.left = node.x + nodeW + 110 + "px";
+        addDescDiv.style.top = 70 + "px";
+        addDescDiv.style.left = node.x + nodeW + 140 + "px";
     }
 
     for (let j = 0; j < node.networkArray.length; j++) {
         createNewNode(node.networkArray[j]);
     }
+
+    for (let i = 0; i < node.hyperlinks.length; i++) {
+        hyperlinks[i] = document.getElementById(node.hyperlinks[i]);
+        hyperlinks[i].style.color = '#ff6315'
+    }
+
+    console.log(hyperlinks)
+
+    for (let i = 0; i < hyperlinks.length; i++) {
+        hyperlinks[i].addEventListener("click", function () {
+            addDescDiv.style.display = 'flex';
+            addDescDiv.innerHTML = node.hyperInput[i];
+        })
+    }
+
+    addDescDiv.addEventListener("click", function () {
+        addDescDiv.style.display = "none";
+    })
 
     node.click();
 
@@ -275,21 +293,6 @@ function createNewNode(node) {
                 addImgPositionX = 0;
             }
 
-            if (newNode.name === 'laboratory') {
-                const newAddImg = new additionalImg(addImageData[2], addImgPositionX, updateNodeY + nodeH * scale / 2 - 140, 459 * scale, 283 * scale);
-                addImages.push(newAddImg);
-            }
-
-            if (newNode.name === 'cold plasma') {
-                const newAddImg = new additionalImg(addImageData[0], addImgPositionX, updateNodeY + nodeH * scale / 2 - 140, 459 * scale, 283 * scale);
-                addImages.push(newAddImg);
-            }
-
-            if (newNode.name === 'ryegrass') {
-                const newAddImg = new additionalImg(addImageData[3], addImgPositionX, updateNodeY + nodeH / 2 - 140, 459, 283);
-                addImages.push(newAddImg);
-            }
-
             descDiv.style.display = 'none';
             // add description to index-input
 
@@ -318,10 +321,6 @@ function createNewNode(node) {
 function draw() {
     background('#d8d6d2');
     cursor(MOVE);
-
-    for (let i = 0; i < addImages.length; i++) {
-        addImages[i].render();
-    }
 
     for (let i = 0; i < links.length; i++) {
         links[i].render();
