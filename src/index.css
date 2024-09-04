@@ -87,7 +87,7 @@ canvas {
     /* Stay in place */
     display: flex;
     z-index: 2;
-    width: 300px;
+    width: 350px;
     top: 55px;
     padding: 25px;
     background-color: rgba(239, 239, 239, 0.9);
@@ -411,7 +411,7 @@ button {
     }
 
     .link {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .descTextNode {
@@ -433,7 +433,7 @@ button {
     }
 
     #index-input > div > p {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
 }
