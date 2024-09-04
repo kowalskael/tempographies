@@ -388,7 +388,7 @@ button {
     }
 
     #game {
-        height: 86%;
+        height: 100%;
     }
 
     #graph {
@@ -434,6 +434,10 @@ button {
 
     #index-input > div > p {
         font-size: 1.2rem;
+    }
+
+    #index-input {
+        padding: 0 20px 0 20px;
     }
 
 }
