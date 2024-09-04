@@ -43,19 +43,21 @@ function closePopup() {
     }
 
     const popup = document.getElementById("popup")
-    const popupBox = document.getElementById("popupBox")
+
+    const slider = document.getElementsByClassName("slides")
     const loadingImg = document.getElementById("p5_loading")
 
     loadingImg.style.display = "none";
-    popupBox.style.display = "flex";
     popup.style.display = "flex";
-    popupBox.addEventListener("click", (event) => {
-        popupBox.style.display = "none";
-        popup.style.display = "none";
-        sessionStorage.setItem('popup', 'clicked')
-        console.log(sessionStorage)
-        loadingImg.style.display = 'flex';
-    })
+    for(let i = 0; i < slider.length; i++){
+        slider[i].addEventListener("click", (event) => {
+            popup.style.display = "none";
+            sessionStorage.setItem('popup', 'clicked')
+            console.log(sessionStorage)
+            loadingImg.style.display = 'flex';
+        })
+    }
+
 }
 
 closePopup();
