@@ -24,7 +24,7 @@ function mobileNav() {
 
             flag = true;
             if (innerWidth < 900 && innerWidth >= 480) {
-                mobileMenu.style.height = '55px';
+                mobileMenu.style.height = '50px';
                 mainSpace.style.height = '70%';
             }
 

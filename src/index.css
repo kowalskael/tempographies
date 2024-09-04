@@ -396,8 +396,8 @@ button {
     }
 
     #index-menu {
-        height: 55px;
-        min-height: 55px;
+        height: 50px;
+        min-height: 50px;
     }
 
     #descDiv {
@@ -406,16 +406,16 @@ button {
     }
 
     #descText {
-        font-size: 1.4rem;
-        line-height: 1.5rem;
+        font-size: 1.3rem;
+        line-height: 1.4rem;
     }
 
     .link {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .descTextNode {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     #addDescDiv {
@@ -429,11 +429,11 @@ button {
     }
 
     #index-menu > p {
-        font-size: 1.7rem;
+        font-size: 1.4rem;
     }
 
     #index-input > div > p {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
 }
