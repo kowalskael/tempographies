@@ -6,7 +6,7 @@ function mobileNav() {
     const indexSpace = document.getElementById("index");
     const mainSpace = document.getElementById("main")
 
-    hamburger.addEventListener("click", (e) => {
+    hamburger.addEventListener("click", () => {
         console.log('clicked')
         if (flag) {
             hamburger.classList.add('open');
@@ -21,9 +21,17 @@ function mobileNav() {
             grpSpace.style.display = 'flex';
             indexSpace.style.display = 'flex';
             mobileLinks.style.display = 'none';
-            mobileMenu.style.height = '45px';
-            mainSpace.style.height = '70%';
+
             flag = true;
+            if (innerWidth < 900 && innerWidth >= 480) {
+                mobileMenu.style.height = '55px';
+                mainSpace.style.height = '70%';
+            }
+
+            if (innerWidth < 480) {
+                mobileMenu.style.height = '45px';
+                mainSpace.style.height = '70%';
+            }
         }
     })
 }
@@ -50,7 +58,7 @@ function closePopup() {
     loadingImg.style.display = "none";
     popup.style.display = "flex";
     for (let i = 0; i < slider.length; i++) {
-        slider[i].addEventListener("click", (event) => {
+        slider[i].addEventListener("click", () => {
             popup.style.display = "none";
             sessionStorage.setItem('popup', 'clicked')
             console.log(sessionStorage)
@@ -85,7 +93,7 @@ function transformWordsToHyperlinks(data) {
 
 function toRadians(degrees) {
     return degrees * Math.PI / 180;
-};
+}
 
 function distance(x1, x2, y1, y2) {
     return Math.hypot(x2 - x1, y2 - y1);

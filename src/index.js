@@ -21,11 +21,15 @@ let scale;
 
 let timeoutId;
 
-if (innerWidth > 900) {
+if (innerWidth >= 900) {
     scale = 1;
 }
 
-if (innerWidth <= 900) {
+if (innerWidth < 900 && innerWidth >= 480) {
+    scale = 0.78;
+}
+
+if (innerWidth < 480) {
     scale = 0.6;
 }
 
@@ -141,11 +145,17 @@ function init(node) {
         return el.clicked === true;
     })
 
-    if (innerWidth > 900) {
+    if (innerWidth >= 900) {
         node.x = 70;
         node.y = 70;
     }
-    if (innerWidth <= 900) {
+
+    if (innerWidth < 900 && innerWidth >= 480) {
+        node.x = 85;
+        node.y = 75;
+    }
+
+    if (innerWidth < 480) {
         node.x = 40;
         node.y = 40;
     }
