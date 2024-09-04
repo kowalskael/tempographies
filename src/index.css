@@ -30,9 +30,9 @@ canvas {
     /* Stay in place */
     display: flex;
     z-index: 1;
-    width: 300px;
+    width: 350px;
     top: 65px;
-    padding: 35px;
+    padding: 25px;
     background-color: rgba(239, 239, 239, 0.9);
     border-style: solid;
     border-radius: 15px;
@@ -100,6 +100,10 @@ canvas {
     justify-content: center;
 }
 
+#addDescDiv > img {
+    width: 100%;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -138,13 +142,16 @@ canvas {
     width: 10px;
     height: 10px;
 }
+
 .slides::-webkit-scrollbar-thumb {
     background: black;
     border-radius: 10px;
 }
+
 .slides::-webkit-scrollbar-track {
     background: transparent;
 }
+
 .slides > div {
     scroll-snap-align: start;
     flex-shrink: 0;
@@ -163,6 +170,7 @@ canvas {
     border-radius: 15px;
     border-color: #ff6315;
 }
+
 .slides > div:target {
     /*   transform: scale(0.8); */
 }
@@ -234,6 +242,7 @@ canvas {
 .num > a:active {
     top: 1px;
 }
+
 .num > a:focus {
     background: #000;
 }
@@ -392,6 +401,7 @@ button {
     .alert {
         font-size: 0.9rem;
     }
+
     #main {
         width: 100%;
         height: 70%;

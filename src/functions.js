@@ -49,7 +49,7 @@ function closePopup() {
 
     loadingImg.style.display = "none";
     popup.style.display = "flex";
-    for(let i = 0; i < slider.length; i++){
+    for (let i = 0; i < slider.length; i++) {
         slider[i].addEventListener("click", (event) => {
             popup.style.display = "none";
             sessionStorage.setItem('popup', 'clicked')
