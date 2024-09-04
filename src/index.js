@@ -175,8 +175,10 @@ function game(node) {
     }
 
     addNode(node);
+
+    // usuwanie klasy przypisanej do p w indeksie
     let indexP = document.getElementsByClassName("indexprnt");
-    for (let j = 0; indexP.length; j++) {
+    for (let j = 0; j < indexP.length; j++) {
         indexP[j].classList.remove("animateIndex");
     }
 }
@@ -204,19 +206,20 @@ function addNode(node) {
         createNewNode(node.networkArray[j]);
     }
 
-    for (let i = 0; i < node.hyperlinks.length; i++) {
-        hyperlinks[i] = document.getElementById(node.hyperlinks[i]);
-        hyperlinks[i].style.color = '#ff6315'
+    for (let m = 0; m < node.hyperlinks.length; m++) {
+        if (node.hyperlinks.length > 0) {
+            hyperlinks[m] = document.getElementById(node.hyperlinks[m]);
+            hyperlinks[m].style.color = '#ff6315';
+            console.log(hyperlinks)
+
+            hyperlinks[m].addEventListener("click", function () {
+                addDescDiv.style.display = 'flex';
+                addDescDiv.innerHTML = node.hyperInput[m];
+            })
+        }
     }
 
     console.log(hyperlinks)
-
-    for (let i = 0; i < hyperlinks.length; i++) {
-        hyperlinks[i].addEventListener("click", function () {
-            addDescDiv.style.display = 'flex';
-            addDescDiv.innerHTML = node.hyperInput[i];
-        })
-    }
 
     addDescDiv.addEventListener("click", function () {
         addDescDiv.style.display = "none";
@@ -236,6 +239,8 @@ function addNode(node) {
             window.open('index.html', "_self")
         }, false)
     }
+
+    hyperlinks = [];
 }
 
 function createNewNode(node) {
