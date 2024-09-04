@@ -439,7 +439,7 @@ button {
     }
 
     #descDiv {
-        width: 70%;
+        width: 80%;
         display: flex;
         padding: 25px;
     }
@@ -453,14 +453,14 @@ button {
         /* Stay in place */
         display: flex;
         z-index: 2;
-        width: 65%;
+        width: 75%;
         top: 155px;
         padding: 20px;
-        left: 19%;
+        right: 5%;
     }
 
     #addDescDiv > img {
-        width: 95%;
+        width: 100%;
     }
 
 }
