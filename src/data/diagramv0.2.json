@@ -26,7 +26,7 @@
   },
   {
     "name": "what biochar is?",
-    "description": "In the ePICNutrients project (image of team) it is important to have some questions in mind: what is biochar (image of biochar) from different perspectives? What is biochar as a material? How is it produced? and what attributes are important (as granulometry or extreme surface)? What is biochar in plant cultivation? Is biochar a solution to recycle biowaste in a sustainable (sustainability) way? What is it as a social concept?",
+    "description": "In the ePICNutrients project it is important to have some questions in mind: what is biochar from different perspectives? What is biochar as a material? How is it produced? and what attributes are important (as granulometry or extreme surface)? What is biochar in plant cultivation? Is biochar a solution to recycle biowaste in a sustainable (sustainability) way? What is it as a social concept?",
     "symbol": "thesis",
     "networkArray": [
       "extreme surface",
@@ -34,14 +34,8 @@
       "sustainability"
     ],
     "indexInput": "What is biochar from different perspectives? What is biochar as a material? How is it produced? ",
-    "hyperlinks": [
-      "image of biochar",
-      "image of team"
-    ],
-    "hyperInput": [
-      "image of biochar",
-      "<img src='img/plasma.png'>"
-    ]
+    "hyperlinks": "",
+    "hyperInput": ""
   },
   {
     "name": "granulometry",
@@ -85,7 +79,8 @@
     "description": "Cold plasma is generated when electrical energy is applied to a gas, causing the ionization of the gas to generate very reactive molecules and ions. It can be used to enhance the biochar. In that process biochar is “washed” (plasma treatment) with a mixture of nitrogen and hydrogen cold plasma.",
     "symbol": "thesis",
     "networkArray": [
-      "nitrogen"
+      "nitrogen",
+      "plasma treated biochar"
     ],
     "indexInput": "Cold plasma is generated when electrical energy is applied to a gas.",
     "hyperlinks": "",
@@ -107,10 +102,11 @@
   },
   {
     "name": "olive tree",
-    "description": "The olive tree is a perennial, evergreen tree, with its height ranging from 5 to 20 meters. Olive trees grow mainly in temperate and subtropical zones, where conditions are more favorable. One such place is Crete, where there are over 290,000 olive trees and a population of about 635,000 inhabitants. The annual production of olive oil on the island ranges between 80,000 and 120,000 tons. The olive oil industry generates by-products that can have a negative impact on the environment when not processed in a sustainable (sustainability) way.",
+    "description": "The olive tree is a perennial, evergreen tree, with its height ranging from 5 to 20 meters. Olive trees grow mainly in temperate and subtropical zones, where conditions are more favorable. One such place is (Crete), where there are over 290,000 olive trees and a population of about 635,000 inhabitants. The annual production of olive oil on the island ranges between 80,000 and 120,000 tons. The olive oil industry generates by-products (olive tree pruning) that can have a negative impact on the environment when not processed in a sustainable (sustainability) way.",
     "symbol": "thesis",
     "networkArray": [
       "sustainability",
+      "olive tree pruning",
       "Crete"
     ],
     "indexInput": "The olive tree is a perennial, evergreen tree",
@@ -193,13 +189,13 @@
     "networkArray": [
       "biochar"
     ],
-    "indexInput": "The project aims to create a collaborative framework for scientists from various fields to develop an innovative soil amendment (biochar) using raw waste materials.",
+    "indexInput": "The project aims to create a collaborative framework for scientists from various fields to develop an innovative soil amendment using raw waste materials.",
     "hyperlinks": "",
     "hyperInput": ""
   },
   {
     "name": "EPICUR Alliance",
-    "description": "EPICUR, the European University Alliance, is among the first generation of European alliances piloting a new way to intensify cooperation between higher education institutions through the creation of the European University. The EPICUR alliance aims to foster and develop increasingly close cooperation between academics, students and administrative staff, with the goal of becoming a full-fledged federation of universities (by 2026), offering a truly European experience in learning, training and research. To this end, EPICUR aims to achieve a sustainable federal structure that supports long-term structural transformation and strategic integration. (ePICNutrients)",
+    "description": "EPICUR, the European University Alliance, is among the first generation of European alliances piloting a new way to intensify cooperation between higher education institutions through the creation of the European University. The EPICUR alliance aims to foster and develop increasingly close cooperation between academics, students and administrative staff, with the goal of becoming a full-fledged federation of universities (by 2026), offering a truly European experience in learning, training and research. To this end, EPICUR aims to achieve a sustainable federal structure that supports long-term structural transformation and strategic integration (ePICNutrients).",
     "symbol": "thesis",
     "networkArray": [
       "ePICNutrients"
@@ -210,46 +206,316 @@
   },
   {
     "name": "UHA/CNRS",
-    "description": "lorem ipsum (EPICUR Alliance)",
+    "description": "Experiments including treating a biochar in the plasma reactor (plasma reactor) and the physical analysis of the biochar were carried out on Univeristy of Haut-Alsace/CNRS (EPICUR Alliance).",
     "symbol": "thesis",
     "networkArray": [
-      "EPICUR Alliance"
+      "EPICUR Alliance",
+      "plasma reactor"
     ],
-    "indexInput": "lorem ipsum (EPICUR Alliance)",
+    "indexInput": "Experiments including treating a biochar in the plasma reactor (plasma reactor) and the physical analysis of the biochar were carried out on Univeristy of Haut-Alsace/CNRS.",
     "hyperlinks": "",
     "hyperInput": ""
   },
   {
     "name": "AuTH",
-    "description": "lorem ipsum (EPICUR Alliance)",
+    "description": "Experiments related to agronomics and biology (small pot experiment on the ryegrass) were carried out at the Aristotle University in Thessaloniki (EPICUR Alliance).",
     "symbol": "thesis",
     "networkArray": [
-      "EPICUR Alliance"
+      "EPICUR Alliance",
+      "small pot experiment on the ryegrass"
     ],
-    "indexInput": "lorem ipsum (EPICUR Alliance)",
+    "indexInput": "Experiments related to agronomics and biology (small pot experiment on the ryegrass) were carried out at the Aristotle University in Thessaloniki (EPICUR Alliance).",
     "hyperlinks": "",
     "hyperInput": ""
   },
   {
     "name": "AMU",
-    "description": "lorem ipsum (EPICUR Alliance)",
+    "description": "Main task of laboratories in Adam Mickiewicz University in Poznań (EPICUR Alliance) is to create an experimental media to present produced academic knowlegde (tempography).",
     "symbol": "thesis",
     "networkArray": [
-      "EPICUR Alliance"
+      "EPICUR Alliance",
+      "tempography"
     ],
-    "indexInput": "lorem ipsum (EPICUR Alliance)",
+    "indexInput": "Main task of laboratories in Adam Mickiewicz University in Poznań is to create an experimental media to present produced academic knowlegde",
     "hyperlinks": "",
     "hyperInput": ""
   },
   {
     "name": "Crete",
+    "description": "Crete is the largest and most populous of the Greek islands located about 100 km south of the Peloponnese. Given the predominance of the olive industry on the island, recycling waste in a sustainable way is crucial for the region (sustainability).",
+    "symbol": "thesis",
+    "networkArray": [
+      "sustainability"
+    ],
+    "indexInput": "Crete is the largest and most populous of the Greek islands located about 100 km south of the Peloponnese",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "olive tree pruning",
+    "description": "The purpose of prunning olive trees is to open more of the tree up to sunshine. The parts of a tree that are in shade will not produce fruit. The pruning process produces large amounts of waste in the form of leaves (OTL) and small twigs, and larger branches (OTB). Abandoning this waste can lead to the development of microorganisms and fungi that are dangerous to trees.",
+    "symbol": "thesis",
+    "networkArray": [
+      "OTL",
+      "OTB"
+    ],
+    "indexInput": "The purpose of prunning olive trees is to open more of the tree up to sunshine.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "OTB",
+    "description": "Olive tree branches burning is a common agricultural waste management practice after the annual pruning of olive trees from November to February. In ePICNutrients project we propose to manage biowaste by transforming branches into biochar, which can be used again in agriculture",
+    "symbol": "thesis",
+    "networkArray": [
+      "biochar"
+    ],
+    "indexInput": "Olive tree branches burning is a common agricultural waste management practice after the annual pruning of olive trees from November to February.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "OTL",
+    "description": "Olive tree leaves - OTL - account for about 25% of all bio-waste. They are mainly used as animal feed and in biomass production, but due to their polyphenolic composition, olive leaves have potential in numerous other applications in sustainable way (sustainability). <a href='https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2021.660582/full'>More information</a>",
+    "symbol": "thesis",
+    "networkArray": [
+      "sustainability"
+    ],
+    "indexInput": "Olive tree leaves - OTL - account for about 25% of all bio-waste.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "soil bacteria",
+    "description": "Microbes in the soil are directly tied to nutrient recycling especially carbon, nitrogen, phosphorus and sulfur. Bacteria are a major class of microorganisms that keep soils healthy and productive (bacteria/biochar interaction).",
+    "symbol": "thesis",
+    "networkArray": [
+      "bacteria/biochar interaction"
+    ],
+    "indexInput": "Microbes in the soil are directly tied to nutrient recycling especially carbon, nitrogen, phosphorus and sulfur. Bacteria are a major class of microorganisms that keep soils healthy and productive",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "bacteria/biochar interaction",
+    "description": "One way to assess the impact of cold plasma treatment on biochar and soil is to analyze the growth of bacteria that feed on nitrogen. The larger the colonies of these bacteria, the higher the nitrogen content on the surface of the biochar (increasing nitrogen uptake), and thus the greater the potential for using the treated biochar as a soil amendment.",
+    "symbol": "thesis",
+    "networkArray": [
+      "increasing nitrogen uptake"
+    ],
+    "indexInput": "One way to assess the impact of cold plasma treatment on biochar and soil is to analyze the growth of bacteria that feed on nitrogen.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "increasing nitrogen uptake",
+    "description": "A key question for the project is the feasibility of using biochar as a way to introduce nitrogen into the soil in a controlled manner. The experiments conducted provided data, the analysis of which allows us to assess the feasibility of this solution (data analysis).",
+    "symbol": "thesis",
+    "networkArray": [
+      "data analysis"
+    ],
+    "indexInput": "A key question for the project is the feasibility of using biochar as a way to introduce nitrogen into the soil in a controlled manner.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "data analysis",
+    "description": "lorem ipsum (laboratory) (limitations of experiment) (what is the role of biochar)",
+    "symbol": "thesis",
+    "networkArray": [
+      "limitations of experiment",
+      "what is the role of biochar",
+      "laboratory"
+    ],
+    "indexInput": "lorem ipsum",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "production of biochar",
+    "description": "Biochar is most often found as a commercial product, which is produced either by companies that dispose of agricultural waste or industrial waste. Companies offer biochar with different physical and chemical parameters depending on customer expectations.",
+    "symbol": "thesis",
+    "networkArray": [
+      "industrial waste"
+    ],
+    "indexInput": "Biochar is most often found as a commercial product, which is produced either by companies that dispose of agricultural waste or industrial waste.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "industrial waste",
+    "description": "The industrial waste used to produce biochar comes from factories that use hardwood and other organic materials that can be pyrolyzed. The source of the waste should be carefully documented so that the entire process is sustainable (source information).",
+    "symbol": "thesis",
+    "networkArray": [
+      "source information"
+    ],
+    "indexInput": "The industrial waste used to produce biochar comes from factories that use hardwood and other organic materials that can be pyrolyzed.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "source information",
+    "description": "Information about the origin of the waste is provided by commercial companies in the form of European Certificates, which specify both the parameters and chemical composition of the waste. This information is crucial for the use of biochar (data management). At the same time, it is important data in the context of the ePICNutrients project.",
+    "symbol": "thesis",
+    "networkArray": [
+      "data management"
+    ],
+    "indexInput": "Information about the origin of the waste is provided by commercial companies in the form of European Certificates, which specify both the parameters and chemical composition of the waste.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "data management",
+    "description": "Data management depends both on the formats in which the data is produced and used, but also on political and legal regulations in individual EU countries. Some data may be stored only in a specific form or on a specific medium. One way of representing data in an accessible way is this tempography. The form of data management significantly determines how the data is analyzed (data analysis).",
+    "symbol": "thesis",
+    "networkArray": [
+      "data analysis",
+      "tempography"
+    ],
+    "indexInput": "Data management depends both on the formats in which the data is produced and used, but also on political and legal regulations in individual EU countries.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "what is the role of biochar",
+    "description": "A very significant question that the project is trying to answer is the role that biochar plays in the soil once added. Depending on many factors, such as the origin of the biochar, the way it is produced and processed, or the amount of biochar added to the soil, biochar can manifest different aspects of itself (as vessel) (as reservoir) (as soil amendment) (as pollution).",
+    "symbol": "thesis",
+    "networkArray": [
+      "as vessel",
+      "as reservoir",
+      "as soil amendment",
+      "as pollution"
+    ],
+    "indexInput": "A very significant question that the project is trying to answer is the role that biochar plays in the soil once added. Depending on many factors, such as the origin of the biochar, the way it is produced and processed, or the amount of biochar added to the soil, biochar can manifest different aspects of itself.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "as vessel",
+    "description": "Biochar can be seen as a vessel for nutrients - by selecting the right source of origin and processing it, biochar can be used to introduce appropriate substances into the soil. It is important that the nutrients in biochar are available to the plants, rather than being encapsulated in biochar particles (as reservoir).",
+    "symbol": "thesis",
+    "networkArray": [
+      "as reservoir"
+    ],
+    "indexInput": "Biochar can be seen as a vessel for nutrients - by selecting the right source of origin and processing it, biochar can be used to introduce appropriate substances into the soil",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "as reservoir",
+    "description": "Biochar particles can act as a reservoir, accumulating and locking up nutrients, preventing access to them by plants and bacteria. In this case, adding biochar to the soil can have the opposite effect of enriching the soil - biochar can absorb substances like a sponge.",
+    "symbol": "thesis",
+    "networkArray": [
+      "nutrients"
+    ],
+    "indexInput": "Biochar particles can act as a reservoir, accumulating and locking up nutrients, preventing access to them by plants and bacteria.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "as soil amendment",
+    "description": "Biochar particles affect soil (soil) not only because of their chemical composition, but also because of their physical properties. The size of the particles (granulometers) results in greater aeration of the soil, which has a positive effect on plant growth.",
+    "symbol": "thesis",
+    "networkArray": [
+      "soil",
+      "granulometry"
+    ],
+    "indexInput": "Biochar particles affect soil not only because of their chemical composition, but also because of their physical properties.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "as pollution",
+    "description": "Large amounts of biochar in the soil can be seen as a pollution that will eventually lead to plant death. Conducting research over a very long period of time - e.g. 50 years - is impossible within the project (limitations of experiment), which should be taken into account when assessing the use of biochar as a soil amendment from a sustainability perspective.",
+    "symbol": "thesis",
+    "networkArray": [
+      "limitations of experiment",
+      "sustainability"
+    ],
+    "indexInput": "Large amounts of biochar in the soil can be seen as a pollution that will eventually lead to plant death.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "limitations of experiment",
+    "description": "The experiments conducted within the project are intended to provide a so-called proof of concept - proof that the proposed concept can be applied in the future. For this reason, the parameters of the experiments are significantly limited both in terms of scale and time frame. Clear definition of these limitations allows for more precise data management.",
+    "symbol": "thesis",
+    "networkArray": [
+      "data management"
+    ],
+    "indexInput": "The experiments conducted within the project are intended to provide a so-called proof of concept - proof that the proposed concept can be applied in the future",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "tempography",
+    "description": "This tempography is a way to show the process of creating scientific knowledge, taking into account the various factors influencing this process (translation of knowledge). It is an experimental medium that allows access to the project assumptions and actions taken within it. Its non-hierarchical structure allows for free exploration and searching for issues and threads of interest to each user. At the same time, tempography is a research tool that has enabled communication between researchers from different disciplines and dynamic design of actions taken.",
+    "symbol": "thesis",
+    "networkArray": [
+      "translation of knowledge"
+    ],
+    "indexInput": "This tempography is a way to show the process of creating scientific knowledge, taking into account the various factors influencing this process.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "plasma treated biochar",
+    "description": "The main object of experiments undertaken within the project is plasma treated biochar - biochar that is subjected to the action of cold plasma. As a result, changes occur on the surface of biochar molecules (changes in biochar surface), thanks to which they potentially become a valuable addition to the soil. Due to the scale of the project, small amounts of biochar were subjected to the action of cold plasma (limitations of experiment).",
+    "symbol": "thesis",
+    "networkArray": [
+      "limitations of experiment",
+      "changes in biochar surface"
+    ],
+    "indexInput": "The main object of experiments undertaken within the project is plasma treated biochar - biochar that is subjected to the action of cold plasma.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "changes in biochar surface",
+    "description": "Under the influence of cold plasma, the extreme surface of biochar particles is changed - both chemically and physically. As a result, nitrogen molecules are attached to the biochar pieces (increasing nitrogen uptake), which can be introduced into the soil and have a beneficial effect on plant growth.",
+    "symbol": "thesis",
+    "networkArray": [
+      "extreme surface",
+      "increasing nitrogen uptake"
+    ],
+    "indexInput": "Under the influence of cold plasma, the extreme surface of biochar particles is changed - both chemically and physically.",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "translation of knowledge",
+    "description": "lorem ipsum (interdisciplinary communication) (science/society communication)",
+    "symbol": "thesis",
+    "networkArray": [
+      "interdisciplinary communication",
+      "science/society communication"
+    ],
+    "indexInput": "lorem ipsum",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "interdisciplinary communication",
+    "description": "lorem ipsum (mobility) (ePICNutrients)",
+    "symbol": "thesis",
+    "networkArray": [
+      "mobility",
+      "ePICNutrients"
+    ],
+    "indexInput": "lorem ipsum",
+    "hyperlinks": "",
+    "hyperInput": ""
+  },
+  {
+    "name": "science/society communication",
     "description": "lorem ipsum (EPICUR Alliance)",
     "symbol": "thesis",
     "networkArray": [
       "EPICUR Alliance"
     ],
-    "indexInput": "lorem ipsum (EPICUR Alliance)",
+    "indexInput": "lorem ipsum",
     "hyperlinks": "",
     "hyperInput": ""
   }
 ]
+

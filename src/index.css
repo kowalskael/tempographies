@@ -53,6 +53,16 @@ canvas {
     animation: fadeIn 0.5s;
 }
 
+#descText > a {
+    font-weight: 600;
+    font-family: "Lato", sans-serif;
+    color: #000;
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0;
+    cursor: url('img/curHAND.svg'), default;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;

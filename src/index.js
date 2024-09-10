@@ -103,7 +103,7 @@ function preload() {
         nodeData = data;
         transformWordsToLinks(nodeData);
         transformWordsToHyperlinks(nodeData);
-        for (let i = 0; i < 21; i++) {
+        for (let i = 0; i < 44; i++) {
             imageData[i] = loadImage('img/shapes/' + [i] + '.png');
             nodeData[i].symbol = imageData[i];
         }
