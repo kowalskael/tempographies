@@ -276,7 +276,7 @@
   },
   {
     "name": "OTL",
-    "description": "Olive tree leaves - OTL - account for about 25% of all bio-waste. They are mainly used as animal feed and in biomass production, but due to their polyphenolic composition, olive leaves have potential in numerous other applications in sustainable way (sustainability). <a href='https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2021.660582/full'>More information</a>",
+    "description": "Olive tree leaves - OTL - account for about 25% of all bio-waste. They are mainly used as animal feed and in biomass production, but due to their polyphenolic composition, olive leaves have potential in numerous other applications in sustainable way (sustainability). <a href='https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2021.660582/full' target='_blank'>More information</a>",
     "symbol": "thesis",
     "networkArray": [
       "sustainability"
