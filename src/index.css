@@ -210,6 +210,10 @@ canvas {
     padding-bottom: 10px;
 }
 
+.popupText > img {
+    width: 100%;
+}
+
 .alert {
     font-size: 0.8rem;
     font-weight: 600;
@@ -447,7 +451,7 @@ button {
     }
 
     #index-input {
-        padding: 0 20px 0 20px;
+        padding: 0 20px 20px 20px;
     }
 
 }
