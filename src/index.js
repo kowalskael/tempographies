@@ -111,7 +111,7 @@ function preload() {
 }
 
 function setup() {
-    let canvas = createCanvas(graphW, innerHeight * 3);
+    let canvas = createCanvas(graphW, innerHeight * 7);
     canvas.parent('#graph');
 
     let initialNode;
@@ -237,7 +237,7 @@ function addNode(node) {
 
     node.click();
 
-    if (nodes.length > 10) {
+    if (nodes.length > 20) {
         descDiv.style.display = 'flex';
         descText.innerHTML = `Thank you for taking time to explore some of the temporal and spatial aspects of the Epicnutrients project. If you want to find out more about the research, we encourage you to take another round. Click the button below to restart the website.`;
         descDiv.style.top = 100 + "px";
